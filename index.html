@@ -20,7 +20,10 @@
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        brand: { dark: '#030712', card: '#0f172a', primary: '#10b981', secondary: '#06b6d4' }
+                        brand: { dark: '#030712', card: '#0f172a', primary: '#10b981', secondary: '#06b6d4' },
+                        tg: '#0088cc',
+                        max: '#6B4EFF',
+                        vk: '#0077FF',
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -56,6 +59,54 @@
             background: rgba(15, 23, 42, 0.8); border-color: rgba(16, 185, 129, 0.4);
             transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2);
         }
+        
+        /* Кнопки мессенджеров */
+        .messenger-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .messenger-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .messenger-btn:hover {
+            transform: translateY(-4px);
+        }
+        .messenger-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .messenger-tg {
+            background: rgba(0, 136, 204, 0.15);
+            border: 1px solid rgba(0, 136, 204, 0.3);
+        }
+        .messenger-tg:hover {
+            background: rgba(0, 136, 204, 0.25);
+            box-shadow: 0 15px 30px -10px rgba(0, 136, 204, 0.4);
+        }
+        
+        .messenger-max {
+            background: rgba(107, 78, 255, 0.15);
+            border: 1px solid rgba(107, 78, 255, 0.3);
+        }
+        .messenger-max:hover {
+            background: rgba(107, 78, 255, 0.25);
+            box-shadow: 0 15px 30px -10px rgba(107, 78, 255, 0.4);
+        }
+        
+        .messenger-vk {
+            background: rgba(0, 119, 255, 0.15);
+            border: 1px solid rgba(0, 119, 255, 0.3);
+        }
+        .messenger-vk:hover {
+            background: rgba(0, 119, 255, 0.25);
+            box-shadow: 0 15px 30px -10px rgba(0, 119, 255, 0.4);
+        }
+        
         .glow-btn {
             background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
             box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); transition: all 0.3s ease;
@@ -332,24 +383,62 @@
         </div>
     </section>
 
+    <!-- НОВЫЙ БЛОК С МЕССЕНДЖЕРАМИ -->
     <section id="contact" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="glass rounded-3xl p-8 md:p-12 border border-brand-primary/20 reveal-up">
                 <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-brand-secondary to-brand-primary flex items-center justify-center">
-                    <i data-lucide="send" class="w-8 h-8 text-white"></i>
+                    <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Готовы обсудить ваш проект?</h2>
                 <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-                    Напишите нам в Telegram — расскажем, что и как можно сделать, 
+                    Выберите удобный способ связи — расскажем, что и как можно сделать, 
                     назовем точную стоимость и сроки.
                 </p>
                 
-                <a href="https://t.me/your_telegram_username" target="_blank" class="inline-flex glow-btn px-10 py-5 rounded-xl text-white font-semibold text-lg flex items-center justify-center gap-3 mb-6">
-                    <i data-lucide="send" class="w-6 h-6"></i>
-                    Написать в Telegram
-                </a>
+                <!-- Блок с мессенджерами -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto">
+                    
+                    <!-- Telegram -->
+                    <a href="https://t.me/your_telegram_username" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        <span>Telegram</span>
+                    </a>
+                    
+                    <!-- Max -->
+                    <a href="https://max.ru/your_max_username" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                        </svg>
+                        <span>Max</span>
+                    </a>
+                    
+                    <!-- ВКонтакте -->
+                    <a href="https://vk.com/your_vk_group" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
+                        </svg>
+                        <span>ВКонтакте</span>
+                    </a>
+                    
+                </div>
                 
-                <p class="text-slate-500 text-sm">
+                <!-- Разделитель -->
+                <div class="flex items-center gap-4 max-w-2xl mx-auto mb-6">
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                    <span class="text-slate-500 text-sm">или позвоните</span>
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                </div>
+                
+                <!-- Телефон -->
+                <div class="flex items-center justify-center gap-3 text-slate-400">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    <a href="tel:+79999999999" class="text-xl md:text-2xl font-semibold tracking-wide hover:text-white transition-colors">
+                        +7 (999) 999-99-99
+                    </a>
+                </div>
+                
+                <p class="text-slate-500 text-sm mt-6">
                     Обычно отвечаем в течение дня
                 </p>
             </div>
