@@ -2,7 +2,7 @@
 <html lang="ru" class="scroll-smooth" style="scroll-padding-top: 100px;">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Titan | Разработка сайтов и CRM для бизнеса в Уфе</title>
     <meta name="description" content="Создаем сайты, CRM-системы и автоматизацию, которые приносят клиентов и экономят время.">
     
@@ -45,19 +45,35 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body { background-color: #030712; color: #f8fafc; overflow-x: hidden; }
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body { 
+            background-color: #030712; 
+            color: #f8fafc; 
+            overflow-x: hidden;
+            font-size: 16px;
+        }
         .gradient-text {
             background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text;
         }
         .glass {
-            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .glass-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-hover { 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
         .glass-hover:hover {
-            background: rgba(15, 23, 42, 0.8); border-color: rgba(16, 185, 129, 0.4);
-            transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2);
+            background: rgba(15, 23, 42, 0.8); 
+            border-color: rgba(16, 185, 129, 0.4);
+            transform: translateY(-4px); 
+            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2);
         }
         
         .messenger-btn {
@@ -65,7 +81,12 @@
             position: relative;
             overflow: hidden;
         }
-        .messenger-btn:hover { transform: translateY(-4px); }
+        .messenger-btn:hover { 
+            transform: translateY(-4px); 
+        }
+        .messenger-btn:active {
+            transform: translateY(-2px) scale(0.98);
+        }
         
         .messenger-tg {
             background: rgba(0, 136, 204, 0.15);
@@ -96,24 +117,87 @@
         
         .glow-btn {
             background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); 
+            transition: all 0.3s ease;
         }
-        .glow-btn:hover { box-shadow: 0 0 50px rgba(6, 182, 212, 0.5); transform: translateY(-2px); }
+        .glow-btn:hover { 
+            box-shadow: 0 0 50px rgba(6, 182, 212, 0.5); 
+            transform: translateY(-2px); 
+        }
+        .glow-btn:active {
+            transform: translateY(0);
+        }
+        
         .grid-bg {
             background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
         }
         .noise::before {
-            content: ''; position: absolute; inset: 0;
+            content: ''; 
+            position: absolute; 
+            inset: 0;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-            opacity: 0.03; pointer-events: none; z-index: 0;
+            opacity: 0.03; 
+            pointer-events: none; 
+            z-index: 0;
         }
-        .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; z-index: 0; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+        .orb { 
+            position: absolute; 
+            border-radius: 50%; 
+            filter: blur(80px); 
+            opacity: 0.4; 
+            z-index: 0; 
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Анимация бургера */
+        .burger-line {
+            transition: all 0.3s ease-in-out;
+        }
+        .burger-active .burger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .burger-active .burger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .burger-active .burger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        
+        ::-webkit-scrollbar { 
+            width: 8px; 
+        }
+        ::-webkit-scrollbar-track { 
+            background: #030712; 
+        }
+        ::-webkit-scrollbar-thumb { 
+            background: #1e293b; 
+            border-radius: 4px; 
+        }
+        ::-webkit-scrollbar-thumb:hover { 
+            background: #10b981; 
+        }
+        
+        /* Адаптация для маленьких экранов */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem;
+                line-height: 1.1;
+            }
+            h2 {
+                font-size: 1.875rem;
+            }
+        }
     </style>
 </head>
 <body class="antialiased relative">
@@ -123,6 +207,7 @@
     <div class="orb w-96 h-96 bg-brand-secondary bottom-0 right-0 animate-pulse-slow" style="animation-delay: 2s;"></div>
     <div class="noise fixed inset-0 pointer-events-none z-50"></div>
 
+    <!-- Навигация с бургером -->
     <nav class="fixed top-0 w-full z-40 glass border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -132,12 +217,31 @@
                     </div>
                     <span class="text-xl font-bold tracking-tight">Titan</span>
                 </div>
+                
+                <!-- Десктопное меню -->
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#problems" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Что решаем</a>
                     <a href="#cases" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Наши работы</a>
                     <a href="#services" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Услуги</a>
                     <a href="#process" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Как работаем</a>
                 </div>
+                
+                <!-- Кнопка бургер -->
+                <button id="burger-btn" class="md:hidden flex flex-col gap-1.5 p-2 z-50">
+                    <span class="burger-line w-6 h-0.5 bg-white"></span>
+                    <span class="burger-line w-6 h-0.5 bg-white"></span>
+                    <span class="burger-line w-6 h-0.5 bg-white"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed inset-0 top-20 glass border-t border-white/5">
+            <div class="flex flex-col items-center justify-center h-full gap-8 px-4">
+                <a href="#problems" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Что решаем</a>
+                <a href="#cases" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Наши работы</a>
+                <a href="#services" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Услуги</a>
+                <a href="#process" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Как работаем</a>
             </div>
         </div>
     </nav>
@@ -148,11 +252,11 @@
                 <span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
                 <span class="text-sm text-slate-300">Разработка сайтов и систем для бизнеса в Уфе</span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 reveal-up">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6 reveal-up">
                 Создаем цифровые решения, <br>
                 <span class="gradient-text">которые приносят прибыль</span>
             </h1>
-            <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10 reveal-up">
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 reveal-up">
                 От лендингов до сложных CRM-систем. 
                 Помогаем бизнесу автоматизировать процессы и увеличивать продажи.
             </p>
@@ -180,7 +284,7 @@
                 <p class="text-slate-400 max-w-2xl mx-auto">Не просто пишем код. Решаем реальные бизнес-задачи.</p>
                 <div class="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto mt-6 rounded-full"></div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up">
                     <div class="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-6"><i data-lucide="trending-up" class="w-6 h-6 text-brand-primary"></i></div>
                     <h3 class="text-xl font-bold mb-3">Мало заявок?</h3>
@@ -208,13 +312,13 @@
     <section id="cases" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="glass rounded-3xl p-8 md:p-12 border border-brand-primary/20 reveal-up">
-                <div class="flex flex-col lg:flex-row gap-12 items-center">
+            <div class="glass rounded-3xl p-6 md:p-12 border border-brand-primary/20 reveal-up">
+                <div class="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
                     <div class="lg:w-1/2">
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
                             Реальный проект
                         </div>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-6">IT-Logistic: Агрегатор спецтехники</h2>
+                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">IT-Logistic: Агрегатор спецтехники</h2>
                         <p class="text-slate-300 mb-6 leading-relaxed">
                             Платформа для заказа грузовиков и экскаваторов в Уфе и Башкортостане. 
                             Проект получил грант от правительства республики.
@@ -315,7 +419,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Почему выбирают нас</h2>
                 <p class="text-slate-400">Без воды. Только факты.</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="flex gap-4 reveal-up">
                     <div class="w-12 h-12 rounded-full bg-brand-primary/20 flex items-center justify-center flex-shrink-0"><i data-lucide="file-check" class="w-6 h-6 text-brand-primary"></i></div>
                     <div><h3 class="text-xl font-bold mb-2">Работаем по договору</h3><p class="text-slate-400 text-sm">Четкие сроки, этапы и гарантии. Никаких сюрпризов.</p></div>
@@ -374,7 +478,6 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="glass rounded-3xl p-8 md:p-12 border border-brand-primary/20 reveal-up">
                 
-                <!-- Вверху: нейтральная иконка -->
                 <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-brand-secondary to-brand-primary flex items-center justify-center">
                     <i data-lucide="message-square" class="w-8 h-8 text-white"></i>
                 </div>
@@ -385,10 +488,8 @@
                     назовем точную стоимость и сроки.
                 </p>
                 
-                <!-- Блок с мессенджерами -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto">
-                                    
-                    <!-- Telegram — самолётик -->
+                    
                     <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
@@ -396,13 +497,11 @@
                         <span>Telegram</span>
                     </a>
                     
-                    <!-- Max — пузырь сообщения -->
                     <a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
                         <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5">
                         <span>Max</span>
                     </a>
                     
-                    <!-- ВКонтакте — иконка VK -->
                     <a href="https://vk.com/titanitcompany" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
@@ -412,18 +511,16 @@
                     
                 </div>
                 
-                <!-- Разделитель -->
                 <div class="flex items-center gap-4 max-w-2xl mx-auto mb-6">
                     <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                     <span class="text-slate-500 text-sm">или позвоните</span>
                     <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                 </div>
                 
-                <!-- Телефон -->
                 <div class="flex items-center justify-center gap-3 text-slate-400">
                     <i data-lucide="phone" class="w-5 h-5"></i>
                     <a href="tel:+79999999999" class="text-xl md:text-2xl font-semibold tracking-wide hover:text-white transition-colors">
-                        +7 (996) 291-75-49
+                        +7 (999) 999-99-99
                     </a>
                 </div>
                 
@@ -460,6 +557,37 @@
             );
         });
 
+        // Мобильное меню
+        const burgerBtn = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        burgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                mobileMenu.classList.add('active');
+                burgerBtn.classList.add('burger-active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('active');
+                burgerBtn.classList.remove('burger-active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Закрытие меню при клике на ссылку
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.remove('active');
+                burgerBtn.classList.remove('burger-active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
