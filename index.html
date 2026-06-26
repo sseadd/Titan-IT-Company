@@ -150,18 +150,6 @@
             z-index: 0; 
         }
         
-        /* Мобильное меню */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-        
         /* Анимация бургера */
         .burger-line {
             transition: all 0.3s ease-in-out;
@@ -237,17 +225,17 @@
                 </button>
             </div>
         </div>
-        
-        <!-- Мобильное меню -->
-        <div id="mobile-menu" class="mobile-menu md:hidden fixed inset-0 top-20 border-t border-white/5" style="background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);">
-            <div class="flex flex-col items-center justify-center h-full gap-8 px-4">
-                <a href="#problems" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Что решаем</a>
-                <a href="#cases" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Наши работы</a>
-                <a href="#services" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Услуги</a>
-                <a href="#process" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center">Как работаем</a>
-            </div>
-        </div>
     </nav>
+
+    <!-- Мобильное меню (вынесено из nav для правильного z-index) -->
+    <div id="mobile-menu" class="md:hidden fixed top-20 left-0 right-0 bottom-0 z-30" style="background: rgba(3, 7, 18, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
+        <div class="flex flex-col items-center justify-center h-full gap-8 px-4">
+            <a href="#problems" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center py-2">Что решаем</a>
+            <a href="#cases" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center py-2">Наши работы</a>
+            <a href="#services" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center py-2">Услуги</a>
+            <a href="#process" class="mobile-link text-2xl text-slate-300 hover:text-white transition-colors text-center py-2">Как работаем</a>
+        </div>
+    </div>
 
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -616,11 +604,11 @@
             isMenuOpen = !isMenuOpen;
             
             if (isMenuOpen) {
-                mobileMenu.classList.add('active');
+                mobileMenu.style.transform = 'translateX(0)';
                 burgerBtn.classList.add('burger-active');
                 document.body.style.overflow = 'hidden';
             } else {
-                mobileMenu.classList.remove('active');
+                mobileMenu.style.transform = 'translateX(100%)';
                 burgerBtn.classList.remove('burger-active');
                 document.body.style.overflow = '';
             }
@@ -630,7 +618,7 @@
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 isMenuOpen = false;
-                mobileMenu.classList.remove('active');
+                mobileMenu.style.transform = 'translateX(100%)';
                 burgerBtn.classList.remove('burger-active');
                 document.body.style.overflow = '';
             });
