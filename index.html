@@ -16,11 +16,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        brand: { dark: '#030712', card: '#0f172a', primary: '#10b981', secondary: '#06b6d4' },
+                        brand: { 
+                            light: '#2563eb',
+                            dark: '#030712', 
+                            card: '#0f172a', 
+                            primary: '#10b981', 
+                            secondary: '#06b6d4' 
+                        },
                         tg: '#0088cc',
                         max: '#6B4EFF',
                         vk: '#0077FF',
@@ -48,32 +55,58 @@
         * {
             -webkit-tap-highlight-color: transparent;
         }
+        
+        /* Светлая тема по умолчанию */
         body { 
-            background-color: #030712; 
-            color: #f8fafc; 
+            background-color: #ffffff; 
+            color: #0f172a; 
             overflow-x: hidden;
             font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
         }
+        
+        /* Темная тема */
+        body.dark { 
+            background-color: #030712; 
+            color: #f8fafc; 
+        }
+        
+        body.dark .glass {
+            background: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        body .glass {
+            background: rgba(241, 245, 249, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
         .gradient-text {
             background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
             background-clip: text;
         }
-        .glass {
-            background: rgba(15, 23, 42, 0.6); 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
+        
         .glass-hover { 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         .glass-hover:hover {
-            background: rgba(15, 23, 42, 0.8); 
-            border-color: rgba(16, 185, 129, 0.4);
             transform: translateY(-4px); 
             box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2);
+        }
+        
+        body.dark .glass-hover:hover {
+            background: rgba(15, 23, 42, 0.8); 
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+        
+        body .glass-hover:hover {
+            background: rgba(241, 245, 249, 0.95);
+            border-color: rgba(16, 185, 129, 0.3);
         }
         
         .messenger-btn {
@@ -84,13 +117,15 @@
         .messenger-btn:hover { 
             transform: translateY(-4px); 
         }
-        .messenger-btn:active {
-            transform: translateY(-2px) scale(0.98);
-        }
         
         .messenger-tg {
             background: rgba(0, 136, 204, 0.15);
             border: 1px solid rgba(0, 136, 204, 0.3);
+            color: #0088cc;
+        }
+        body:not(.dark) .messenger-tg {
+            background: rgba(0, 136, 204, 0.1);
+            color: #0077b3;
         }
         .messenger-tg:hover {
             background: rgba(0, 136, 204, 0.25);
@@ -100,6 +135,11 @@
         .messenger-max {
             background: rgba(107, 78, 255, 0.15);
             border: 1px solid rgba(107, 78, 255, 0.3);
+            color: #6B4EFF;
+        }
+        body:not(.dark) .messenger-max {
+            background: rgba(107, 78, 255, 0.1);
+            color: #5a3fd6;
         }
         .messenger-max:hover {
             background: rgba(107, 78, 255, 0.25);
@@ -109,6 +149,11 @@
         .messenger-vk {
             background: rgba(0, 119, 255, 0.15);
             border: 1px solid rgba(0, 119, 255, 0.3);
+            color: #0077FF;
+        }
+        body:not(.dark) .messenger-vk {
+            background: rgba(0, 119, 255, 0.1);
+            color: #0066dd;
         }
         .messenger-vk:hover {
             background: rgba(0, 119, 255, 0.25);
@@ -119,29 +164,32 @@
             background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
             box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); 
             transition: all 0.3s ease;
+            color: white;
         }
         .glow-btn:hover { 
             box-shadow: 0 0 50px rgba(6, 182, 212, 0.5); 
             transform: translateY(-2px); 
         }
-        .glow-btn:active {
-            transform: translateY(0);
-        }
         
         .grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
         }
+        body.dark .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        
         .noise::before {
             content: ''; 
             position: absolute; 
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-            opacity: 0.03; 
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
             pointer-events: none; 
             z-index: 0;
         }
+        
         .orb { 
             position: absolute; 
             border-radius: 50%; 
@@ -152,6 +200,12 @@
         
         .burger-line {
             transition: all 0.3s ease-in-out;
+        }
+        body.dark .burger-line {
+            background: white;
+        }
+        body:not(.dark) .burger-line {
+            background: #0f172a;
         }
         .burger-active .burger-line:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
@@ -164,15 +218,107 @@
             transform: translateY(-7px) rotate(-45deg);
         }
         
+        /* Theme Switch Styles */
+        .theme-switch-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            width: 80px;
+        }
+        
+        .theme-switch {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 9999px;
+            background: rgba(148, 163, 184, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        body.dark .theme-switch {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        
+        .theme-switch-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body.dark .theme-switch-thumb {
+            background: #1e293b;
+            transform: translateX(44px);
+        }
+        
+        .theme-icon {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        
+        .theme-icon-sun {
+            left: 8px;
+        }
+        .theme-icon-moon {
+            right: 8px;
+        }
+        
+        .theme-icon svg {
+            width: 16px;
+            height: 16px;
+            transition: all 0.2s ease-out;
+        }
+        
+        body.dark .theme-icon-sun svg {
+            color: rgba(148, 163, 184, 0.7);
+            transform: scale(1);
+        }
+        body:not(.dark) .theme-icon-sun svg {
+            color: #0f172a;
+            transform: scale(1.1);
+        }
+        
+        body.dark .theme-icon-moon svg {
+            color: #f8fafc;
+            transform: scale(1.1);
+        }
+        body:not(.dark) .theme-icon-moon svg {
+            color: rgba(148, 163, 184, 0.7);
+            transform: scale(1);
+        }
+        
         ::-webkit-scrollbar { 
             width: 8px; 
         }
         ::-webkit-scrollbar-track { 
             background: #030712; 
         }
+        body:not(.dark) ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
         ::-webkit-scrollbar-thumb { 
             background: #1e293b; 
             border-radius: 4px; 
+        }
+        body:not(.dark) ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
         }
         ::-webkit-scrollbar-thumb:hover { 
             background: #10b981; 
@@ -212,18 +358,30 @@
                     <a href="#cases" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Наши работы</a>
                     <a href="#services" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Услуги</a>
                     <a href="#process" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Как работаем</a>
+                    
+                    <!-- Theme Switch -->
+                    <div class="theme-switch-wrapper">
+                        <button class="theme-switch" id="theme-switch" aria-label="Toggle theme"></button>
+                        <div class="theme-switch-thumb"></div>
+                        <span class="theme-icon theme-icon-sun">
+                            <i data-lucide="sun"></i>
+                        </span>
+                        <span class="theme-icon theme-icon-moon">
+                            <i data-lucide="moon"></i>
+                        </span>
+                    </div>
                 </div>
                 
                 <button id="burger-btn" class="md:hidden flex flex-col gap-1.5 p-2 z-50">
-                    <span class="burger-line w-6 h-0.5 bg-white"></span>
-                    <span class="burger-line w-6 h-0.5 bg-white"></span>
-                    <span class="burger-line w-6 h-0.5 bg-white"></span>
+                    <span class="burger-line w-6 h-0.5"></span>
+                    <span class="burger-line w-6 h-0.5"></span>
+                    <span class="burger-line w-6 h-0.5"></span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Мобильное меню — жидкое стекло с кнопками -->
+    <!-- Мобильное меню -->
     <div id="mobile-menu" class="md:hidden fixed top-20 left-0 right-0 bottom-0 z-30 border-l border-white/10" style="background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
         <div class="flex flex-col items-center justify-center h-full gap-4 px-6 max-w-sm mx-auto">
             <a href="#problems" class="mobile-link w-full glass glass-hover rounded-xl px-6 py-4 text-center text-lg font-semibold text-white transition-all">Что решаем</a>
@@ -299,7 +457,14 @@
     <section id="cases" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="glass rounded-3xl p-6 md:p-12 border border-brand-primary/20 reveal-up">
+            <div class="text-center mb-16 reveal-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Наши работы</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Реальные проекты с измеримыми результатами</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <!-- IT-Logistic - Главный проект (одна строка) -->
+            <div class="glass rounded-3xl p-6 md:p-12 border border-brand-primary/20 reveal-up mb-8">
                 <div class="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
                     <div class="lg:w-1/2">
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
@@ -307,13 +472,14 @@
                         </div>
                         <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">IT-Logistic: Агрегатор спецтехники</h2>
                         <p class="text-slate-300 mb-6 leading-relaxed">
-                            Платформа для заказа грузовиков и экскаваторов в Уфе и Башкортостане. 
+                            Платформа для заказа грузовиков, экскаваторов и строительных кранов в Уфе и Башкортостане. 
                             Проект получил грант от правительства республики.
                         </p>
                         <ul class="space-y-3 mb-8">
                             <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle" class="w-5 h-5 text-brand-primary"></i><span>Карта с геолокацией и умным поиском адресов</span></li>
                             <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle" class="w-5 h-5 text-brand-primary"></i><span>Система для заказчиков и исполнителей с личными кабинетами</span></li>
                             <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle" class="w-5 h-5 text-brand-primary"></i><span>Безопасная авторизация и email-уведомления</span></li>
+                            <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle" class="w-5 h-5 text-brand-primary"></i><span>Каталог стройматериалов с возможностью заказа</span></li>
                         </ul>
                         <a href="https://it-logistic-online.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-primary font-semibold hover:text-brand-secondary transition-colors group">
                             Посмотреть сайт <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
@@ -342,6 +508,31 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder проекты (заглушки) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass rounded-2xl p-6 border border-white/10 reveal-up opacity-60">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-500/20 text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">
+                        Скоро
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">CRM для строительства</h3>
+                    <p class="text-slate-400 text-sm mb-4">Система управления проектами и клиентами для строительной компании</p>
+                    <div class="h-32 bg-slate-800/50 rounded-xl flex items-center justify-center">
+                        <i data-lucide="construction" class="w-12 h-12 text-slate-600"></i>
+                    </div>
+                </div>
+                
+                <div class="glass rounded-2xl p-6 border border-white/10 reveal-up opacity-60" style="transition-delay: 100ms;">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-500/20 text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">
+                        Скоро
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Интернет-магазин</h3>
+                    <p class="text-slate-400 text-sm mb-4">E-commerce платформа с каталогом, корзиной и онлайн-оплатой</p>
+                    <div class="h-32 bg-slate-800/50 rounded-xl flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 text-slate-600"></i>
                     </div>
                 </div>
             </div>
@@ -439,7 +630,7 @@
             <div class="md:hidden space-y-8">
                 <div class="flex gap-4 reveal-up">
                     <div class="w-10 h-10 rounded-full bg-brand-primary border-4 border-brand-dark flex items-center justify-center flex-shrink-0">
-                        <span class="text-xs font-bold">1</span>
+                        <span class="text-xs font-bold text-white">1</span>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold mb-2">Обсуждаем задачу</h3>
@@ -448,7 +639,7 @@
                 </div>
                 <div class="flex gap-4 reveal-up">
                     <div class="w-10 h-10 rounded-full bg-brand-secondary border-4 border-brand-dark flex items-center justify-center flex-shrink-0">
-                        <span class="text-xs font-bold">2</span>
+                        <span class="text-xs font-bold text-white">2</span>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold mb-2">Оценка и договор</h3>
@@ -457,7 +648,7 @@
                 </div>
                 <div class="flex gap-4 reveal-up">
                     <div class="w-10 h-10 rounded-full bg-purple-500 border-4 border-brand-dark flex items-center justify-center flex-shrink-0">
-                        <span class="text-xs font-bold">3</span>
+                        <span class="text-xs font-bold text-white">3</span>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold mb-2">Разработка</h3>
@@ -466,7 +657,7 @@
                 </div>
                 <div class="flex gap-4 reveal-up">
                     <div class="w-10 h-10 rounded-full bg-orange-500 border-4 border-brand-dark flex items-center justify-center flex-shrink-0">
-                        <span class="text-xs font-bold">4</span>
+                        <span class="text-xs font-bold text-white">4</span>
                     </div>
                     <div>
                         <h3 class="text-lg font-bold mb-2">Запуск и поддержка</h3>
@@ -481,22 +672,22 @@
                 <div class="space-y-12">
                     <div class="relative flex flex-row items-center gap-8 reveal-up">
                         <div class="w-1/2 text-right pr-12"><h3 class="text-xl font-bold mb-2">1. Обсуждаем задачу</h3><p class="text-slate-400 text-sm">Изучаем ваш бизнес, цели и требования.</p></div>
-                        <div class="w-8 h-8 rounded-full bg-brand-primary border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold">1</span></div>
+                        <div class="w-8 h-8 rounded-full bg-brand-primary border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold text-white">1</span></div>
                         <div class="w-1/2 pl-12"></div>
                     </div>
                     <div class="relative flex flex-row items-center gap-8 reveal-up">
                         <div class="w-1/2 pr-12"></div>
-                        <div class="w-8 h-8 rounded-full bg-brand-secondary border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold">2</span></div>
+                        <div class="w-8 h-8 rounded-full bg-brand-secondary border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold text-white">2</span></div>
                         <div class="w-1/2 pl-12"><h3 class="text-xl font-bold mb-2">2. Оценка и договор</h3><p class="text-slate-400 text-sm">Фиксируем стоимость, сроки и этапы.</p></div>
                     </div>
                     <div class="relative flex flex-row items-center gap-8 reveal-up">
                         <div class="w-1/2 text-right pr-12"><h3 class="text-xl font-bold mb-2">3. Разработка</h3><p class="text-slate-400 text-sm">Создаем продукт, показываем результаты каждую неделю.</p></div>
-                        <div class="w-8 h-8 rounded-full bg-purple-500 border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold">3</span></div>
+                        <div class="w-8 h-8 rounded-full bg-purple-500 border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold text-white">3</span></div>
                         <div class="w-1/2 pl-12"></div>
                     </div>
                     <div class="relative flex flex-row items-center gap-8 reveal-up">
                         <div class="w-1/2 pr-12"></div>
-                        <div class="w-8 h-8 rounded-full bg-orange-500 border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold">4</span></div>
+                        <div class="w-8 h-8 rounded-full bg-orange-500 border-4 border-brand-dark z-10 flex items-center justify-center"><span class="text-xs font-bold text-white">4</span></div>
                         <div class="w-1/2 pl-12"><h3 class="text-xl font-bold mb-2">4. Запуск и поддержка</h3><p class="text-slate-400 text-sm">Переносим на ваш хостинг, обучаем, остаемся на связи.</p></div>
                     </div>
                 </div>
@@ -520,19 +711,19 @@
                 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto">
                     
-                    <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                    <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl font-semibold flex items-center justify-center gap-3">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                         </svg>
                         <span>Telegram</span>
                     </a>
                     
-                    <a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                    <a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl font-semibold flex items-center justify-center gap-3">
                         <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5">
                         <span>Max</span>
                     </a>
                     
-                    <a href="https://vk.com/titanitcompany" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                    <a href="https://vk.com/titanitcompany" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl font-semibold flex items-center justify-center gap-3">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
                         </svg>
@@ -581,6 +772,22 @@
                     scrollTrigger: { trigger: element, start: "top 85%", toggleActions: "play none none reverse" }
                 }
             );
+        });
+
+        // Theme Switcher
+        const themeSwitch = document.getElementById('theme-switch');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'dark') {
+            body.classList.add('dark');
+        }
+        
+        themeSwitch.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            const theme = body.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
         });
 
         // Мобильное меню
