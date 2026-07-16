@@ -22,23 +22,8 @@
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         brand: { 
-                            light: '#2563eb',
-                            dark: '#0f172a', 
-                            primary: '#10b981', 
+                            primary: '#2563eb',
                             secondary: '#06b6d4' 
-                        },
-                        tg: '#0088cc',
-                        max: '#6B4EFF',
-                        vk: '#0077FF',
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
                         }
                     }
                 }
@@ -69,7 +54,7 @@
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
             background-clip: text;
@@ -91,100 +76,58 @@
         }
         
         .glass-hover { 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            transition: all 0.3s ease; 
         }
         
         body:not(.dark) .glass-hover:hover {
             background: rgba(241, 245, 249, 0.95);
-            border-color: rgba(16, 185, 129, 0.3);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
         }
         
         body.dark .glass-hover:hover {
             background: rgba(15, 23, 42, 0.8); 
-            border-color: rgba(16, 185, 129, 0.4);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
         }
         
         .messenger-btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
         .messenger-btn:hover { 
-            transform: translateY(-4px); 
-        }
-        
-        .messenger-tg {
-            background: rgba(0, 136, 204, 0.15);
-            border: 1px solid rgba(0, 136, 204, 0.3);
-            color: #0088cc;
-        }
-        body:not(.dark) .messenger-tg {
-            background: rgba(0, 136, 204, 0.1);
-            color: #0077b3;
-        }
-        .messenger-tg:hover {
-            background: rgba(0, 136, 204, 0.25);
-            box-shadow: 0 15px 30px -10px rgba(0, 136, 204, 0.4);
-        }
-        
-        .messenger-max {
-            background: rgba(107, 78, 255, 0.15);
-            border: 1px solid rgba(107, 78, 255, 0.3);
-            color: #6B4EFF;
-        }
-        body:not(.dark) .messenger-max {
-            background: rgba(107, 78, 255, 0.1);
-            color: #5a3fd6;
-        }
-        .messenger-max:hover {
-            background: rgba(107, 78, 255, 0.25);
-            box-shadow: 0 15px 30px -10px rgba(107, 78, 255, 0.4);
-        }
-        
-        .messenger-vk {
-            background: rgba(0, 119, 255, 0.15);
-            border: 1px solid rgba(0, 119, 255, 0.3);
-            color: #0077FF;
-        }
-        body:not(.dark) .messenger-vk {
-            background: rgba(0, 119, 255, 0.1);
-            color: #0066dd;
-        }
-        .messenger-vk:hover {
-            background: rgba(0, 119, 255, 0.25);
-            box-shadow: 0 15px 30px -10px rgba(0, 119, 255, 0.4);
-        }
-        
-        .glow-btn {
-            background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); 
-            transition: all 0.3s ease;
-            color: white;
-        }
-        .glow-btn:hover { 
-            box-shadow: 0 0 50px rgba(6, 182, 212, 0.5); 
             transform: translateY(-2px); 
         }
         
-        .grid-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+        .messenger-tg {
+            background: #0088cc;
+            color: white;
         }
-        body.dark .grid-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        .messenger-tg:hover {
+            background: #0077b3;
         }
         
-        .orb { 
-            position: absolute; 
-            border-radius: 50%; 
-            filter: blur(80px); 
-            opacity: 0.4; 
-            z-index: 0; 
-            pointer-events: none;
+        .messenger-max {
+            background: #6B4EFF;
+            color: white;
+        }
+        .messenger-max:hover {
+            background: #5a3fd6;
+        }
+        
+        .messenger-vk {
+            background: #0077FF;
+            color: white;
+        }
+        .messenger-vk:hover {
+            background: #0066dd;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
         }
         
         .burger-line {
@@ -278,7 +221,7 @@
             background: #1e293b;
         }
         ::-webkit-scrollbar-thumb:hover { 
-            background: #10b981; 
+            background: #2563eb; 
         }
         
         @media (max-width: 640px) {
@@ -292,14 +235,10 @@
         }
     </style>
 </head>
-<body class="antialiased relative">
-
-    <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
-    <div class="orb w-96 h-96 bg-brand-primary top-0 left-0 animate-pulse-slow"></div>
-    <div class="orb w-96 h-96 bg-brand-secondary bottom-0 right-0 animate-pulse-slow" style="animation-delay: 2s;"></div>
+<body class="antialiased">
 
     <!-- Навигация -->
-    <nav class="fixed top-0 w-full z-40 glass border-b border-white/5">
+    <nav class="fixed top-0 w-full z-40 glass border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-2">
@@ -310,10 +249,10 @@
                 </div>
                 
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#problems" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Проблемы</a>
-                    <a href="#services" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Услуги</a>
-                    <a href="#cases" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Кейсы</a>
-                    <a href="#contacts" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Контакты</a>
+                    <a href="#problems" class="nav-link text-sm text-slate-600 hover:text-brand-primary transition-colors">Проблемы</a>
+                    <a href="#services" class="nav-link text-sm text-slate-600 hover:text-brand-primary transition-colors">Услуги</a>
+                    <a href="#cases" class="nav-link text-sm text-slate-600 hover:text-brand-primary transition-colors">Кейсы</a>
+                    <a href="#contacts" class="nav-link text-sm text-slate-600 hover:text-brand-primary transition-colors">Контакты</a>
                     
                     <!-- Theme Toggle -->
                     <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
@@ -332,7 +271,7 @@
     </nav>
 
     <!-- Мобильное меню -->
-    <div id="mobile-menu" class="md:hidden fixed top-20 left-0 right-0 bottom-0 z-30 border-l border-white/10" style="background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
+    <div id="mobile-menu" class="md:hidden fixed top-20 left-0 right-0 bottom-0 z-30 border-l" style="background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(20px); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
         <div class="flex flex-col items-center justify-center h-full gap-4 px-6 max-w-sm mx-auto">
             <a href="#problems" class="mobile-link w-full glass glass-hover rounded-xl px-6 py-4 text-center text-lg font-semibold text-white transition-all">Проблемы</a>
             <a href="#services" class="mobile-link w-full glass glass-hover rounded-xl px-6 py-4 text-center text-lg font-semibold text-white transition-all">Услуги</a>
@@ -341,50 +280,50 @@
         </div>
     </div>
 
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 reveal-up">
                 <span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
-                <span class="text-sm text-slate-300">Разработка сайтов и систем для бизнеса в Уфе</span>
+                <span class="text-sm">Разработка сайтов и систем для бизнеса в Уфе</span>
             </div>
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6 reveal-up">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 reveal-up">
                 Разработка сайтов и CRM-систем, <br>
                 <span class="gradient-text">которые приносят клиентов</span>
             </h1>
-            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 reveal-up">
+            <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-10 reveal-up">
                 Создаем цифровые решения для бизнеса. От продающих лендингов до сложных систем автоматизации. 
                 Работаем по договору, фиксируем смету, не пропадаем после запуска.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-up">
-                <a href="#contacts" class="glow-btn px-8 py-4 rounded-xl text-white font-semibold text-lg flex items-center justify-center gap-2">
+                <a href="#contacts" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center gap-2">
                     Обсудить проект
                 </a>
-                <a href="#cases" class="nav-link px-8 py-4 rounded-xl glass glass-hover text-white font-semibold text-lg flex items-center justify-center gap-2">
+                <a href="#cases" class="px-8 py-4 rounded-xl glass glass-hover font-semibold text-lg inline-flex items-center justify-center gap-2">
                     Смотреть кейсы
                 </a>
             </div>
             <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto reveal-up">
-                <div class="text-center"><div class="text-3xl font-bold text-white">🚀</div><div class="text-sm text-slate-500 mt-1">Лендинг за 10 дней</div></div>
-                <div class="text-center"><div class="text-3xl font-bold text-white">📝</div><div class="text-sm text-slate-500 mt-1">Фикс. цена в договоре</div></div>
-                <div class="text-center"><div class="text-3xl font-bold text-white">🛡</div><div class="text-sm text-slate-500 mt-1">Гарантия сроков</div></div>
-                <div class="text-center"><div class="text-3xl font-bold text-white">📈</div><div class="text-sm text-slate-500 mt-1">Фокус на ROI</div></div>
+                <div class="text-center"><div class="text-3xl font-bold"></div><div class="text-sm mt-1 opacity-70">Лендинг за 10 дней</div></div>
+                <div class="text-center"><div class="text-3xl font-bold">📝</div><div class="text-sm mt-1 opacity-70">Фикс. цена в договоре</div></div>
+                <div class="text-center"><div class="text-3xl font-bold">🛡</div><div class="text-sm mt-1 opacity-70">Гарантия сроков</div></div>
+                <div class="text-center"><div class="text-3xl font-bold">📈</div><div class="text-sm mt-1 opacity-70">Фокус на ROI</div></div>
             </div>
         </div>
     </section>
 
     <!-- Lead Magnet -->
-    <section class="py-12 relative">
+    <section class="py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass rounded-3xl p-8 md:p-12 border border-brand-primary/20 reveal-up">
+            <div class="glass rounded-3xl p-8 md:p-12 reveal-up" style="background: #0f172a; color: white;">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="flex-1">
                         <div class="flex items-center gap-3 mb-3">
-                            <i data-lucide="gift" class="w-8 h-8 text-brand-primary"></i>
+                            <i data-lucide="gift" class="w-8 h-8 text-yellow-400"></i>
                             <h3 class="text-2xl font-bold">Внедряете CRM или планируете?</h3>
                         </div>
-                        <p class="text-slate-400">Заберите чек-лист «5 скрытых утечек бюджета при автоматизации» в нашем Telegram-канале.</p>
+                        <p class="opacity-80">Заберите чек-лист «5 скрытых утечек бюджета при автоматизации» в нашем Telegram-канале.</p>
                     </div>
-                    <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-8 py-4 rounded-xl font-semibold flex items-center gap-3 whitespace-nowrap">
+                    <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-8 py-4 rounded-xl font-semibold inline-flex items-center gap-3 whitespace-nowrap">
                         <i data-lucide="send" class="w-5 h-5"></i>
                         <span>Забрать в Telegram</span>
                     </a>
@@ -393,98 +332,94 @@
         </div>
     </section>
 
-    <section id="problems" class="py-24 relative">
+    <section id="problems" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Какие проблемы решаем?</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Не просто пишем код. Решаем реальные бизнес-задачи, которые влияют на вашу прибыль.</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto mt-6 rounded-full"></div>
+                <p class="max-w-2xl mx-auto opacity-70">Не просто пишем код. Решаем реальные бизнес-задачи, которые влияют на вашу прибыль.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up">
-                    <div class="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-6"><i data-lucide="trending-down" class="w-6 h-6 text-brand-primary"></i></div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center mb-6"><i data-lucide="trending-down" class="w-6 h-6 text-brand-primary"></i></div>
                     <h3 class="text-xl font-bold mb-3">Мало заявок с сайта?</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Создаем продающие сайты, которые конвертируют посетителей в клиентов, а не просто висят в интернете.</p>
+                    <p class="opacity-70 text-sm leading-relaxed">Создаем продающие сайты, которые конвертируют посетителей в клиентов, а не просто висят в интернете.</p>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 rounded-xl bg-brand-secondary/10 flex items-center justify-center mb-6"><i data-lucide="clock" class="w-6 h-6 text-brand-secondary"></i></div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center mb-6"><i data-lucide="clock" class="w-6 h-6 text-brand-primary"></i></div>
                     <h3 class="text-xl font-bold mb-3">Рутина съедает время?</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Автоматизируем процессы: Telegram-боты, авто-уведомления, учет — всё работает без участия человека.</p>
+                    <p class="opacity-70 text-sm leading-relaxed">Автоматизируем процессы: Telegram-боты, авто-уведомления, учет — всё работает без участия человека.</p>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6"><i data-lucide="user-x" class="w-6 h-6 text-purple-400"></i></div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center mb-6"><i data-lucide="user-x" class="w-6 h-6 text-brand-primary"></i></div>
                     <h3 class="text-xl font-bold mb-3">Менеджеры теряют лиды?</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Внедряем CRM, где каждая заявка фиксируется, назначается ответственный и ставится задача.</p>
+                    <p class="opacity-70 text-sm leading-relaxed">Внедряем CRM, где каждая заявка фиксируется, назначается ответственный и ставится задача.</p>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 300ms;">
-                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-6"><i data-lucide="database" class="w-6 h-6 text-orange-400"></i></div>
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center mb-6"><i data-lucide="database" class="w-6 h-6 text-brand-primary"></i></div>
                     <h3 class="text-xl font-bold mb-3">Данные в разных таблицах?</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Объединяем 1С, сайт, телефонию и мессенджеры в единую экосистему.</p>
+                    <p class="opacity-70 text-sm leading-relaxed">Объединяем 1С, сайт, телефонию и мессенджеры в единую экосистему.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-24 relative">
+    <section id="services" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Прозрачные услуги и цены</h2>
-                <p class="text-slate-400">Стоимость зависит от сложности, но мы всегда начинаем от:</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto mt-6 rounded-full"></div>
+                <p class="opacity-70">Стоимость зависит от сложности, но мы всегда начинаем от:</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up">
                     <h3 class="text-xl font-bold mb-3">Лендинги</h3>
-                    <p class="text-slate-400 text-sm mb-4">Одностраничные продающие сайты с высокой конверсией.</p>
-                    <div class="text-2xl font-bold text-brand-primary">от 40 000 ₽ <span class="text-sm font-normal text-slate-500">/ проект</span></div>
+                    <p class="opacity-70 text-sm mb-4">Одностраничные продающие сайты с высокой конверсией.</p>
+                    <div class="text-2xl font-bold text-brand-primary">от 40 000 ₽ <span class="text-sm font-normal opacity-70">/ проект</span></div>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 100ms;">
                     <h3 class="text-xl font-bold mb-3">Корпоративные сайты</h3>
-                    <p class="text-slate-400 text-sm mb-4">Многостраничные имиджевые сайты для крупных компаний.</p>
-                    <div class="text-2xl font-bold text-brand-primary">от 90 000 ₽ <span class="text-sm font-normal text-slate-500">/ проект</span></div>
+                    <p class="opacity-70 text-sm mb-4">Многостраничные имиджевые сайты для крупных компаний.</p>
+                    <div class="text-2xl font-bold text-brand-primary">от 90 000 ₽ <span class="text-sm font-normal opacity-70">/ проект</span></div>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 200ms;">
                     <h3 class="text-xl font-bold mb-3">Интернет-магазины</h3>
-                    <p class="text-slate-400 text-sm mb-4">E-commerce с каталогом, корзиной и оплатой.</p>
-                    <div class="text-2xl font-bold text-brand-primary">от 150 000 ₽ <span class="text-sm font-normal text-slate-500">/ проект</span></div>
+                    <p class="opacity-70 text-sm mb-4">E-commerce с каталогом, корзиной и оплатой.</p>
+                    <div class="text-2xl font-bold text-brand-primary">от 150 000 ₽ <span class="text-sm font-normal opacity-70">/ проект</span></div>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 300ms;">
                     <h3 class="text-xl font-bold mb-3">CRM-системы</h3>
-                    <p class="text-slate-400 text-sm mb-4">Настройка Битрикс24/amoCRM, интеграции, автоматизация.</p>
-                    <div class="text-2xl font-bold text-brand-primary">от 80 000 ₽ <span class="text-sm font-normal text-slate-500">/ проект</span></div>
+                    <p class="opacity-70 text-sm mb-4">Настройка Битрикс24/amoCRM, интеграции, автоматизация.</p>
+                    <div class="text-2xl font-bold text-brand-primary">от 80 000 ₽ <span class="text-sm font-normal opacity-70">/ проект</span></div>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 400ms;">
                     <h3 class="text-xl font-bold mb-3">Telegram-боты</h3>
-                    <p class="text-slate-400 text-sm mb-4">Автоматизация продаж, поддержки и внутренних процессов.</p>
-                    <div class="text-2xl font-bold text-brand-primary">от 25 000 ₽ <span class="text-sm font-normal text-slate-500">/ проект</span></div>
+                    <p class="opacity-70 text-sm mb-4">Автоматизация продаж, поддержки и внутренних процессов.</p>
+                    <div class="text-2xl font-bold text-brand-primary">от 25 000 ₽ <span class="text-sm font-normal opacity-70">/ проект</span></div>
                 </div>
                 <div class="glass p-8 rounded-2xl glass-hover reveal-up" style="transition-delay: 500ms;">
                     <h3 class="text-xl font-bold mb-3">Тех. поддержка</h3>
-                    <p class="text-slate-400 text-sm mb-4">Ежемесячное сопровождение, доработки и мониторинг.</p>
-                    <div class="text-2xl font-bold text-brand-primary">от 10 000 ₽ <span class="text-sm font-normal text-slate-500">/ месяц</span></div>
+                    <p class="opacity-70 text-sm mb-4">Ежемесячное сопровождение, доработки и мониторинг.</p>
+                    <div class="text-2xl font-bold text-brand-primary">от 10 000 ₽ <span class="text-sm font-normal opacity-70">/ месяц</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="cases" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="cases" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Наши работы</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Реальные проекты с измеримыми результатами для бизнеса.</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-brand-primary to-brand-secondary mx-auto mt-6 rounded-full"></div>
+                <p class="opacity-70 max-w-2xl mx-auto">Реальные проекты с измеримыми результатами для бизнеса.</p>
             </div>
             
             <!-- IT-Logistic -->
-            <div class="glass rounded-3xl p-6 md:p-12 border border-brand-primary/20 reveal-up mb-8">
+            <div class="glass rounded-3xl p-6 md:p-12 reveal-up mb-8">
                 <div class="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
                     <div class="lg:w-1/2">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
                             Реальный проект
                         </div>
                         <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">IT-Logistic: Агрегатор спецтехники</h2>
-                        <p class="text-slate-300 mb-6 leading-relaxed">
+                        <p class="mb-6 leading-relaxed opacity-80">
                             Платформа для заказа спецтехники в РБ. Карта, личные кабинеты, безопасная авторизация. Проект получил грант правительства.
                         </p>
                         <div class="flex items-center gap-2 text-brand-primary font-semibold">
@@ -493,18 +428,17 @@
                         </div>
                     </div>
                     <div class="lg:w-1/2 w-full">
-                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-primary/10 group">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent z-10"></div>
-                            <div class="bg-slate-900 aspect-video flex flex-col">
-                                <div class="h-8 bg-slate-800 flex items-center px-4 gap-2 border-b border-white/5">
+                        <div class="relative rounded-2xl overflow-hidden border" style="background: #0f172a;">
+                            <div class="aspect-video flex flex-col">
+                                <div class="h-8 bg-slate-800 flex items-center px-4 gap-2">
                                     <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                     <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                                     <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                                    <div class="ml-4 px-3 py-1 bg-slate-900 rounded text-xs text-slate-400 flex-1 text-center font-mono">it-logistic-online.ru</div>
+                                    <div class="ml-4 px-3 py-1 bg-slate-900 rounded text-xs opacity-70 flex-1 text-center font-mono">it-logistic-online.ru</div>
                                 </div>
                                 <div class="flex-1 bg-slate-950 relative flex items-center justify-center p-8">
                                     <div class="text-center">
-                                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-primary/20 flex items-center justify-center animate-float">
+                                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-primary/20 flex items-center justify-center">
                                             <i data-lucide="truck" class="w-8 h-8 text-brand-primary"></i>
                                         </div>
                                         <div class="h-4 w-48 bg-slate-800 rounded mx-auto mb-3"></div>
@@ -519,24 +453,24 @@
 
             <!-- Placeholder проекты -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass rounded-2xl p-6 border border-white/10 reveal-up opacity-60">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-500/20 text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">
+                <div class="glass rounded-2xl p-6 reveal-up opacity-60">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-500/20 text-xs font-bold uppercase tracking-wider mb-4">
                         Скоро
                     </div>
-                    <h3 class="text-xl font-bold mb-3"> Связка сайта и amoCRM</h3>
-                    <p class="text-slate-400 text-sm mb-4">Менеджеры теряли заявки. Переупаковали сайт, связали с CRM, настроили авто-распределение лидов.</p>
+                    <h3 class="text-xl font-bold mb-3">🏗 Связка сайта и amoCRM</h3>
+                    <p class="opacity-70 text-sm mb-4">Менеджеры теряли заявки. Переупаковали сайт, связали с CRM, настроили авто-распределение лидов.</p>
                     <div class="flex items-center gap-2 text-brand-primary font-semibold">
                         <i data-lucide="zap" class="w-5 h-5"></i>
                         <span>Скорость реакции: с 3 часов до 5 минут</span>
                     </div>
                 </div>
                 
-                <div class="glass rounded-2xl p-6 border border-white/10 reveal-up opacity-60" style="transition-delay: 100ms;">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-500/20 text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">
+                <div class="glass rounded-2xl p-6 reveal-up opacity-60" style="transition-delay: 100ms;">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-500/20 text-xs font-bold uppercase tracking-wider mb-4">
                         Скоро
                     </div>
                     <h3 class="text-xl font-bold mb-3">🦷 Telegram-бот для стоматологии</h3>
-                    <p class="text-slate-400 text-sm mb-4">Пациенты забывали про приемы. Разработали бота для записи и автоматических напоминаний.</p>
+                    <p class="opacity-70 text-sm mb-4">Пациенты забывали про приемы. Разработали бота для записи и автоматических напоминаний.</p>
                     <div class="flex items-center gap-2 text-brand-primary font-semibold">
                         <i data-lucide="repeat" class="w-5 h-5"></i>
                         <span>Возвратность пациентов: +25% за 3 месяца</span>
@@ -547,40 +481,40 @@
     </section>
 
     <!-- Почему выбирают нас -->
-    <section class="py-24 relative bg-brand-card/30">
+    <section class="py-24" style="background: #f8fafc;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Почему выбирают нас</h2>
-                <p class="text-slate-400">Работаем «в белую». Без фрилансеров-однодневок и скрытых платежей.</p>
+                <p class="opacity-70">Работаем «в белую». Без фрилансеров-однодневок и скрытых платежей.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                 <div class="text-center reveal-up">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-brand-primary/10 flex items-center justify-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-100 flex items-center justify-center">
                         <i data-lucide="file-text" class="w-8 h-8 text-brand-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Работаем по договору</h3>
-                    <p class="text-slate-400 text-sm">Вы платите на р/с, получаете закрывающие документы. ИП/ООО.</p>
+                    <p class="opacity-70 text-sm">Вы платите на р/с, получаете закрывающие документы. ИП/ООО.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 100ms;">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-brand-secondary/10 flex items-center justify-center">
-                        <i data-lucide="eye" class="w-8 h-8 text-brand-secondary"></i>
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-100 flex items-center justify-center">
+                        <i data-lucide="eye" class="w-8 h-8 text-brand-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Показываем прогресс</h3>
-                    <p class="text-slate-400 text-sm">Еженедельные демо-встречи. Вы видите результат, а не ждете в темноте.</p>
+                    <p class="opacity-70 text-sm">Еженедельные демо-встречи. Вы видите результат, а не ждете в темноте.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 200ms;">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-purple-500/10 flex items-center justify-center">
-                        <i data-lucide="brain" class="w-8 h-8 text-purple-400"></i>
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-100 flex items-center justify-center">
+                        <i data-lucide="brain" class="w-8 h-8 text-brand-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Помогаем с ТЗ</h3>
-                    <p class="text-slate-400 text-sm">Если у вас только идея — мы сами составим грамотное техническое задание.</p>
+                    <p class="opacity-70 text-sm">Если у вас только идея — мы сами составим грамотное техническое задание.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 300ms;">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-orange-500/10 flex items-center justify-center">
-                        <i data-lucide="graduation-cap" class="w-8 h-8 text-orange-400"></i>
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-blue-100 flex items-center justify-center">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-brand-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Обучаем команду</h3>
-                    <p class="text-slate-400 text-sm">Записываем видео-инструкции для ваших сотрудников после запуска.</p>
+                    <p class="opacity-70 text-sm">Записываем видео-инструкции для ваших сотрудников после запуска.</p>
                 </div>
             </div>
             
@@ -589,154 +523,150 @@
                 <h3 class="text-2xl font-bold mb-2">🔥 Жесткие гарантии (прописываем в договоре)</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass rounded-2xl p-8 border border-white/10 reveal-up">
+                <div class="glass rounded-2xl p-8 reveal-up">
                     <h4 class="text-xl font-bold mb-4 text-brand-primary">Гарантия сроков</h4>
-                    <p class="text-slate-400">Если срываем дедлайн по своей вине — возвращаем 5% от суммы проекта за каждую неделю просрочки.</p>
+                    <p class="opacity-80">Если срываем дедлайн по своей вине — возвращаем 5% от суммы проекта за каждую неделю просрочки.</p>
                 </div>
-                <div class="glass rounded-2xl p-8 border border-white/10 reveal-up" style="transition-delay: 100ms;">
+                <div class="glass rounded-2xl p-8 reveal-up" style="transition-delay: 100ms;">
                     <h4 class="text-xl font-bold mb-4 text-brand-primary">Гарантия качества</h4>
-                    <p class="text-slate-400">30 дней бесплатной техподдержки после запуска. Если что-то сломается — чиним за свой счет.</p>
+                    <p class="opacity-80">30 дней бесплатной техподдержки после запуска. Если что-то сломается — чиним за свой счет.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Команда -->
-    <section class="py-24 relative">
+    <section class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Кто будет делать ваш проект?</h2>
-                <p class="text-slate-400">IT-Company Titan — это штатная команда экспертов, а не перекупы.</p>
+                <p class="opacity-70">IT-Company Titan — это штатная команда экспертов, а не перекупы.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center reveal-up">
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 flex items-center justify-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center">
                         <i data-lucide="user" class="w-16 h-16 text-brand-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Александр</h3>
-                    <p class="text-slate-400 text-sm mb-3">Project Manager</p>
-                    <p class="text-slate-500 text-sm">Следит за сроками, бюджетом и тем, чтобы ваши пожелания были поняты правильно.</p>
+                    <p class="text-sm mb-3 opacity-70">Project Manager</p>
+                    <p class="opacity-70 text-sm">Следит за сроками, бюджетом и тем, чтобы ваши пожелания были поняты правильно.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 100ms;">
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 flex items-center justify-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center">
                         <i data-lucide="code" class="w-16 h-16 text-brand-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Дмитрий</h3>
-                    <p class="text-slate-400 text-sm mb-3">Lead Developer</p>
-                    <p class="text-slate-500 text-sm">Отвечает за то, чтобы код был чистым, а сайт не «отвалился» в черный пятницу.</p>
+                    <p class="text-sm mb-3 opacity-70">Lead Developer</p>
+                    <p class="opacity-70 text-sm">Отвечает за то, чтобы код был чистым, а сайт не «отвалился» в черный пятницу.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 200ms;">
-                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 flex items-center justify-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-blue-100 flex items-center justify-center">
                         <i data-lucide="palette" class="w-16 h-16 text-brand-primary"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Елена</h3>
-                    <p class="text-slate-400 text-sm mb-3">UX/UI Дизайнер</p>
-                    <p class="text-slate-500 text-sm">Делает так, чтобы клиенту было удобно и приятно нажимать кнопку «Купить».</p>
+                    <p class="text-sm mb-3 opacity-70">UX/UI Дизайнер</p>
+                    <p class="opacity-70 text-sm">Делает так, чтобы клиенту было удобно и приятно нажимать кнопку «Купить».</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Отзывы -->
-    <section class="py-24 relative bg-brand-card/30">
+    <section class="py-24" style="background: #f8fafc;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Что говорят руководители</h2>
-                <p class="text-slate-400">Реальные скриншоты из переписок с нашими клиентами.</p>
+                <p class="opacity-70">Реальные скриншоты из переписок с нашими клиентами.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="glass rounded-2xl p-8 border-l-4 border-brand-primary reveal-up">
-                    <p class="text-slate-300 mb-6 italic">«Ребята, CRM завели, менеджеры в восторге, наконец-то видно кто сколько звонков делает и где теряются лиды. Спасибо за оперативность!»</p>
+                    <p class="mb-6 italic opacity-80">«Ребята, CRM завели, менеджеры в восторге, наконец-то видно кто сколько звонков делает и где теряются лиды. Спасибо за оперативность!»</p>
                     <div class="font-bold">Иван С.</div>
-                    <div class="text-slate-500 text-sm">Директор, ООО "Вектор"</div>
+                    <div class="text-sm opacity-70">Директор, ООО "Вектор"</div>
                 </div>
                 <div class="glass rounded-2xl p-8 border-l-4 border-brand-primary reveal-up" style="transition-delay: 100ms;">
-                    <p class="text-slate-300 mb-6 italic">«Сайт запустили ровно в срок, как и обещали. Конверсия выросла, окупили разработку за первый же месяц. Продолжаем работать по тех. поддержке.»</p>
+                    <p class="mb-6 italic opacity-80">«Сайт запустили ровно в срок, как и обещали. Конверсия выросла, окупили разработку за первый же месяц. Продолжаем работать по тех. поддержке.»</p>
                     <div class="font-bold">Елена М.</div>
-                    <div class="text-slate-500 text-sm">Собственник, Салон красоты "L'Amour"</div>
+                    <div class="text-sm opacity-70">Собственник, Салон красоты "L'Amour"</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Как мы работаем -->
-    <section id="process" class="py-24 relative">
+    <section id="process" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Как мы работаем</h2>
-                <p class="text-slate-400">Прозрачный процесс от идеи до запуска.</p>
+                <p class="opacity-70">Прозрачный процесс от идеи до запуска.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="text-center reveal-up">
                     <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold">1</div>
                     <h3 class="text-lg font-bold mb-2">Брифинг и аудит</h3>
-                    <p class="text-slate-400 text-sm">Изучаем ваш бизнес, конкурентов, считаем юнит-экономику.</p>
+                    <p class="opacity-70 text-sm">Изучаем ваш бизнес, конкурентов, считаем юнит-экономику.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-secondary flex items-center justify-center text-white font-bold">2</div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold">2</div>
                     <h3 class="text-lg font-bold mb-2">Смета и Договор</h3>
-                    <p class="text-slate-400 text-sm">Фиксируем стоимость, сроки и этапы. Подписываем NDA.</p>
+                    <p class="opacity-70 text-sm">Фиксируем стоимость, сроки и этапы. Подписываем NDA.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold">3</div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold">3</div>
                     <h3 class="text-lg font-bold mb-2">Разработка и Демо</h3>
-                    <p class="text-slate-400 text-sm">Создаем продукт. Каждую пятницу — созвон, показываем прогресс.</p>
+                    <p class="opacity-70 text-sm">Создаем продукт. Каждую пятницу — созвон, показываем прогресс.</p>
                 </div>
                 <div class="text-center reveal-up" style="transition-delay: 300ms;">
-                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold">4</div>
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold">4</div>
                     <h3 class="text-lg font-bold mb-2">Запуск и Поддержка</h3>
-                    <p class="text-slate-400 text-sm">Переносим на хостинг, обучаем сотрудников. Остаемся на связи.</p>
+                    <p class="opacity-70 text-sm">Переносим на хостинг, обучаем сотрудников. Остаемся на связи.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contacts" class="py-24 relative">
+    <section id="contacts" class="py-24">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="glass rounded-3xl p-8 md:p-12 border border-brand-primary/20 reveal-up">
+            <div class="glass rounded-3xl p-8 md:p-12 reveal-up">
                 
-                <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-brand-secondary to-brand-primary flex items-center justify-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center">
                     <i data-lucide="message-square" class="w-8 h-8 text-white"></i>
                 </div>
                 
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Готовы обсудить ваш проект?</h2>
-                <p class="text-slate-400 mb-8 max-w-xl mx-auto">
+                <p class="opacity-70 mb-8 max-w-xl mx-auto">
                     Выберите удобный способ связи — расскажем, что и как можно сделать, 
                     назовем точную стоимость и сроки.
                 </p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto">
                     
-                    <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl font-semibold flex items-center justify-center gap-3">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                        </svg>
+                    <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl font-semibold inline-flex items-center justify-center gap-3">
+                        <i data-lucide="send" class="w-5 h-5"></i>
                         <span>Telegram</span>
                     </a>
                     
-                    <a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl font-semibold flex items-center justify-center gap-3">
-                        <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5">
+                    <a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl font-semibold inline-flex items-center justify-center gap-3">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
                         <span>Max</span>
                     </a>
                     
-                    <a href="https://vk.com/titanitcompany" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl font-semibold flex items-center justify-center gap-3">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
-                        </svg>
+                    <a href="https://vk.com/titanitcompany" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl font-semibold inline-flex items-center justify-center gap-3">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
                         <span>ВКонтакте</span>
                     </a>
                     
                 </div>
                 
                 <div class="flex items-center gap-4 max-w-2xl mx-auto mb-6">
-                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-                    <span class="text-slate-500 text-sm">или позвоните</span>
-                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-20"></div>
+                    <span class="text-sm opacity-50">или позвоните</span>
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-20"></div>
                 </div>
                 
-                <div class="flex items-center justify-center gap-3 text-slate-400">
+                <div class="flex items-center justify-center gap-3">
                     <i data-lucide="phone" class="w-5 h-5"></i>
-                    <a href="tel:+79962917549" class="text-xl md:text-2xl font-semibold tracking-wide hover:text-white transition-colors">
+                    <a href="tel:+79962917549" class="text-xl md:text-2xl font-semibold tracking-wide hover:opacity-70 transition-opacity">
                         +7 (996) 291-75-49
                     </a>
                 </div>
@@ -744,15 +674,15 @@
         </div>
     </section>
 
-    <footer class="py-8 border-t border-white/5">
+    <footer class="py-8 border-t">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
                 <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center">
                     <i data-lucide="code-2" class="w-4 h-4 text-white"></i>
                 </div>
-                <span class="text-sm font-semibold text-slate-300">IT-Company Titan © 2026</span>
+                <span class="text-sm font-semibold">IT-Company Titan © 2024</span>
             </div>
-            <p class="text-sm text-slate-500">Разработка сайтов и CRM-систем для бизнеса | г. Уфа</p>
+            <p class="text-sm opacity-60">Разработка сайтов и CRM-систем для бизнеса | г. Уфа</p>
         </div>
     </footer>
 
@@ -763,9 +693,9 @@
         // Анимации при скролле
         gsap.utils.toArray('.reveal-up').forEach(element => {
             gsap.fromTo(element, 
-                { opacity: 0, y: 50 },
+                { opacity: 0, y: 30 },
                 {
-                    opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+                    opacity: 1, y: 0, duration: 0.6, ease: "power2.out",
                     scrollTrigger: { trigger: element, start: "top 85%", toggleActions: "play none none reverse" }
                 }
             );
