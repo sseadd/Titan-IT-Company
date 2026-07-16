@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>IT-Company Titan | Разработка сайтов и CRM для бизнеса в Уфе</title>
+    <title>IT-Company Titan | Разработка сайтов и CRM для бизнеса</title>
     <meta name="description" content="Создаем сайты, CRM-системы и автоматизацию, которые приносят клиентов и экономят время.">
     
     <link rel="icon" type="image/png" href="favicon.png">
@@ -23,8 +23,7 @@
                     colors: {
                         brand: { 
                             light: '#2563eb',
-                            dark: '#030712', 
-                            card: '#0f172a', 
+                            dark: '#0f172a', 
                             primary: '#10b981', 
                             secondary: '#06b6d4' 
                         },
@@ -65,7 +64,7 @@
         }
         
         body.dark { 
-            background-color: #030712; 
+            background-color: #0f172a; 
             color: #f8fafc; 
         }
         
@@ -81,29 +80,29 @@
             -webkit-backdrop-filter: blur(12px);
         }
         
-        body.dark .glass {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
         body:not(.dark) .glass {
             background: rgba(241, 245, 249, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        body.dark .glass {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .glass-hover { 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         
-        body.dark .glass-hover:hover {
-            background: rgba(15, 23, 42, 0.8); 
-            border-color: rgba(16, 185, 129, 0.4);
-            transform: translateY(-4px);
-        }
-        
         body:not(.dark) .glass-hover:hover {
             background: rgba(241, 245, 249, 0.95);
             border-color: rgba(16, 185, 129, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        body.dark .glass-hover:hover {
+            background: rgba(15, 23, 42, 0.8); 
+            border-color: rgba(16, 185, 129, 0.4);
             transform: translateY(-4px);
         }
         
@@ -179,31 +178,23 @@
             linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
         
-        .noise::before {
-            content: ''; 
-            position: absolute; 
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-            pointer-events: none; 
-            z-index: 0;
-        }
-        
         .orb { 
             position: absolute; 
             border-radius: 50%; 
             filter: blur(80px); 
             opacity: 0.4; 
             z-index: 0; 
+            pointer-events: none;
         }
         
         .burger-line {
             transition: all 0.3s ease-in-out;
         }
-        body.dark .burger-line {
-            background: white;
-        }
         body:not(.dark) .burger-line {
             background: #0f172a;
+        }
+        body.dark .burger-line {
+            background: white;
         }
         .burger-active .burger-line:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
@@ -274,17 +265,17 @@
             width: 8px; 
         }
         ::-webkit-scrollbar-track { 
-            background: #030712; 
+            background: #f1f5f9; 
         }
-        body:not(.dark) ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+        body.dark ::-webkit-scrollbar-track {
+            background: #0f172a;
         }
         ::-webkit-scrollbar-thumb { 
-            background: #1e293b; 
+            background: #cbd5e1; 
             border-radius: 4px; 
         }
-        body:not(.dark) ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+        body.dark ::-webkit-scrollbar-thumb {
+            background: #1e293b;
         }
         ::-webkit-scrollbar-thumb:hover { 
             background: #10b981; 
@@ -306,7 +297,6 @@
     <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
     <div class="orb w-96 h-96 bg-brand-primary top-0 left-0 animate-pulse-slow"></div>
     <div class="orb w-96 h-96 bg-brand-secondary bottom-0 right-0 animate-pulse-slow" style="animation-delay: 2s;"></div>
-    <div class="noise fixed inset-0 pointer-events-none z-50"></div>
 
     <!-- Навигация -->
     <nav class="fixed top-0 w-full z-40 glass border-b border-white/5">
@@ -375,7 +365,7 @@
             </div>
             <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto reveal-up">
                 <div class="text-center"><div class="text-3xl font-bold text-white">🚀</div><div class="text-sm text-slate-500 mt-1">Лендинг за 10 дней</div></div>
-                <div class="text-center"><div class="text-3xl font-bold text-white"></div><div class="text-sm text-slate-500 mt-1">Фикс. цена в договоре</div></div>
+                <div class="text-center"><div class="text-3xl font-bold text-white">📝</div><div class="text-sm text-slate-500 mt-1">Фикс. цена в договоре</div></div>
                 <div class="text-center"><div class="text-3xl font-bold text-white">🛡</div><div class="text-sm text-slate-500 mt-1">Гарантия сроков</div></div>
                 <div class="text-center"><div class="text-3xl font-bold text-white">📈</div><div class="text-sm text-slate-500 mt-1">Фокус на ROI</div></div>
             </div>
@@ -389,7 +379,7 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="flex-1">
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="text-3xl">🎁</span>
+                            <i data-lucide="gift" class="w-8 h-8 text-brand-primary"></i>
                             <h3 class="text-2xl font-bold">Внедряете CRM или планируете?</h3>
                         </div>
                         <p class="text-slate-400">Заберите чек-лист «5 скрытых утечек бюджета при автоматизации» в нашем Telegram-канале.</p>
@@ -533,7 +523,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-500/20 text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">
                         Скоро
                     </div>
-                    <h3 class="text-xl font-bold mb-3">🏗 Связка сайта и amoCRM</h3>
+                    <h3 class="text-xl font-bold mb-3"> Связка сайта и amoCRM</h3>
                     <p class="text-slate-400 text-sm mb-4">Менеджеры теряли заявки. Переупаковали сайт, связали с CRM, настроили авто-распределение лидов.</p>
                     <div class="flex items-center gap-2 text-brand-primary font-semibold">
                         <i data-lucide="zap" class="w-5 h-5"></i>
