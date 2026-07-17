@@ -67,12 +67,12 @@
 
         .messenger-btn { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
         .messenger-btn:hover { transform: translateY(-4px); }
-        .messenger-tg { background: rgba(0,136,204,0.12); border: 1px solid rgba(0,136,204,0.3); }
-        .messenger-tg:hover { background: rgba(0,136,204,0.22); box-shadow: 0 15px 30px -10px rgba(0,136,204,0.4); }
-        .messenger-max { background: rgba(107,78,255,0.12); border: 1px solid rgba(107,78,255,0.3); }
-        .messenger-max:hover { background: rgba(107,78,255,0.22); box-shadow: 0 15px 30px -10px rgba(107,78,255,0.4); }
-        .messenger-vk { background: rgba(0,119,255,0.12); border: 1px solid rgba(0,119,255,0.3); }
-        .messenger-vk:hover { background: rgba(0,119,255,0.22); box-shadow: 0 15px 30px -10px rgba(0,119,255,0.4); }
+        .messenger-tg { background: rgba(14,165,233,0.14); border: 1px solid rgba(14,165,233,0.35); }
+        .messenger-tg:hover { background: rgba(14,165,233,0.24); box-shadow: 0 15px 30px -10px rgba(14,165,233,0.45); }
+        .messenger-max { background: rgba(79,70,229,0.14); border: 1px solid rgba(79,70,229,0.35); }
+        .messenger-max:hover { background: rgba(79,70,229,0.24); box-shadow: 0 15px 30px -10px rgba(79,70,229,0.45); }
+        .messenger-vk { background: rgba(0,64,171,0.16); border: 1px solid rgba(0,64,171,0.4); }
+        .messenger-vk:hover { background: rgba(0,64,171,0.26); box-shadow: 0 15px 30px -10px rgba(0,64,171,0.5); }
 
         .grid-bg {
             background-image: linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
@@ -178,16 +178,16 @@
                 <a href="#contact" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg">Обсудить проект</a>
                 <a href="#cases" class="btn-outline px-8 py-4 rounded-xl card text-white font-semibold text-lg">Смотреть кейсы</a>
             </div>
-            <div class="mt-16 flex flex-wrap justify-center gap-4 reveal-up">
-                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl">
+            <div class="mt-16 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 reveal-up max-w-sm sm:max-w-none mx-auto">
+                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl w-full sm:w-auto">
                     <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="file-check" class="w-5 h-5 text-brand-blue"></i></div>
                     <span class="text-slate-200 text-base font-semibold">Работаем по договору</span>
                 </div>
-                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl">
+                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl w-full sm:w-auto">
                     <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="eye" class="w-5 h-5 text-brand-blue"></i></div>
                     <span class="text-slate-200 text-base font-semibold">Прогресс каждую неделю</span>
                 </div>
-                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl">
+                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl w-full sm:w-auto">
                     <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="life-buoy" class="w-5 h-5 text-brand-blue"></i></div>
                     <span class="text-slate-200 text-base font-semibold">Поддержка после запуска</span>
                 </div>
@@ -287,8 +287,7 @@
             </div>
 
             <div class="card rounded-3xl p-6 md:p-12 border border-brand-blue/20 reveal-up mb-8">
-                
-                <!-- ОБЩИЙ КОНТЕЙНЕР ДЛЯ БЕЙДЖЕЙ (выравнивает их по одной высоте) -->
+
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blue/15 text-brand-blue text-xs font-bold uppercase tracking-wider w-fit">
                         <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Реальный проект · работает сейчас
@@ -324,7 +323,7 @@
                             Посмотреть сайт <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    
+
                     <div class="lg:w-1/2 w-full">
                         <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/10 group">
                             <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-transparent to-transparent z-10"></div>
