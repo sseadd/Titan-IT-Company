@@ -287,15 +287,20 @@
                 <p class="text-slate-400">Реальные проекты — не макеты для красоты.</p>
             </div>
 
-            <div class="card rounded-3xl p-6 md:p-12 border border-brand-blue/20 reveal-up mb-8 relative">
-                <div class="absolute top-5 right-5 md:top-7 md:right-7 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider">
-                    <i data-lucide="award" class="w-3.5 h-3.5"></i> Участник грантовой программы РБ
+            <div class="card rounded-3xl p-6 md:p-12 border border-brand-blue/20 reveal-up mb-8">
+                
+                <!-- ОБЩИЙ КОНТЕЙНЕР ДЛЯ БЕЙДЖЕЙ (выравнивает их по одной высоте) -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blue/15 text-brand-blue text-xs font-bold uppercase tracking-wider w-fit">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Реальный проект · работает сейчас
+                    </div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider w-fit sm:ml-auto">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Участник грантовой программы РБ
+                    </div>
                 </div>
-                <div class="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
+
+                <div class="flex flex-col lg:flex-row gap-8 md:gap-12 items-start">
                     <div class="lg:w-1/2">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/15 text-brand-blue text-xs font-bold uppercase tracking-wider mb-6">
-                            Реальный проект · работает сейчас
-                        </div>
                         <h3 class="text-2xl md:text-3xl font-bold mb-4">IT-Logistic — агрегатор спецтехники</h3>
                         <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
                             Написали платформу с нуля: от каталога техники и карты до личных кабинетов
@@ -303,14 +308,24 @@
                             в Уфе, Башкортостане и по всей России.
                         </p>
                         <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Спроектировали и свёрстали каталог техники с фильтрами по характеристикам</li>
-                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Реализовали личные кабинеты и систему статусов заявок для двух ролей</li>
-                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Настроили авторизацию, карту с адресами и уведомления</li>
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
+                                <span>Спроектировали и свёрстали каталог техники с фильтрами по характеристикам</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
+                                <span>Реализовали личные кабинеты и систему статусов заявок для двух ролей</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
+                                <span>Настроили авторизацию, карту с адресами и уведомления</span>
+                            </li>
                         </ul>
                         <a href="https://it-logistic-online.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group">
                             Посмотреть сайт <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
+                    
                     <div class="lg:w-1/2 w-full">
                         <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/10 group">
                             <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-transparent to-transparent z-10"></div>
