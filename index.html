@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Titan | Разработка сайтов и CRM для бизнеса в Уфе</title>
     <meta name="description" content="Создаём сайты, CRM-системы и автоматизацию для бизнеса в Уфе и Башкортостане.">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/400.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/500.css">
@@ -21,8 +22,10 @@
                     colors: {
                         surface: { base: '#13161c', raised: '#1a1e26', border: 'rgba(255,255,255,0.07)' },
                         brand: { blue: '#3b82f6', bluedeep: '#2563eb', green: '#22c55e' },
-                        tg: '#0088cc', max: '#6B4EFF',
+                        tg: '#0088cc', max: '#6B4EFF', vk: '#0077FF',
                     },
+                    animation: { 'float': 'float 6s ease-in-out infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } } },
                 }
             }
         }
@@ -70,15 +73,21 @@
         .messenger-tg:hover { background: rgba(0,136,204,0.22); box-shadow: 0 15px 30px -10px rgba(0,136,204,0.4); }
         .messenger-max { background: rgba(107,78,255,0.12); border: 1px solid rgba(107,78,255,0.3); }
         .messenger-max:hover { background: rgba(107,78,255,0.22); box-shadow: 0 15px 30px -10px rgba(107,78,255,0.4); }
-        .messenger-phone { background: rgba(34,197,94,0.10); border: 1px solid rgba(34,197,94,0.28); }
-        .messenger-phone:hover { background: rgba(34,197,94,0.18); box-shadow: 0 15px 30px -10px rgba(34,197,94,0.35); }
+        .messenger-vk { background: rgba(0,119,255,0.12); border: 1px solid rgba(0,119,255,0.3); }
+        .messenger-vk:hover { background: rgba(0,119,255,0.22); box-shadow: 0 15px 30px -10px rgba(0,119,255,0.4); }
 
         .grid-bg {
             background-image: linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
             background-size: 56px 56px;
         }
-        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.22; z-index: 0; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.28; z-index: 0; animation: pulse-slow 5s ease-in-out infinite; }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.38; } }
+        .noise::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+            opacity: 0.035; pointer-events: none; z-index: 0;
+        }
         .case-soon { border: 1px dashed rgba(255,255,255,0.15); background: rgba(255,255,255,0.015); }
 
         .burger-line { transition: all 0.3s ease-in-out; }
@@ -104,7 +113,8 @@
 
     <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
     <div class="orb w-96 h-96 bg-brand-blue top-0 left-0"></div>
-    <div class="orb w-96 h-96 bg-brand-bluedeep bottom-0 right-0"></div>
+    <div class="orb w-96 h-96 bg-brand-bluedeep bottom-0 right-0" style="animation-delay: 2s;"></div>
+    <div class="noise fixed inset-0 pointer-events-none z-50"></div>
 
     <!-- Навигация -->
     <nav class="fixed top-0 w-full z-40 glass border-b border-white/5">
@@ -163,10 +173,19 @@
                 <a href="#contact" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg">Обсудить проект</a>
                 <a href="#cases" class="btn-outline px-8 py-4 rounded-xl card text-white font-semibold text-lg">Смотреть кейсы</a>
             </div>
-            <div class="mt-16 flex flex-wrap justify-center gap-x-10 gap-y-4 reveal-up">
-                <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i data-lucide="file-check" class="w-4 h-4 text-brand-blue"></i>Работаем по договору</div>
-                <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i data-lucide="eye" class="w-4 h-4 text-brand-blue"></i>Прогресс — каждую неделю</div>
-                <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i data-lucide="life-buoy" class="w-4 h-4 text-brand-blue"></i>Поддержка после запуска</div>
+            <div class="mt-16 flex flex-wrap justify-center gap-4 reveal-up">
+                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl">
+                    <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="file-check" class="w-5 h-5 text-brand-blue"></i></div>
+                    <span class="text-slate-200 text-base font-semibold">Работаем по договору</span>
+                </div>
+                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl">
+                    <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="eye" class="w-5 h-5 text-brand-blue"></i></div>
+                    <span class="text-slate-200 text-base font-semibold">Прогресс каждую неделю</span>
+                </div>
+                <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl">
+                    <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="life-buoy" class="w-5 h-5 text-brand-blue"></i></div>
+                    <span class="text-slate-200 text-base font-semibold">Поддержка после запуска</span>
+                </div>
             </div>
         </div>
     </section>
@@ -271,43 +290,39 @@
                         </div>
                         <h3 class="text-2xl md:text-3xl font-bold mb-4">IT-Logistic — агрегатор спецтехники</h3>
                         <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
-                            Платформа для заказа спецтехники и стройматериалов в Уфе, Башкортостане и по всей России.
-                            Заказчики оставляют заявку, исполнители берут её в работу напрямую — без посредников и комиссий.
+                            Написали платформу с нуля: от каталога техники и карты до личных кабинетов
+                            заказчика и исполнителя. Сайт полностью рабочий и обслуживает реальные заявки
+                            в Уфе, Башкортостане и по всей России.
                         </p>
                         <ul class="space-y-3 mb-8">
-                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Каталог техники: самосвалы, экскаваторы, краны — с точными характеристиками</li>
-                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Личные кабинеты заказчика и исполнителя со статусами заявок</li>
-                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Подача техники за 30–60 минут после подтверждения заявки</li>
+                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Спроектировали и свёрстали каталог техники с фильтрами по характеристикам</li>
+                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Реализовали личные кабинеты и систему статусов заявок для двух ролей</li>
+                            <li class="flex items-center gap-3 text-slate-300 text-sm"><i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0"></i>Настроили авторизацию, карту с адресами и уведомления</li>
                         </ul>
                         <a href="https://it-logistic-online.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group">
                             Посмотреть сайт <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                     <div class="lg:w-1/2 w-full">
-                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/10 group">
+                            <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-transparent to-transparent z-10"></div>
                             <div class="bg-surface-raised aspect-video flex flex-col">
                                 <div class="h-8 bg-black/20 flex items-center px-4 gap-2 border-b border-white/5">
-                                    <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
-                                    <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
-                                    <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
                                     <div class="ml-4 px-3 py-1 bg-black/20 rounded text-xs text-slate-400 flex-1 text-center font-mono">it-logistic-online.ru</div>
                                 </div>
-                                <div class="flex-1 p-5 flex flex-col gap-3">
-                                    <div class="flex items-center gap-3 card rounded-lg px-4 py-3">
-                                        <i data-lucide="truck" class="w-5 h-5 text-brand-blue"></i>
-                                        <div class="flex-1"><div class="h-2.5 w-32 bg-white/15 rounded mb-1.5"></div><div class="h-2 w-20 bg-white/8 rounded"></div></div>
-                                        <span class="text-xs px-2 py-1 rounded-full bg-green-500/15 text-green-400">🟢 Активна</span>
+                                <div class="flex-1 relative flex items-center justify-center p-8">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-blue/20 flex items-center justify-center animate-float">
+                                            <i data-lucide="truck" class="w-8 h-8 text-brand-blue"></i>
+                                        </div>
+                                        <div class="h-4 w-48 bg-white/10 rounded mx-auto mb-3"></div>
+                                        <div class="h-3 w-32 bg-white/5 rounded mx-auto"></div>
                                     </div>
-                                    <div class="flex items-center gap-3 card rounded-lg px-4 py-3">
-                                        <i data-lucide="construction" class="w-5 h-5 text-brand-blue"></i>
-                                        <div class="flex-1"><div class="h-2.5 w-28 bg-white/15 rounded mb-1.5"></div><div class="h-2 w-24 bg-white/8 rounded"></div></div>
-                                        <span class="text-xs px-2 py-1 rounded-full bg-orange-500/15 text-orange-400">🟠 Взята</span>
-                                    </div>
-                                    <div class="flex items-center gap-3 card rounded-lg px-4 py-3">
-                                        <i data-lucide="wrench" class="w-5 h-5 text-brand-blue"></i>
-                                        <div class="flex-1"><div class="h-2.5 w-24 bg-white/15 rounded mb-1.5"></div><div class="h-2 w-28 bg-white/8 rounded"></div></div>
-                                        <span class="text-xs px-2 py-1 rounded-full bg-slate-500/15 text-slate-400">⚪ Завершена</span>
-                                    </div>
+                                    <div class="absolute top-1/4 left-1/4 w-3 h-3 bg-brand-blue rounded-full animate-ping"></div>
+                                    <div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-cyan-400 rounded-full animate-ping" style="animation-delay: 1s;"></div>
                                 </div>
                             </div>
                         </div>
@@ -441,16 +456,33 @@
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto">
                     <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
-                        <i data-lucide="send" class="w-5 h-5"></i><span>Telegram</span>
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                        <span>Telegram</span>
                     </a>
                     <a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
-                        <i data-lucide="message-circle" class="w-5 h-5"></i><span>Max</span>
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>Max</span>
                     </a>
-                    <a href="tel:+79962917549" class="messenger-btn messenger-phone px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
-                        <i data-lucide="phone" class="w-5 h-5"></i><span>Позвонить</span>
+                    <a href="https://vk.com/titanitcompany" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
+                        </svg>
+                        <span>ВКонтакте</span>
                     </a>
                 </div>
-                <p class="text-slate-500 text-sm">или напишите напрямую: <a href="tel:+79962917549" class="text-white hover:text-brand-blue transition-colors">+7 (996) 291-75-49</a></p>
+                <div class="flex items-center gap-4 max-w-2xl mx-auto mb-6">
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                    <span class="text-slate-500 text-sm">или позвоните</span>
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                </div>
+                <div class="flex items-center justify-center gap-3 text-slate-400">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    <a href="tel:+79962917549" class="text-xl md:text-2xl font-semibold tracking-wide hover:text-white transition-colors">
+                        +7 (996) 291-75-49
+                    </a>
+                </div>
             </div>
         </div>
     </section>
