@@ -301,22 +301,31 @@
                     <div class="lg:w-1/2">
                         <h3 class="text-2xl md:text-3xl font-bold mb-4">IT-Logistic — агрегатор спецтехники</h3>
                         <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
-                            Написали платформу с нуля: от каталога техники и карты до личных кабинетов
-                            заказчика и исполнителя. Сайт полностью рабочий и обслуживает реальные заявки
-                            в Уфе, Башкортостане и по всей России.
+                            Написали с нуля агрегатор спецтехники и стройматериалов для Башкортостана.
+                            Три роли пользователей — заказчик, исполнитель, администратор — со своей логикой
+                            у каждого. Сайт полностью рабочий и обслуживает реальные заявки в Уфе,
+                            Башкортостане и по всей России.
                         </p>
                         <ul class="space-y-3 mb-8">
                             <li class="flex items-start gap-3 text-slate-300 text-sm">
                                 <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
-                                <span>Спроектировали и свёрстали каталог техники с фильтрами по характеристикам</span>
+                                <span>Пошаговый конструктор заказа техники с проверкой совместимости параметров на лету</span>
                             </li>
                             <li class="flex items-start gap-3 text-slate-300 text-sm">
                                 <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
-                                <span>Реализовали личные кабинеты и систему статусов заявок для двух ролей</span>
+                                <span>Личные кабинеты для трёх ролей с полным циклом заявки и пулом открытых заказов</span>
                             </li>
                             <li class="flex items-start gap-3 text-slate-300 text-sm">
                                 <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
-                                <span>Настроили авторизацию, карту с адресами и уведомления</span>
+                                <span>Автоподбор ближайшего исполнителя по геолокации с возможностью сменить вручную</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
+                                <span>Модуль стройматериалов: конструктор карточек товара, учёт остатков и расчёт суммы заказа</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
+                                <span>Защита аккаунтов от взлома и подбора пароля</span>
                             </li>
                         </ul>
                         <a href="https://it-logistic-online.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group">
@@ -528,15 +537,21 @@
         </div>
     </section>
 
-    <footer class="py-8 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
-                    <i data-lucide="code-2" class="w-4 h-4 text-white"></i>
+    <footer class="py-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <span class="text-sm font-semibold text-slate-300">Titan © 2026</span>
                 </div>
-                <span class="text-sm font-semibold text-slate-300">Titan © 2026</span>
+                <p class="text-sm text-slate-500">Разработка сайтов и CRM-систем</p>
             </div>
-            <p class="text-sm text-slate-500">Разработка сайтов и CRM-систем</p>
+            <div class="flex items-start gap-2.5 pt-6 border-t border-white/5 text-xs text-slate-500 max-w-xl mx-auto md:mx-0 text-center md:text-left justify-center md:justify-start">
+                <i data-lucide="shield-check" class="w-4 h-4 text-slate-600 flex-shrink-0 mt-0.5"></i>
+                <p>Работаем официально по договору (самозанятый). Юридические реквизиты предоставляются по запросу.</p>
+            </div>
         </div>
     </footer>
 
