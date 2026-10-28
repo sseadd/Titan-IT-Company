@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>BETON WAVE — скейт-парки и фигуры на заказ | Проектирование и строительство</title>
+    <meta name="description" content="Строим скейт-парки, боулы и кастомные фигуры для городов, застройщиков и частных территорий. Проектирование, материалы, монтаж под ключ.">
+    <link rel="icon" href="../../assets/favicon2.ico" sizes="any">
+    <link rel="icon" href="../../assets/favicon2.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../assets/favicon2.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.0.8/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.0.8/900.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/golos-text@5.0.8/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/golos-text@5.0.8/500.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/golos-text@5.0.8/600.css">
+    <style>
+        :root {
+            --concrete: #1a1a1a;
+            --concrete-2: #232323;
+            --concrete-light: #2a2a2a;
+            --asphalt: #0f0f0f;
+            --orange: #ff6b00;
+            --orange-dark: #e55a00;
+            --light: #f0ece4;
+            --muted-d: rgba(240,236,228,0.6);
+            --line-d: rgba(240,236,228,0.14);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--concrete); color: var(--light); font-family: 'Golos Text', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+        body::after {
+            content: ''; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+        }
+        h1, h2, h3 { font-family: 'Unbounded', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; overflow-wrap: break-word; }
+        a { color: inherit; text-decoration: none; }
+        .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+        .micro { font-family: 'Unbounded', sans-serif; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--orange); font-weight: 700; margin-bottom: 18px; }
+        .ph { position: relative; background-color: #3a3a3a; background-size: cover; background-position: center; overflow: hidden; }
+
+        .logo { position: fixed; top: 22px; left: 24px; z-index: 60; font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 19px; letter-spacing: 0.05em; color: var(--light); text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
+        .logo i { font-style: normal; color: var(--orange); }
+        .dots { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 60; display: flex; flex-direction: column; gap: 13px; }
+        .dots a { width: 10px; height: 10px; border: 1px solid rgba(240,236,228,0.75); border-radius: 50%; position: relative; transition: all .25s; }
+        .dots a::after { content: attr(data-label); position: absolute; right: 22px; top: 50%; transform: translateY(-50%); font-family: 'Unbounded', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); text-shadow: 0 1px 8px rgba(0,0,0,0.6); white-space: nowrap; opacity: 0; transition: opacity .2s; pointer-events: none; }
+        .dots a:hover::after { opacity: 1; }
+        .dots a.active { background: var(--light); border-color: var(--light); box-shadow: 0 0 0 4px rgba(15,15,15,0.3); }
+
+        .hero { height: 100vh; height: 100svh; min-height: 620px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background: #2a2a2a url('../../assets/demo/skate/hero.webp') center/cover no-repeat; filter: grayscale(100%) contrast(1.15); }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,15,15,0.5) 0%, rgba(15,15,15,0.9) 100%); }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 80px 24px 70px; max-width: 1300px; }
+        .hero h1 { font-weight: 900; font-size: clamp(2.2rem, 7.6vw, 6.4rem); line-height: 1; color: var(--light); }
+        .hero h1 b { color: var(--orange); font-weight: 900; }
+        .hl { display: block; overflow: hidden; }
+        .hl > span { display: block; transform: translateY(110%); transition: transform .9s cubic-bezier(0.22,1,0.36,1); }
+        .mask.is-visible .hl > span { transform: translateY(0); }
+        .mask.is-visible .hl:nth-child(2) > span { transition-delay: .12s; }
+        .mask.is-visible .hl:nth-child(3) > span { transition-delay: .24s; }
+        .hero p { color: var(--muted-d); max-width: 620px; margin: 26px auto 38px; font-size: 17px; }
+        .btn { display: inline-block; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; padding: 17px 34px; background: var(--orange); color: var(--asphalt); border: 2px solid var(--orange); transition: all .25s; cursor: pointer; text-align: center; }
+        .btn:hover { background: var(--orange-dark); border-color: var(--orange-dark); transform: translateY(-2px); }
+        .btn-ghost { background: transparent; color: var(--light); border-color: var(--line-d); margin-left: 14px; }
+        .btn-ghost:hover { border-color: var(--light); background: rgba(240,236,228,0.06); color: var(--light); }
+        .scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 2; font-family: 'Unbounded', sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted-d); animation: bounce 2s ease-in-out infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+
+        /* бегущая строка: бесшовная — разделитель приклеен к слову, отступ кирпича одинаков везде, включая стык копий */
+        .marquee { background: var(--orange); padding: 16px 0; overflow: hidden; }
+        .marquee-track { display: flex; width: max-content; animation: marquee 24s linear infinite; }
+        .marquee-group { display: flex; flex-shrink: 0; }
+        .marquee-group .mi { display: inline-flex; align-items: center; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--asphalt); white-space: nowrap; padding-right: 2.6em; }
+        .marquee-group .mi i { font-style: normal; color: var(--light); padding-left: 1em; }
+        @keyframes marquee { to { transform: translateX(-50%); } }
+
+        .split { display: flex; background: var(--concrete); align-items: stretch; }
+        .panel { padding: 100px 64px; flex: 1; position: relative; display: flex; flex-direction: column; justify-content: center; }
+        .panel-l { background: var(--concrete-light); clip-path: polygon(0 0, 100% 0, calc(100% - 70px) 100%, 0 100%); padding-right: 110px; }
+        .panel-r { background: var(--orange); color: var(--asphalt); margin-left: -70px; clip-path: polygon(70px 0, 100% 0, 100% 100%, 0 100%); padding-left: 110px; }
+        .panel h3 { font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 900; margin-bottom: 22px; line-height: 1.15; }
+        .panel-l h3 { color: var(--light); }
+        .panel ul { list-style: none; margin-bottom: 32px; }
+        .panel li { padding: 13px 0 13px 28px; position: relative; font-size: 15px; border-bottom: 1px solid rgba(128,128,128,0.22); }
+        .panel li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 600; }
+        .panel-r li::before { color: var(--asphalt); }
+        .panel-l li { color: var(--muted-d); border-color: var(--line-d); }
+        .panel-r li { color: rgba(15,15,15,0.78); border-color: rgba(15,15,15,0.2); }
+        .panel .btn { align-self: flex-start; width: 100%; max-width: 300px; }
+        .btn-dark { background: var(--asphalt); border-color: var(--asphalt); color: var(--light); }
+        .btn-dark:hover { background: #000; border-color: #000; }
+        .btn-line-l { background: transparent; border-color: var(--line-d); color: var(--light); }
+        .btn-line-l:hover { border-color: var(--orange); color: var(--orange); background: transparent; }
+
+        .stats { background: var(--concrete-2); border-top: 1px solid var(--line-d); border-bottom: 1px solid var(--line-d); padding: 44px 0; }
+        .stats-row { display: flex; align-items: baseline; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .stats-row .slash { font-family: 'Unbounded', sans-serif; font-weight: 900; color: var(--orange); font-size: 2rem; }
+        .stat { text-align: center; }
+        .stat b { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1; display: block; color: var(--light); }
+        .stat span { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-d); font-weight: 600; }
+
+        section { padding: 110px 0; position: relative; }
+        .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 52px; flex-wrap: wrap; }
+        .sec-head h2 { font-size: clamp(1.8rem, 4.6vw, 3.4rem); font-weight: 900; line-height: 1.05; color: var(--light); }
+        .sec-head .hint { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-d); font-weight: 600; }
+
+        .figures { background: var(--asphalt); }
+        .scroller-wrap { position: relative; }
+        .scroller-wrap::after {
+            content: ''; position: absolute; top: 0; bottom: 0; right: 0; width: 170px; z-index: 2; pointer-events: none;
+            background: linear-gradient(to right, rgba(15,15,15,0) 0%, rgba(15,15,15,0.3) 30%, rgba(15,15,15,0.65) 62%, rgba(15,15,15,0.92) 86%, var(--asphalt) 100%);
+            opacity: 1; transition: opacity .35s ease;
+        }
+        .scroller-wrap::before {
+            content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 120px; z-index: 2; pointer-events: none;
+            background: linear-gradient(to left, rgba(15,15,15,0) 0%, rgba(15,15,15,0.4) 40%, rgba(15,15,15,0.85) 80%, var(--asphalt) 100%);
+            opacity: 0; transition: opacity .35s ease;
+        }
+        .scroller-wrap.scrolled-x::before { opacity: 1; }
+        .scroller-wrap.at-end::after { opacity: 0; }
+        .scroller { display: flex; gap: 20px; overflow-x: auto; padding: 0 40px 8px 0; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; touch-action: pan-x; }
+        .scroller::-webkit-scrollbar { display: none; }
+        .scroller.dragging { cursor: grabbing; scroll-snap-type: none; }
+        .fig { min-width: 320px; max-width: 320px; scroll-snap-align: start; background: var(--concrete-light); border: 1px solid var(--line-d); position: relative; overflow: hidden; transition: transform .3s, border-color .3s; user-select: none; }
+        .fig:hover { transform: translateY(-6px) skewY(-0.5deg); border-color: rgba(255,107,0,0.55); }
+        .fig::after { content: ''; position: absolute; left: 0; bottom: 0; height: 5px; width: 0; background: var(--orange); transition: width .35s ease; z-index: 3; }
+        .fig:hover::after { width: 100%; }
+        .fig-img { aspect-ratio: 4/3; pointer-events: none; }
+        .fig-body { padding: 22px 24px 26px; pointer-events: none; }
+        .fig-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+        .fig .num { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 13px; color: var(--orange); }
+        .fig .price { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 15px; color: var(--light); white-space: nowrap; }
+        .fig h3 { font-size: 18px; font-weight: 700; color: var(--light); margin-bottom: 8px; }
+        .fig p { font-size: 13.5px; color: var(--muted-d); margin-bottom: 16px; min-height: 60px; }
+        .fig .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .fig .tag { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--line-d); color: var(--muted-d); padding: 4px 9px; }
+        .fig .tag.mat { border-color: rgba(255,107,0,0.5); color: var(--orange); }
+
+        .materials { background: var(--concrete); }
+        .mat-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
+        .mat-photo { aspect-ratio: 4/5; }
+        .mat-photo .cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 14px 16px; background: linear-gradient(to top, rgba(15,15,15,0.92), transparent); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-d); font-weight: 600; }
+        .mat-item { display: flex; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--line-d); }
+        .mat-item:first-child { border-top: 1px solid var(--line-d); }
+        .mat-item b { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 17px; color: var(--orange); flex-shrink: 0; min-width: 100px; }
+        .mat-item h3 { font-size: 16px; font-weight: 700; color: var(--light); margin-bottom: 6px; }
+        .mat-item p { font-size: 14px; color: var(--muted-d); }
+
+        .process { background: var(--asphalt); padding: 0; }
+        .process .wrap { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 80px; padding-bottom: 80px; }
+        .process .sec-head { margin-bottom: 44px; }
+        .steps { position: relative; padding-left: 44px; }
+        .steps::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: var(--line-d); }
+        .step { position: relative; margin-bottom: 30px; max-width: 660px; }
+        .step:last-child { margin-bottom: 0; }
+        .step::before { content: ''; position: absolute; left: -50px; top: 6px; width: 14px; height: 14px; background: var(--orange); border-radius: 50%; box-shadow: 0 0 0 6px var(--asphalt); }
+        .step .snum { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 13px; color: var(--orange); letter-spacing: 0.2em; display: block; margin-bottom: 8px; }
+        .step h3 { font-size: 20px; font-weight: 700; color: var(--light); margin-bottom: 8px; }
+        .step p { font-size: 15px; color: var(--muted-d); }
+
+        @media (min-width: 961px) and (max-height: 880px) {
+            .process .wrap { padding-top: 56px; padding-bottom: 56px; }
+            .process .sec-head { margin-bottom: 26px; }
+            .step { margin-bottom: 16px; }
+            .step h3 { font-size: 17px; margin-bottom: 4px; }
+            .step p { font-size: 13.5px; }
+        }
+        @media (min-width: 961px) and (max-height: 720px) {
+            .process .wrap { padding-top: 40px; padding-bottom: 40px; }
+            .process .sec-head { margin-bottom: 18px; }
+            .process .sec-head h2 { font-size: 1.6rem; }
+            .steps { padding-left: 38px; }
+            .step { margin-bottom: 10px; }
+            .step h3 { font-size: 15px; margin-bottom: 2px; }
+            .step p { font-size: 12.5px; }
+            .step .snum { font-size: 11px; margin-bottom: 4px; }
+            .step::before { width: 10px; height: 10px; top: 4px; left: -43px; }
+        }
+        @media (min-width: 961px) and (max-height: 600px) {
+            .step p { display: none; }
+        }
+
+        .works { background: var(--concrete-2); }
+        .mosaic { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 210px; gap: 16px; grid-template-areas: "a a b" "a a b" "c d b" "e e e"; }
+        .mosaic .w1 { grid-area: a; } .mosaic .w2 { grid-area: b; } .mosaic .w3 { grid-area: c; } .mosaic .w4 { grid-area: d; } .mosaic .w5 { grid-area: e; }
+        .work { position: relative; overflow: hidden; }
+        .work .ph { position: absolute; inset: 0; transition: transform .6s ease; }
+        .work:hover .ph { transform: scale(1.05); }
+        .work .cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: linear-gradient(to top, rgba(15,15,15,0.92), transparent); color: var(--light); }
+        .work .cap b { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 13px; }
+        .work .cap span { font-family: 'Unbounded', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); font-weight: 700; white-space: nowrap; }
+
+        .life { background: var(--asphalt); }
+        .life-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 190px 190px 190px 250px; gap: 14px; grid-template-areas: "a a b c" "a a d c" "e e d c" "f f f f"; }
+        .life-item { position: relative; overflow: hidden; }
+        .life-item .ph { position: absolute; inset: 0; transition: transform .6s ease; }
+        .life-item:hover .ph { transform: scale(1.06); }
+        .la { grid-area: a; } .lb { grid-area: b; } .lc { grid-area: c; } .ld { grid-area: d; } .le { grid-area: e; } .lf { grid-area: f; }
+        .life-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 10px 14px; background: linear-gradient(to top, rgba(15,15,15,0.92), transparent); font-size: 12px; color: var(--muted-d); font-weight: 600; letter-spacing: 0.04em; }
+        .life-cap i { font-style: normal; color: var(--orange); }
+
+        .faq { background: var(--concrete); }
+        .faq-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: start; }
+        .faq-list { display: flex; flex-direction: column; }
+        details { border-bottom: 1px solid var(--line-d); }
+        details:first-of-type { border-top: 1px solid var(--line-d); }
+        summary { list-style: none; cursor: pointer; padding: 20px 40px 20px 0; position: relative; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--light); }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-family: 'Unbounded', sans-serif; font-size: 22px; color: var(--orange); transition: transform .25s; }
+        details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+        details p { padding: 0 0 22px; color: var(--muted-d); font-size: 15px; max-width: 62ch; }
+        .service-card { background: var(--concrete-light); border: 1px solid var(--line-d); padding: 32px 30px; }
+        .service-card h3 { font-size: 18px; font-weight: 700; color: var(--light); margin-bottom: 18px; }
+        .service-card ul { list-style: none; margin-bottom: 26px; }
+        .service-card li { padding: 10px 0 10px 26px; position: relative; font-size: 14px; color: var(--muted-d); border-bottom: 1px solid var(--line-d); }
+        .service-card li:last-child { border-bottom: none; }
+        .service-card li::before { content: '→'; position: absolute; left: 0; color: var(--orange); }
+
+        .cta { background: var(--orange); color: var(--asphalt); }
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+        .cta h2 { color: var(--asphalt); font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.04; margin-bottom: 22px; }
+        .cta p { color: rgba(15,15,15,0.78); margin-bottom: 30px; font-size: 17px; overflow-wrap: break-word; }
+        .cta-phone { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(1.4rem, 3vw, 2.2rem); color: var(--asphalt); display: inline-block; margin-bottom: 14px; transition: color .2s; }
+        .cta-phone:hover { color: var(--light); }
+        .cta-links a { display: block; color: rgba(15,15,15,0.78); font-size: 14px; margin-bottom: 6px; transition: color .2s; overflow-wrap: break-word; }
+        .cta-links a:hover { color: var(--asphalt); font-weight: 600; }
+        .form { display: flex; flex-direction: column; gap: 20px; }
+        .form input, .form select, .form textarea { width: 100%; background: rgba(15,15,15,0.08); border: 2px solid rgba(15,15,15,0.6); padding: 16px 18px; color: var(--asphalt); font-family: 'Golos Text', sans-serif; font-size: 15px; outline: none; transition: border-color .2s; border-radius: 4px; }
+        .form select option { background: var(--concrete-light); color: var(--light); }
+        .form input::placeholder, .form textarea::placeholder { color: rgba(15,15,15,0.5); }
+        .form input:focus, .form select:focus, .form textarea:focus { border-color: var(--asphalt); }
+        .form textarea { resize: vertical; min-height: 100px; }
+        .form .btn { background: var(--asphalt); color: var(--light); border-color: var(--asphalt); width: 100%; max-width: none; }
+        .form .btn:hover { background: #000; border-color: #000; }
+        .form-ok { display: none; padding: 14px; border: 2px solid var(--asphalt); color: var(--asphalt); font-size: 14px; border-radius: 4px; font-weight: 600; }
+
+        footer { background: var(--asphalt); border-top: 1px solid var(--line-d); padding: 56px 0 26px; }
+        .foot-grid { display: grid; grid-template-columns: 1.3fr 0.8fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .foot-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 20px; color: var(--light); margin-bottom: 14px; }
+        .foot-logo i { font-style: normal; color: var(--orange); }
+        .foot-grid h4 { font-family: 'Unbounded', sans-serif; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; font-weight: 700; }
+        .foot-grid p, .foot-grid a { font-size: 14px; color: var(--muted-d); display: block; margin-bottom: 8px; transition: color .2s; overflow-wrap: break-word; }
+        .foot-grid a:hover { color: var(--light); }
+        .foot-about { font-size: 14px; color: var(--muted-d); max-width: 34ch; }
+        .foot-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line-d); padding-top: 24px; font-size: 13px; color: var(--muted-d); }
+        .demo-badge { margin-top: 14px; padding: 12px 16px; border: 1px dashed var(--line-d); font-size: 12.5px; color: var(--muted-d); background: var(--concrete-light); }
+        .demo-badge a { color: var(--orange); font-weight: 600; }
+
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.is-visible { opacity: 1; transform: none; }
+        .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; }
+
+        @media (max-width: 960px) {
+            .dots { display: none; }
+            .logo { font-size: 15px; top: 14px; left: 14px; background: rgba(15,15,15,0.78); backdrop-filter: blur(6px); padding: 8px 12px; border-radius: 8px; }
+            .wrap { padding: 0 20px; }
+            section { padding: 80px 0; }
+            .hero-content { padding: 70px 20px 60px; }
+            .hero p { font-size: 15px; margin: 20px auto 30px; }
+            .btn { padding: 15px 26px; font-size: 12px; }
+            .btn-ghost { margin-left: 0; margin-top: 12px; }
+            .split { flex-direction: column; }
+            .panel { padding: 56px 24px; }
+            .panel-l { clip-path: none; padding-right: 24px; }
+            .panel-r { clip-path: none; margin-left: 0; padding-left: 24px; }
+            .panel .btn { max-width: 100%; }
+            .stats-row { gap: 22px; }
+            .stats-row .slash { display: none; }
+            .stat { flex: 1 1 40%; }
+            .sec-head { align-items: flex-start; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+            .scroller-wrap::after { width: 80px; }
+            .scroller-wrap::before { width: 50px; }
+            .fig { min-width: 270px; max-width: 270px; }
+            .mat-grid { grid-template-columns: 1fr; gap: 36px; }
+            .mat-photo { aspect-ratio: 4/3; }
+            .mat-item { gap: 16px; }
+            .mat-item b { min-width: 78px; font-size: 15px; }
+            .process { padding: 80px 0; }
+            .process .wrap { min-height: 0; display: block; padding-top: 0; padding-bottom: 0; }
+            .steps { padding-left: 30px; }
+            .step { margin-bottom: 26px; }
+            .step::before { left: -36px; }
+            /* мобилка: шаги скрыты до появления в кадре */
+            .step { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+            .step.step-in { opacity: 1; transform: none; }
+            .mosaic { grid-template-columns: 1fr; grid-auto-rows: 240px; grid-template-areas: "a" "b" "c" "d" "e"; }
+            .work .cap { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .life-grid { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 170px; grid-template-areas: "a a" "b c" "d c" "d e" "f f"; }
+            .life-cap { font-size: 11px; }
+            .faq-grid { grid-template-columns: 1fr; gap: 36px; }
+            .cta-grid { grid-template-columns: 1fr; gap: 44px; }
+            .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+        @media (max-width: 600px) {
+            section { padding: 64px 0; }
+            .hero { min-height: 560px; }
+            .hero h1 { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+            .stat { flex: 1 1 100%; }
+            .figures .hint { display: none; }
+            .scroller-wrap::before, .scroller-wrap::after { display: none; }
+            .scroller { display: grid; grid-template-columns: 1fr; gap: 16px; overflow: visible; padding: 0; cursor: default; touch-action: auto; }
+            .fig { min-width: 0; max-width: none; }
+            .fig p { min-height: 0; }
+            .fig-body { padding: 18px 20px 22px; }
+            .mat-item b { min-width: 64px; font-size: 14px; }
+            .steps { padding-left: 26px; }
+            .step { margin-bottom: 22px; }
+            .step::before { left: -32px; width: 12px; height: 12px; }
+            .step h3 { font-size: 17px; }
+            .life-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; grid-template-areas: "a" "b" "c" "d" "e" "f"; }
+            .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+            summary { font-size: 13px; padding-right: 34px; }
+            details p { font-size: 14px; }
+            .cta h2 { font-size: clamp(1.45rem, 6.6vw, 2rem); }
+            .cta p { font-size: 15px; }
+            .cta-phone { font-size: 1.15rem; }
+            .cta-links a { font-size: 13px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .hl > span, .step { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .marquee-track, .scroll-hint { animation: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#manifest" class="logo">BETON<i>/</i>WAVE</a>
+
+<nav class="dots" aria-label="Навигация">
+    <a href="#manifest" data-label="Манифест"></a>
+    <a href="#who" data-label="Кому"></a>
+    <a href="#figures" data-label="Фигуры"></a>
+    <a href="#materials" data-label="Технологии"></a>
+    <a href="#process" data-label="Процесс"></a>
+    <a href="#works" data-label="Работы"></a>
+    <a href="#life" data-label="Жизнь парков"></a>
+    <a href="#faq" data-label="Вопросы"></a>
+    <a href="#contact" data-label="Заявка"></a>
+</nav>
+
+<section class="hero" id="manifest">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="micro">Проект · производство · монтаж · по всей РФ</div>
+        <h1 class="mask">
+            <span class="hl"><span>Строим бетон,</span></span>
+            <span class="hl"><span>который позволяет</span></span>
+            <span class="hl"><span><b>летать</b></span></span>
+        </h1>
+        <p>Скейт-парки, памп-треки и кастомные фигуры под ключ: считаем радиусы и нагрузки, льём и шлифуем бетон, собираем дерево, привозим и монтируем. От эскиза до первой обкатки.</p>
+        <a href="#contact" class="btn">Обсудить проект</a>
+        <a href="#figures" class="btn btn-ghost">Смотреть фигуры</a>
+    </div>
+    <div class="scroll-hint">Скролл ↓</div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <div class="marquee-group">
+            <span class="mi">Скейт-парки<i>✕</i></span>
+            <span class="mi">Памп-треки<i>✕</i></span>
+            <span class="mi">Боулы<i>✕</i></span>
+            <span class="mi">Стрит-плазы<i>✕</i></span>
+            <span class="mi">Мини-рампы<i>✕</i></span>
+            <span class="mi">Кастомные фигуры<i>✕</i></span>
+        </div>
+        <div class="marquee-group">
+            <span class="mi">Скейт-парки<i>✕</i></span>
+            <span class="mi">Памп-треки<i>✕</i></span>
+            <span class="mi">Боулы<i>✕</i></span>
+            <span class="mi">Стрит-плазы<i>✕</i></span>
+            <span class="mi">Мини-рампы<i>✕</i></span>
+            <span class="mi">Кастомные фигуры<i>✕</i></span>
+        </div>
+    </div>
+</div>
+
+<div class="split" id="who">
+    <div class="panel panel-l">
+        <div class="micro">B2B · городам и бизнесу</div>
+        <h3>Парк как<br>инфраструктура</h3>
+        <ul>
+            <li>ТЗ, ГОСТ Р 55672 и паспорта безопасности площадки</li>
+            <li>Смета и документы под тендеры и госзакупки</li>
+            <li>Соучаствующее проектирование с локальными райдерами</li>
+            <li>Гарантия 36 месяцев на бетон и металлокаркас</li>
+        </ul>
+        <a href="#contact" class="btn btn-line-l">Запросить смету</a>
+    </div>
+    <div class="panel panel-r">
+        <div class="micro" style="color: var(--asphalt);">B2C · частным территориям</div>
+        <h3>Личная рампа<br>у тебя во дворе</h3>
+        <ul>
+            <li>Мини-рампы и квартеры под твой участок и уровень</li>
+            <li>Дерево или бетон — посчитаем оба варианта честно</li>
+            <li>Привезём и соберём за 1–3 дня, без грязи на участке</li>
+            <li>Первый выезд с инструктором — в подарок к рампе</li>
+        </ul>
+        <a href="#contact" class="btn btn-dark">Хочу рампу</a>
+    </div>
+</div>
+
+<div class="stats">
+    <div class="wrap stats-row reveal">
+        <div class="stat"><b>38</b><span>парков построено</span></div>
+        <span class="slash">/</span>
+        <div class="stat"><b>12 000 м²</b><span>бетона залито и затёрто</span></div>
+        <span class="slash">/</span>
+        <div class="stat"><b>5 лет</b><span>без срыва сроков</span></div>
+        <span class="slash">/</span>
+        <div class="stat"><b>36 мес</b><span>гарантия на конструкции</span></div>
+    </div>
+</div>
+
+<section class="figures" id="figures">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div>
+                <div class="micro">Каталог</div>
+                <h2>Фигуры и площадки</h2>
+            </div>
+            <span class="hint">тяни вбок · курсор или палец</span>
+        </div>
+        <div class="scroller-wrap reveal" id="figWrap">
+            <div class="scroller" id="figScroller">
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-bowl.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">01</span><span class="price">от 450 000 ₽</span></div>
+                        <h3>Боул</h3>
+                        <p>Бетонная чаша с радиусами 1.8–2.4 м: плавные переходы, затёртая поверхность под скольжение.</p>
+                        <div class="tags"><span class="tag mat">бетон</span><span class="tag">от 40 м²</span></div>
+                    </div>
+                </div>
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-streetplaza.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">02</span><span class="price">от 320 000 ₽</span></div>
+                        <h3>Стрит-плаза</h3>
+                        <p>Грани, ledge, ступени и мануал-пады — городская среда в миниатюре, гранит + бетон.</p>
+                        <div class="tags"><span class="tag mat">бетон / гранит</span><span class="tag">от 80 м²</span></div>
+                    </div>
+                </div>
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-miniramp.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">03</span><span class="price">от 180 000 ₽</span></div>
+                        <h3>Мини-рампа</h3>
+                        <p>Деревянная рампа высотой 1.2–1.8 м: идеальна для двора, дачи и крытых скейт-зон.</p>
+                        <div class="tags"><span class="tag mat">дерево</span><span class="tag">1–3 дня монтаж</span></div>
+                    </div>
+                </div>
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-pumptrack.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">04</span><span class="price">от 600 000 ₽</span></div>
+                        <h3>Памп-трек</h3>
+                        <p>Волны и виражи по замкнутому контуру: катаются скейты, BMX, самокаты и беговелы.</p>
+                        <div class="tags"><span class="tag mat">асфальт / бетон</span><span class="tag">от 150 м²</span></div>
+                    </div>
+                </div>
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-quarterpipe.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">05</span><span class="price">от 140 000 ₽</span></div>
+                        <h3>Квартерпайп</h3>
+                        <p>Четверть трубы для разгона и вылетов: база любого парка, от новичка до про.</p>
+                        <div class="tags"><span class="tag mat">дерево / бетон</span><span class="tag">высота до 2.4 м</span></div>
+                    </div>
+                </div>
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-ledges.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">06</span><span class="price">от 90 000 ₽</span></div>
+                        <h3>Грани и перила</h3>
+                        <p>Бетонные грани и рейлы под скольжения: кромки точим под твои траки и стиль катания.</p>
+                        <div class="tags"><span class="tag mat">бетон / металл</span><span class="tag">кастом</span></div>
+                    </div>
+                </div>
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-pyramid.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">07</span><span class="price">от 210 000 ₽</span></div>
+                        <h3>Пирамида с фанбоксом</h3>
+                        <p>Центр любой стрит-секции: разгон, грань, фанбокс и выезд на четыре стороны.</p>
+                        <div class="tags"><span class="tag mat">дерево / бетон</span><span class="tag">от 16 м²</span></div>
+                    </div>
+                </div>
+                <div class="fig">
+                    <div class="fig-img ph" style="background-image:url('../../assets/demo/skate/fig-custom.webp')"></div>
+                    <div class="fig-body">
+                        <div class="fig-top"><span class="num">08</span><span class="price">по запросу</span></div>
+                        <h3>Кастом-фигура</h3>
+                        <p>Любая форма по твоему эскизу или референсу: от вулкана до копии спота из видео.</p>
+                        <div class="tags"><span class="tag mat">любой материал</span><span class="tag">по эскизу</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="materials" id="materials">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div>
+                <div class="micro">Технологии</div>
+                <h2>Материалы, которые держат удар</h2>
+            </div>
+            <span class="hint">спецификации без воды</span>
+        </div>
+        <div class="mat-grid">
+            <div class="mat-photo ph reveal" style="background-image:url('../../assets/demo/skate/materials-grout.webp')">
+                <span class="cap">Затирка боула, объект в работе</span>
+            </div>
+            <div class="reveal d1">
+                <div class="mat-item"><b>М300</b><div><h3>Бетон с затиркой «вертолётом»</h3><p>Марка М300, водонепроницаемость W6, допуск поверхности 3 мм на 3 м — колёса не чувствуют швов.</p></div></div>
+                <div class="mat-item"><b>ФСФ</b><div><h3>Фанера + покрытие SkateLite</h3><p>Влагостойкая фанера ФСФ 9–21 мм с нескользящим покрытием: держит погоду и трейл-удары.</p></div></div>
+                <div class="mat-item"><b>08Х18</b><div><h3>Нержавеющий копинг</h3><p>Труба 60 мм из нержавейки по верху рамп: скользит одинаково в +30 и в −10.</p></div></div>
+                <div class="mat-item"><b>Гранит</b><div><h3>Гранитные кромки ledge</h3><p>Полированная кромка на гранях: скольжение как в лучших стрит-плазах мира.</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="process" id="process">
+    <div class="wrap">
+        <div class="sec-head">
+            <div>
+                <div class="micro">Процесс</div>
+                <h2>От эскиза до обкатки</h2>
+            </div>
+            <span class="hint">6 шагов · 30–90 дней</span>
+        </div>
+        <div class="steps">
+            <div class="step"><span class="snum">Шаг 01</span><h3>Бриф и выезд</h3><p>Смотрим площадку или участок, меряем уклон, слушаем, кто и как будет кататься.</p></div>
+            <div class="step"><span class="snum">Шаг 02</span><h3>3D-проект и расчёт</h3><p>Модель с радиусами и переходами, расчёт нагрузок и дренажа. Правим до «то самое».</p></div>
+            <div class="step"><span class="snum">Шаг 03</span><h3>Смета и договор</h3><p>Фиксируем материалы, сроки и цену. Для тендеров — готовим пакет документов.</p></div>
+            <div class="step"><span class="snum">Шаг 04</span><h3>Производство</h3><p>Льём и шлифуем бетон в цеху, собираем деревянные модули. Присылаем фото этапов.</p></div>
+            <div class="step"><span class="snum">Шаг 05</span><h3>Монтаж</h3><p>Привозим, ставим, стыкуем швы в ноль. Площадка готова катать в день сдачи.</p></div>
+            <div class="step"><span class="snum">Шаг 06</span><h3>Обкатка и гарантия</h3><p>Райдеры тестируют парк с тобой, мы доводим мелочи. Дальше — гарантия 36 месяцев.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="works" id="works">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div>
+                <div class="micro">Портфолио</div>
+                <h2>Построено и катается</h2>
+            </div>
+            <span class="hint">5 проектов · 2023–2026</span>
+        </div>
+        <div class="mosaic reveal">
+            <div class="work w1">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/work-wave-bowl.webp')"></div>
+                <div class="cap"><b>Трёхчашечный боул, парк «Волна», Уфа</b><span>город</span></div>
+            </div>
+            <div class="work w2">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/work-hall.webp')"></div>
+                <div class="cap"><b>Крытый скейт-холл «Цех» — катаем круглый год</b><span>бизнес</span></div>
+            </div>
+            <div class="work w3">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/work-streetplaza-granite.webp')"></div>
+                <div class="cap"><b>Стрит-плаза с гранитными кромками, Казань</b><span>город</span></div>
+            </div>
+            <div class="work w4">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/work-private-bowl.webp')"></div>
+                <div class="cap"><b>Частный боул в дворе, Затон</b><span>частный</span></div>
+            </div>
+            <div class="work w5">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/work-pumptrack-school.webp')"></div>
+                <div class="cap"><b>Памп-трек у школы №45, Стерлитамак</b><span>школа</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="life" id="life">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div>
+                <div class="micro">Галерея</div>
+                <h2>Жизнь наших парков</h2>
+            </div>
+            <span class="hint">живые фото после сдачи</span>
+        </div>
+        <div class="life-grid reveal">
+            <div class="life-item la">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/life-test-session.webp')"></div>
+                <span class="life-cap">Тест-сессия перед сдачей объекта, Уфа · <i>2025</i></span>
+            </div>
+            <div class="life-item lb">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/life-contest.webp')"></div>
+                <span class="life-cap">Контест на best trick, Казань · <i>2025</i></span>
+            </div>
+            <div class="life-item lc">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/life-night-session.webp')"></div>
+                <span class="life-cap">Ночная сессия под светом, Уфа · <i>2024</i></span>
+            </div>
+            <!-- Верхним слоем твоя ссылка (награждение), вторым — рабочий запасной кадр -->
+            <div class="life-item ld">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/life-video-shoot.webp'); background-size: cover, cover; background-position: center, center;"></div>
+                <span class="life-cap">Съёмка рекламного видео, Казань · <i>2025</i></span>
+            </div>
+            <div class="life-item le">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/life-opening.webp')"></div>
+                <span class="life-cap">Открытие нового парка, Саранск · <i>2026</i></span>
+            </div>
+            <div class="life-item lf">
+                <div class="ph" style="background-image:url('../../assets/demo/skate/life-wooden-park.webp')"></div>
+                <span class="life-cap">Деревянный парк в Рыбинске: открытие сезона · <i>2025</i></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq" id="faq">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div>
+                <div class="micro">Вопросы</div>
+                <h2>Спрашивают до и после сделки</h2>
+            </div>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-list reveal" id="faqList">
+                <details>
+                    <summary>Сколько стоит скейт-парк под ключ?</summary>
+                    <p>Частная мини-рампа — от 180 000 ₽. Городская стрит-плаза от 80 м² — от 2,4 млн ₽. Точная вилка появляется после выезда и 3D-проекта: на неё влияют рельеф, дренаж и логистика.</p>
+                </details>
+                <details>
+                    <summary>Можно ли кататься зимой?</summary>
+                    <p>Бетонные парки — да, при сухой поверхности. Деревянные фигуры на зиму рекомендуем накрывать: в договоре есть памятка и услуга сезонной консервации.</p>
+                </details>
+                <details>
+                    <summary>Сколько служит бетонная поверхность?</summary>
+                    <p>15–25 лет без ремонта при правильном дренаже. Швы и кромки осматриваем раз в год по сервисному договору, локальные затирки делаем за один выезд.</p>
+                </details>
+                <details>
+                    <summary>Нужно ли согласование с администрацией?</summary>
+                    <p>Для общественных парков — да: помогаем с паспортом площадки по ГОСТ Р 55672, экспертизой и согласованием размещения. Для частного участка согласования не нужны.</p>
+                </details>
+                <details>
+                    <summary>Что если парк уже есть, но убит?</summary>
+                    <p>Делаем аудит: замеряем трещины и отслоения, даём смету ремонта или реконструкции. Часто дешевле перелить чаши, чем латать старый слой.</p>
+                </details>
+                <details>
+                    <summary>Работаете в других регионах?</summary>
+                    <p>Да. Деревянные модули привозим фурами и собираем на месте, бетон льём на объекте — бригада выезжает с оборудованием по всей России и СНГ.</p>
+                </details>
+            </div>
+            <div class="service-card reveal d1" id="serviceCard">
+                <h3>Сервис после сдачи</h3>
+                <ul>
+                    <li>Сезонный осмотр: швы, кромки, крепёж, покрытие</li>
+                    <li>Обновление скользящего слоя и затирка сколов</li>
+                    <li>Ремонт и апгрейд фигур под новый уровень райдеров</li>
+                    <li>Подготовка парка к соревнованиям и съёмкам</li>
+                </ul>
+                <a href="#contact" class="btn">Заключить сервис</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta" id="contact">
+    <div class="wrap cta-grid">
+        <div class="reveal">
+            <div class="micro" style="color: var(--asphalt);">Заявка</div>
+            <h2>Рассчитаем парк под твой бюджет</h2>
+            <p>Опиши площадку или идею — вернёмся с эскизом, вилкой цены и сроком за 2 рабочих дня. Без предоплаты за расчёт.</p>
+            <a href="tel:+73472164242" class="cta-phone">+7 (347) 216-42-42</a>
+            <div class="cta-links">
+                <a href="https://t.me/TitanITCompany" target="_blank">Telegram: @betonwave</a>
+                <a href="mailto:hello@betonwave.ru">hello@betonwave.ru</a>
+                <a href="#works">Цех и шоурум: Уфа, ул. Индустриальная, 42</a>
+            </div>
+        </div>
+        <form class="form reveal d1" id="leadForm">
+            <input type="text" name="name" placeholder="Как тебя зовут" required>
+            <input type="tel" name="phone" placeholder="Телефон" required>
+            <select name="type">
+                <option>Город / муниципалитет</option>
+                <option>Бизнес / ТЦ / школа</option>
+                <option>Частная территория</option>
+            </select>
+            <textarea name="msg" placeholder="Пара слов о площадке: размер, покрытие, кто будет кататься"></textarea>
+            <button type="submit" class="btn">Отправить на расчёт</button>
+            <div class="form-ok" id="formOk">Заявка принята (демо-режим). Вернёмся с эскизом и вилкой цены за 2 дня.</div>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="wrap">
+        <div class="foot-grid">
+            <div>
+                <div class="foot-logo">BETON<i>/</i>WAVE</div>
+                <p class="foot-about">Проектирование и строительство скейт-парков, памп-треков и кастомных фигур. Собственный цех, бетон и бригада монтажников.</p>
+            </div>
+            <div>
+                <h4>Разделы</h4>
+                <a href="#manifest">Манифест</a>
+                <a href="#who">Направления</a>
+                <a href="#figures">Фигуры</a>
+                <a href="#materials">Технологии</a>
+                <a href="#process">Процесс</a>
+                <a href="#works">Проекты</a>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <a href="tel:+73472164242">+7 (347) 216-42-42</a>
+                <a href="mailto:hello@betonwave.ru">hello@betonwave.ru</a>
+                <a href="https://t.me/TitanITCompany" target="_blank">Telegram</a>
+                <a href="https://vk.com/titanitcompany" target="_blank">ВКонтакте</a>
+                <p>Уфа, ул. Индустриальная, 42</p>
+            </div>
+            <div>
+                <h4>Компания</h4>
+                <p>ООО «Бетон Вейв» · ИНН 0274500000</p>
+                <p>Офис: Пн–Пт 9:00–18:00</p>
+                <p>Бригады на объектах: 7 дней в неделю</p>
+                <p>Работаем по РФ и СНГ</p>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <span>BETON WAVE © 2026 · демо-проект</span>
+            <span>Строим бетон, который позволяет летать</span>
+        </div>
+        <div class="demo-badge">Это демо-сайт, сделанный студией <a href="https://titan-code.ru" target="_blank">Titan Code</a>, чтобы показать уровень. Хотите такой же под свой бизнес — напишите нам.</div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        document.querySelectorAll('.mask').forEach(el => el.classList.add('is-visible'));
+        syncFaq();
+        updateFogs();
+    });
+
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // шаги процесса: наблюдатель создаётся ВСЕГДА (на любой ширине).
+    // На мобилке класс .step-in включает показ (стили в media max-width 960),
+    // на десктопе класс не влияет ни на что — там шагами управляет GSAP.
+    const stepIO = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('step-in'); stepIO.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('#process .step').forEach(s => stepIO.observe(s));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const id = a.getAttribute('href');
+            if (id.length < 2) return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+        });
+    });
+
+    const dots = document.querySelectorAll('.dots a');
+    const secIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            dots.forEach(d => d.classList.toggle('active', d.getAttribute('href') === '#' + e.target.id));
+        });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('section[id], .split[id]').forEach(s => secIO.observe(s));
+
+    const sc = document.getElementById('figScroller');
+    const figWrap = document.getElementById('figWrap');
+    let isDown = false, startX = 0, startLeft = 0;
+    sc.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'mouse') return;
+        isDown = true; startX = e.clientX; startLeft = sc.scrollLeft;
+        sc.classList.add('dragging');
+    });
+    window.addEventListener('pointermove', e => {
+        if (!isDown) return;
+        sc.scrollLeft = startLeft - (e.clientX - startX);
+    });
+    window.addEventListener('pointerup', () => { isDown = false; sc.classList.remove('dragging'); });
+    window.addEventListener('pointercancel', () => { isDown = false; sc.classList.remove('dragging'); });
+
+    function updateFogs() {
+        const max = sc.scrollWidth - sc.clientWidth;
+        figWrap.classList.toggle('at-end', sc.scrollLeft >= max - 8);
+        figWrap.classList.toggle('scrolled-x', sc.scrollLeft > 8);
+    }
+    sc.addEventListener('scroll', updateFogs, { passive: true });
+    window.addEventListener('resize', updateFogs);
+
+    if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        const mm = gsap.matchMedia();
+        mm.add('(min-width: 961px)', () => {
+            const steps = gsap.utils.toArray('#process .step');
+            gsap.set(steps, { opacity: 0, y: 48 });
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#process',
+                    start: 'top top',
+                    end: () => '+=' + (steps.length * 0.5 * window.innerHeight),
+                    pin: true,
+                    scrub: 0.55,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true
+                }
+            });
+            steps.forEach((s, i) => {
+                tl.to(s, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }, i * 0.5);
+            });
+            tl.to({}, { duration: 0.25 });
+            return () => {
+                tl.scrollTrigger && tl.scrollTrigger.kill();
+                tl.kill();
+                gsap.set(steps, { clearProps: 'all' });
+            };
+        });
+    }
+
+    const faqList = document.getElementById('faqList');
+    const serviceCard = document.getElementById('serviceCard');
+    const dts = Array.from(faqList.querySelectorAll('details'));
+    function syncFaq() {
+        const anyOpen = dts.some(d => d.open);
+        faqList.style.minHeight = anyOpen ? '' : serviceCard.offsetHeight + 'px';
+    }
+    dts.forEach(d => d.addEventListener('toggle', syncFaq));
+    window.addEventListener('resize', syncFaq);
+
+    document.getElementById('leadForm').addEventListener('submit', e => {
+        e.preventDefault();
+        document.getElementById('formOk').style.display = 'block';
+        e.target.reset();
+    });
+</script>
+</body>
+</html>

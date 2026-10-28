@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="../../assets/favicon2.ico" sizes="any">
+    <link rel="icon" href="../../assets/favicon2.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../assets/favicon2.png">
+    <title>AFTER DARK — бистро и бар в Уфе | Город засыпает — мы только начинаем</title>
+    <meta name="description" content="Вечернее бистро и бар в центре Уфы: малые платы, авторские коктейли, винная карта, винил по пятницам. Бронь столов с 18:00 до 02:00.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.8/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.8/500.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.8/600.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jost@5.0.8/300.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jost@5.0.8/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jost@5.0.8/500.css">
+    <style>
+        :root {
+            --bg: #0b0c0e;
+            --bg2: #101216;
+            --ink: #e9ecef;
+            --muted: #8b929c;
+            --ice: #aab6c2;
+            --wine: #8e2430;
+            --wine-bright: #b3303e;
+            --line: rgba(233,236,239,0.12);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { background: var(--bg); color: var(--ink); font-family: 'Jost', sans-serif; font-size: 16px; line-height: 1.6; font-weight: 300; }
+        h1, h2, h3, .disp { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-weight: 500; letter-spacing: 0.02em; }
+        a { color: inherit; text-decoration: none; }
+        .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .micro { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--wine-bright); font-weight: 500; margin-bottom: 18px; }
+        .muted { color: var(--muted); }
+        .vert { writing-mode: vertical-rl; font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; color: var(--muted); }
+
+        /* холодная плёнка на фото — температура противоположна ФОРМЕ */
+        .ph { position: relative; background-color: #14171b; background-size: cover; background-position: center; overflow: hidden; }
+        .ph::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(185deg, rgba(11,12,14,0.15) 0%, rgba(11,12,14,0.62) 100%), linear-gradient(0deg, rgba(70,90,110,0.10), rgba(70,90,110,0.10)); }
+
+        /* навигация */
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s; }
+        header.scrolled { background: rgba(11,12,14,0.94); backdrop-filter: blur(10px); border-color: var(--line); }
+        .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+        .logo { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 0.26em; }
+        .logo i { font-style: normal; color: var(--wine-bright); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-cta { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--wine); padding: 11px 22px; position: relative; overflow: hidden; transition: color .3s; z-index: 0; }
+        .nav-cta::before { content: ''; position: absolute; inset: 0; background: var(--wine); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; z-index: -1; }
+        .nav-cta:hover::before { transform: scaleX(1); }
+        .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .burger span { display: block; width: 24px; height: 1px; background: var(--ink); margin: 6px 0; transition: .25s; }
+        .mobile-menu { display: none; position: fixed; inset: 0; z-index: 49; background: var(--bg); padding: 100px 32px; transform: translateX(100%); transition: transform .35s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu a { display: block; font-family: 'Oswald', sans-serif; font-size: 26px; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 0; border-bottom: 1px solid var(--line); }
+
+        /* hero */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background: #14171b url('../../assets/demo/bistro/hero.webp') center/cover no-repeat; }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(11,12,14,0.75) 0%, rgba(11,12,14,0.55) 30%, rgba(11,12,14,0.65) 60%, rgba(11,12,14,0.95) 100%);
+        }
+        .hero-side { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 2; }
+        .hero-content { position: relative; z-index: 2; padding-bottom: 90px; width: 100%; }
+        .hero h1 { font-size: clamp(2.8rem, 8vw, 6.8rem); line-height: 1.02; font-weight: 600; letter-spacing: 0.01em; }
+        .hero h1 b { color: var(--wine-bright); font-weight: 600; }
+        /* маски строк — заголовок выезжает построчно */
+        .hl { display: block; overflow: hidden; }
+        .hl > span { display: block; transform: translateY(108%); transition: transform .9s cubic-bezier(0.22,1,0.36,1); }
+        .mask.is-visible .hl > span { transform: translateY(0); }
+        .mask.is-visible .hl:nth-child(2) > span { transition-delay: .12s; }
+        .hero-meta { display: flex; gap: 44px; flex-wrap: wrap; margin: 36px 0 42px; }
+        .hero-meta div b { display: block; font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 500; color: var(--ice); }
+        .hero-meta div span { font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted); }
+        .btn { display: inline-block; padding: 16px 36px; font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; color: var(--ink); border: 1px solid var(--wine); background: none; cursor: pointer; position: relative; overflow: hidden; transition: color .3s; z-index: 0; }
+        .btn::before { content: ''; position: absolute; inset: 0; background: var(--wine); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; z-index: -1; }
+        .btn:hover::before { transform: scaleX(1); }
+        .btn-ghost { border-color: var(--line); margin-left: 14px; }
+        .btn-ghost::before { background: rgba(233,236,239,0.1); }
+        .scroll-hint { position: absolute; left: 24px; bottom: 28px; z-index: 2; }
+
+        /* бегущая строка: бесшовная — разделитель приклеен к слову, отступ кирпича одинаков везде, включая стык копий */
+        .marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 14px 0; background: var(--bg2); }
+        .marquee-track { display: flex; width: max-content; animation: marquee 44s linear infinite; }
+        .marquee-group { display: flex; flex-shrink: 0; }
+        .marquee-group .mi { display: inline-flex; align-items: center; font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase; color: var(--muted); white-space: nowrap; padding-right: 2.4em; }
+        .marquee-group .mi i { font-style: normal; color: var(--wine-bright); padding-left: 0.9em; }
+        @keyframes marquee { to { transform: translateX(-50%); } }
+
+        /* секции */
+        section { padding: 120px 0; position: relative; }
+        .sec-head { display: flex; align-items: flex-end; gap: 28px; margin-bottom: 60px; border-bottom: 1px solid var(--line); padding-bottom: 26px; }
+        .sec-head .num { font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 600; color: var(--wine); line-height: 0.9; }
+        .sec-head h2 { font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.05; font-weight: 600; }
+        .sec-head .sub { margin-left: auto; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; }
+
+        /* о баре */
+        .about-grid { display: grid; grid-template-columns: 1fr 0.9fr; gap: 72px; align-items: center; }
+        .about-text .lead { font-family: 'Oswald', sans-serif; font-size: clamp(1.3rem, 2.6vw, 1.8rem); line-height: 1.4; text-transform: uppercase; color: var(--ice); margin-bottom: 26px; font-weight: 400; }
+        .about-text p { color: var(--muted); margin-bottom: 18px; }
+        .about-text p b { color: var(--ink); font-weight: 400; }
+        .about-photo { aspect-ratio: 4/5; }
+        .about-stats { display: flex; gap: 0; margin-top: 40px; border: 1px solid var(--line); }
+        .about-stats div { flex: 1; padding: 20px 24px; border-right: 1px solid var(--line); }
+        .about-stats div:last-child { border-right: none; }
+        .about-stats b { display: block; font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 600; color: var(--wine-bright); line-height: 1; }
+        .about-stats span { font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+
+        /* кухня */
+        .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .dish { border: 1px solid var(--line); background: var(--bg2); }
+        .dish .ph { aspect-ratio: 4/5; transition: transform .6s ease; }
+        .dish:hover .ph { transform: scale(1.04); }
+        .dish-body { padding: 22px 22px 26px; border-top: 2px solid var(--wine); }
+        .dish-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+        .dish h3 { font-size: 20px; font-weight: 500; }
+        .dish .price { font-family: 'Oswald', sans-serif; font-size: 18px; color: var(--wine-bright); white-space: nowrap; }
+        .dish p { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+        /* меню с лидерами */
+        .menu-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+        .menu-cols h3 { font-size: 22px; margin-bottom: 24px; color: var(--ice); border-left: 3px solid var(--wine); padding-left: 14px; }
+        .menu-row { display: flex; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(233,236,239,0.07); }
+        .menu-row .name { font-size: 15px; font-weight: 400; }
+        .menu-row .desc { display: block; font-size: 13px; color: var(--muted); }
+        .menu-row .dots { flex: 1; border-bottom: 1px dotted rgba(170,182,194,0.35); transform: translateY(-5px); }
+        .menu-row .price { font-family: 'Oswald', sans-serif; font-size: 16px; color: var(--ink); white-space: nowrap; }
+        .menu-note { margin-top: 40px; font-size: 13px; color: var(--muted); }
+        .menu-note a { color: var(--wine-bright); border-bottom: 1px solid rgba(179,48,62,0.4); transition: border-color .2s; }
+        .menu-note a:hover { border-color: var(--wine-bright); }
+
+        /* бар */
+        .bar { background: var(--bg2); }
+        .drinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .drink { border: 1px solid var(--line); background: var(--bg); }
+        .drink .ph { aspect-ratio: 3/4; transition: transform .6s ease; }
+        .drink:hover .ph { transform: scale(1.04); }
+        .drink-body { padding: 22px 22px 26px; border-top: 2px solid var(--wine); }
+        .drink-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+        .drink h3 { font-size: 19px; font-weight: 500; }
+        .drink .abv { display: block; font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.24em; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+        .drink .price { font-family: 'Oswald', sans-serif; font-size: 18px; color: var(--wine-bright); }
+        .drink p { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+        /* таймлайн ночи */
+        .night-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--line); }
+        .night-cell { padding: 30px 24px 34px; border-right: 1px solid var(--line); position: relative; transition: background .25s; }
+        .night-cell:last-child { border-right: none; }
+        .night-cell:hover { background: var(--bg2); }
+        .night-cell::before { content: ''; position: absolute; top: -5px; left: 24px; width: 9px; height: 9px; background: var(--wine); border-radius: 50%; }
+        .night-cell b { display: block; font-family: 'Oswald', sans-serif; font-size: 38px; font-weight: 600; color: var(--ice); line-height: 1; margin-bottom: 14px; }
+        .night-cell h3 { font-size: 14px; letter-spacing: 0.14em; margin-bottom: 8px; color: var(--ink); }
+        .night-cell p { font-size: 13px; color: var(--muted); }
+
+        /* полоса с цитатой */
+        .band { position: relative; padding: 150px 0; background: url('../../assets/demo/bistro/quote-band.webp') center/cover fixed no-repeat; }
+        .band::before { content: ''; position: absolute; inset: 0; background: rgba(11,12,14,0.86); }
+        .band q { position: relative; display: block; max-width: 860px; margin: 0 auto; text-align: center; font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: clamp(1.4rem, 3.4vw, 2.4rem); line-height: 1.35; font-weight: 400; letter-spacing: 0.04em; quotes: '«' '»'; }
+        .band q b { color: var(--wine-bright); font-weight: 500; }
+        .band .who { position: relative; display: block; text-align: center; margin-top: 26px; font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--muted); }
+
+        /* афиша */
+        .event { display: grid; grid-template-columns: 120px 1fr auto; gap: 32px; align-items: center; padding: 28px 12px; border-top: 1px solid var(--line); transition: background .25s, padding .25s; }
+        .event:last-of-type { border-bottom: 1px solid var(--line); }
+        .event:hover { background: rgba(142,36,48,0.08); padding-left: 24px; padding-right: 24px; }
+        .event .date { font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 600; color: var(--wine-bright); line-height: 1; }
+        .event .date span { display: block; font-size: 10px; letter-spacing: 0.26em; color: var(--muted); margin-top: 6px; text-transform: uppercase; }
+        .event h3 { font-size: 20px; margin-bottom: 4px; }
+        .event p { font-size: 14px; color: var(--muted); }
+        .event .tag { font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 7px 14px; white-space: nowrap; }
+
+        /* бронь */
+        .book { background: var(--bg2); }
+        .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+        .book-text h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 22px; }
+        .book-text h2 b { color: var(--wine-bright); font-weight: 600; }
+        .book-text p { color: var(--muted); margin-bottom: 16px; }
+        .book-phones { margin-top: 30px; }
+        .book-phones a { display: block; font-family: 'Oswald', sans-serif; font-size: 30px; font-weight: 500; color: var(--ink); transition: color .2s; }
+        .book-phones a:hover { color: var(--wine-bright); }
+        .form { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+        .form .full { grid-column: 1 / -1; }
+        .form label { display: block; font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+        .form input, .form select { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--line); padding: 10px 2px; color: var(--ink); font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 300; outline: none; border-radius: 0; color-scheme: dark; }
+        .form select option { background: var(--bg2); color: var(--ink); }
+        .form input:focus, .form select:focus { border-color: var(--wine-bright); }
+        .form-ok { display: none; grid-column: 1 / -1; padding: 16px; border: 1px solid var(--wine); color: var(--wine-bright); font-size: 14px; }
+        .form-note { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
+
+        /* футер */
+        footer { border-top: 1px solid var(--line); padding: 64px 0 32px; }
+        .foot-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .foot-grid h4 { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--wine-bright); margin-bottom: 16px; font-weight: 500; }
+        .foot-grid p, .foot-grid a { font-size: 14px; color: var(--muted); display: block; margin-bottom: 6px; transition: color .2s; }
+        .foot-grid a:hover { color: var(--ink); }
+        .foot-logo { font-family: 'Oswald', sans-serif; font-size: 30px; font-weight: 600; letter-spacing: 0.26em; margin-bottom: 12px; }
+        .foot-logo i { font-style: normal; color: var(--wine-bright); }
+        .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 24px; font-size: 12px; color: var(--muted); }
+        .demo-badge { margin-top: 20px; padding: 14px 18px; border: 1px dashed var(--line); font-size: 13px; color: var(--muted); }
+        .demo-badge a { color: var(--wine-bright); font-weight: 500; }
+
+        /* reveal */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s cubic-bezier(0.22,1,0.36,1), transform .55s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.is-visible { opacity: 1; transform: none; }
+        .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; }
+
+        @media (max-width: 960px) {
+            .nav-links, .nav-cta { display: none; }
+            .burger { display: block; }
+            .mobile-menu { display: block; }
+            .hero-side { display: none; }
+            .about-grid, .book-grid { grid-template-columns: 1fr; gap: 48px; }
+            .dishes, .drinks { grid-template-columns: 1fr 1fr; }
+            .menu-cols { grid-template-columns: 1fr; gap: 48px; }
+            .night-grid { grid-template-columns: 1fr; }
+            .night-cell { border-right: none; border-bottom: 1px solid var(--line); }
+            .night-cell:last-child { border-bottom: none; }
+            .event { grid-template-columns: 90px 1fr; }
+            .event .tag { display: none; }
+            .foot-grid { grid-template-columns: 1fr; gap: 32px; }
+            .band { background-attachment: scroll; }
+            .sec-head { flex-wrap: wrap; }
+            .sec-head .sub { margin-left: 0; width: 100%; padding-bottom: 0; }
+        }
+        @media (max-width: 600px) {
+            .dishes, .drinks, .form { grid-template-columns: 1fr; }
+            .btn-ghost { margin-left: 0; margin-top: 14px; }
+            section { padding: 80px 0; }
+            .about-stats { flex-direction: column; }
+            .about-stats div { border-right: none; border-bottom: 1px solid var(--line); }
+            .about-stats div:last-child { border-bottom: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .hl > span { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .marquee-track { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="wrap nav">
+        <a href="#" class="logo">AFTER<i>/</i>DARK</a>
+        <nav class="nav-links">
+            <a href="#about">О баре</a>
+            <a href="#kitchen">Кухня</a>
+            <a href="#menu">Меню</a>
+            <a href="#bar">Бар</a>
+            <a href="#night">Ночь</a>
+            <a href="#events">Афиша</a>
+        </nav>
+        <a href="#book" class="nav-cta">Забронировать</a>
+        <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#about">О баре</a>
+    <a href="#kitchen">Кухня</a>
+    <a href="#menu">Меню</a>
+    <a href="#bar">Бар</a>
+    <a href="#night">Ночь</a>
+    <a href="#events">Афиша</a>
+    <a href="#book">Забронировать</a>
+</div>
+
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-side vert">Уфа · Ленина, 42 · 18:00—02:00</div>
+    <div class="wrap hero-content">
+        <div class="micro reveal">Вечернее бистро и бар · open 18:00</div>
+        <h1 class="mask">
+            <span class="hl"><span>Город засыпает —</span></span>
+            <span class="hl"><span>мы только <b>начинаем</b></span></span>
+        </h1>
+        <div class="hero-meta reveal d1">
+            <div><b>48</b><span>мест в зале</span></div>
+            <div><b>120</b><span>позиций в баре</span></div>
+            <div><b>PT</b><span>винил по пятницам</span></div>
+        </div>
+        <div class="reveal d2">
+            <a href="#book" class="btn">Забронировать стол</a>
+            <a href="#menu" class="btn btn-ghost">Меню на вечер</a>
+        </div>
+    </div>
+    <div class="scroll-hint vert">листайте</div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <div class="marquee-group">
+            <span class="mi">Малые платы<i>/</i></span>
+            <span class="mi">Авторские коктейли<i>/</i></span>
+            <span class="mi">Винная карта<i>/</i></span>
+            <span class="mi">Устрицы по четвергам<i>/</i></span>
+            <span class="mi">Винил по пятницам<i>/</i></span>
+            <span class="mi">Кухня до 01:00<i>/</i></span>
+        </div>
+        <div class="marquee-group">
+            <span class="mi">Малые платы<i>/</i></span>
+            <span class="mi">Авторские коктейли<i>/</i></span>
+            <span class="mi">Винная карта<i>/</i></span>
+            <span class="mi">Устрицы по четвергам<i>/</i></span>
+            <span class="mi">Винил по пятницам<i>/</i></span>
+            <span class="mi">Кухня до 01:00<i>/</i></span>
+        </div>
+    </div>
+</div>
+
+<section id="about">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="num">01</span>
+            <h2>О баре</h2>
+            <span class="sub">After Dark · Ufa</span>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p class="lead">After Dark — место, где ужин плавно переходит в ночь: малые платы на столе, лёд в стакане и пластинка на вертушке.</p>
+                <p>Мы не ресторан для галочки и не клуб для шума. Мы — <b>вечернее бистро</b>: кухня, которая кормит до часа ночи, и бар, который держит свет вполнакала до двух.</p>
+                <p>В меню — <b>малые платы</b>: блюда, которые ставят в центр и делят на всех. В баре — авторские коктейли на локальных настойках и винная карта из небольших хозяйств. Официант подберёт пару к ужину без снобизма.</p>
+                <div class="about-stats">
+                    <div><b>18:00</b><span>открываем двери</span></div>
+                    <div><b>01:00</b><span>кухня до</span></div>
+                    <div><b>02:00</b><span>бар до</span></div>
+                </div>
+            </div>
+            <div class="about-photo ph reveal d1" style="background-image:url('../../assets/demo/bistro/about.webp')"></div>
+        </div>
+    </div>
+</section>
+
+<section id="kitchen">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="num">02</span>
+            <h2>Кухня: малые платы</h2>
+            <span class="sub">Горячее до 01:00</span>
+        </div>
+        <div class="dishes">
+            <div class="dish reveal">
+                <div class="ph" style="background-image:url('../../assets/demo/bistro/dish-ribs.webp')"></div>
+                <div class="dish-body">
+                    <div class="dish-top"><h3>Рёбра быка</h3><span class="price">690 ₽</span></div>
+                    <p>Глазурь из чёрного чеснока, печёный лук, костный соус.</p>
+                </div>
+            </div>
+            <div class="dish reveal d1">
+                <div class="ph" style="background-image:url('../../assets/demo/bistro/dish-steak.webp')"></div>
+                <div class="dish-body">
+                    <div class="dish-top"><h3>Стейк мачете</h3><span class="price">840 ₽</span></div>
+                    <p>Угли, соль с можжевельником, сливочный соус с травами.</p>
+                </div>
+            </div>
+            <div class="dish reveal d2">
+                <div class="ph" style="background-image:url('../../assets/demo/bistro/dish-duck.webp')"></div>
+                <div class="dish-body">
+                    <div class="dish-top"><h3>Утиная грудка</h3><span class="price">760 ₽</span></div>
+                    <p>Вишнёвый соус, карамелизованная груша, зелёный перец.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="menu">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="num">03</span>
+            <h2>Меню на вечер</h2>
+            <span class="sub">Полная карта — 42 позиции</span>
+        </div>
+        <div class="menu-cols">
+            <div class="reveal">
+                <h3>Кухня</h3>
+                <div class="menu-row"><div><span class="name">Тёплый хлеб с копчёным маслом</span><span class="desc">печём сами, подаём с солью с чабрецом</span></div><span class="dots"></span><span class="price">250 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Устрицы с грушевым граните</span><span class="desc">по четвергам, 3 или 6 штук</span></div><span class="dots"></span><span class="price">390 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Тартар из говядины</span><span class="desc">жёлток, каперсы, горчичный крем</span></div><span class="dots"></span><span class="price">540 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Рёбра быка в глазури</span><span class="desc">чёрный чеснок, печёный лук</span></div><span class="dots"></span><span class="price">690 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Стейк мачете</span><span class="desc">угли, соль с можжевельником</span></div><span class="dots"></span><span class="price">840 ₽</span></div>
+            </div>
+            <div class="reveal d1">
+                <h3>Бар</h3>
+                <div class="menu-row"><div><span class="name">After Dark Old Fashioned</span><span class="desc">бурбон, копчёный сироп, биттер</span></div><span class="dots"></span><span class="price">520 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Ночной Негрони</span><span class="desc">джин на сосновых почках, кампари, вермут</span></div><span class="dots"></span><span class="price">490 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Груша и дымок</span><span class="desc">водка, грушевый кордиал, копчёный чай</span></div><span class="dots"></span><span class="price">470 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Вино по бокалам</span><span class="desc">8 позиций недели, спросите сомелье</span></div><span class="dots"></span><span class="price">от 380 ₽</span></div>
+                <div class="menu-row"><div><span class="name">Ноль процентов</span><span class="desc">домашние лимонады и комбуча</span></div><span class="dots"></span><span class="price">290 ₽</span></div>
+            </div>
+        </div>
+        <p class="menu-note reveal">Кухня работает до 01:00, бар — до 02:00. Полную карту принесёт официант или <a href="#book">спросите у хостес</a> на входе.</p>
+    </div>
+</section>
+
+<section id="bar" class="bar">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="num">04</span>
+            <h2>Барная стойка</h2>
+            <span class="sub">Сигнатуры шеф-бармена</span>
+        </div>
+        <div class="drinks">
+            <div class="drink reveal">
+                <div class="ph" style="background-image:url('../../assets/demo/bistro/drink-old-fashioned.webp')"></div>
+                <div class="drink-body">
+                    <div class="drink-top"><div><h3>After Dark Old Fashioned</h3><span class="abv">28% об · бурбон</span></div><span class="price">520 ₽</span></div>
+                    <p>Копчёный кленовый сироп, апельсиновый биттер, большой куб льда.</p>
+                </div>
+            </div>
+            <div class="drink reveal d1">
+                <div class="ph" style="background-image:url('../../assets/demo/bistro/drink-negroni.webp')"></div>
+                <div class="drink-body">
+                    <div class="drink-top"><div><h3>Ночной Негрони</h3><span class="abv">24% об · джин</span></div><span class="price">490 ₽</span></div>
+                    <p>Джин на сосновых почках, кампари, красный вермут. Горький и холодный.</p>
+                </div>
+            </div>
+            <div class="drink reveal d2">
+                <div class="ph" style="background-image:url('../../assets/demo/bistro/drink-wine.webp')"></div>
+                <div class="drink-body">
+                    <div class="drink-top"><div><h3>Вино по бокалам</h3><span class="abv">8 позиций недели</span></div><span class="price">от 380 ₽</span></div>
+                    <p>От лёгких оранжевых до плотных тосканских. Подберём пару к вашему столу.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="night">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="num">05</span>
+            <h2>Как проходит ночь</h2>
+            <span class="sub">Таймлайн вечера</span>
+        </div>
+        <div class="night-grid reveal">
+            <div class="night-cell"><b>18:00</b><h3>Двери</h3><p>Открываемся: свет вполнакала, первые наливы и тёплый хлеб.</p></div>
+            <div class="night-cell"><b>20:00</b><h3>Пик кухни</h3><p>Малые платы выходят одна за другой, стол собирается сам.</p></div>
+            <div class="night-cell"><b>23:00</b><h3>Пластинка</h3><p>Винил-сет: соул и фанк громче разговоров, но не вместо них.</p></div>
+            <div class="night-cell"><b>01:00</b><h3>Кухня спит</h3><p>Последние горячие заказы отданы, бар продолжает работать.</p></div>
+            <div class="night-cell"><b>02:00</b><h3>Last call</h3><p>Финальный бокал, такси домой и обещание вернуться в пятницу.</p></div>
+        </div>
+    </div>
+</section>
+
+<div class="band">
+    <q>Сюда приходят поговорить: музыка тише разговора, а <b>бокал не пустует</b> дольше минуты</q>
+    <span class="who">Из отзыва гостя · Яндекс Карты</span>
+</div>
+
+<section id="events">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="num">06</span>
+            <h2>Афиша недели</h2>
+            <span class="sub">События и сеты</span>
+        </div>
+        <div class="event reveal">
+            <div class="date">12<span>четверг</span></div>
+            <div><h3>Устрицы и шабли</h3><p>Дегустационный сет: 6 устриц, 3 бокала белого, комментарий сомелье.</p></div>
+            <span class="tag">1 900 ₽ / гость</span>
+        </div>
+        <div class="event reveal d1">
+            <div class="date">13<span>пятница</span></div>
+            <div><h3>Винил-сет: соул и фанк</h3><p>Пластинки с 23:00 до полуночи, кухня работает в полном составе.</p></div>
+            <span class="tag">вход свободный</span>
+        </div>
+        <div class="event reveal d2">
+            <div class="date">18<span>среда</span></div>
+            <div><h3>Ужин в четыре руки</h3><p>Шеф After Dark и приглашённый повар из Казани готовят сет из 5 подач.</p></div>
+            <span class="tag">бронь обязательна</span>
+        </div>
+    </div>
+</section>
+
+<section id="book" class="book">
+    <div class="wrap book-grid">
+        <div class="book-text reveal">
+            <div class="micro">Бронирование</div>
+            <h2>Стол на вечер — <b>за минуту</b></h2>
+            <p>Оставьте заявку — хостес перезвонит, подтвердит время и придержит стол 30 минут после брони. Для компаний от 6 человек собираем стол заранее и согласуем сет.</p>
+            <p>Столики у окна и барная стойка — без брони, кому как повезёт.</p>
+            <div class="book-phones">
+                <a href="tel:+73472164242">+7 (347) 216-42-42</a>
+            </div>
+        </div>
+        <form class="form reveal d1" id="bookForm">
+            <div><label>Имя</label><input type="text" name="name" placeholder="Как к вам обращаться" required></div>
+            <div><label>Телефон</label><input type="tel" name="phone" placeholder="+7 ___ ___-__-__" required></div>
+            <div><label>Дата</label><input type="date" name="date" required></div>
+            <div><label>Время</label>
+                <select name="time">
+                    <option>18:00</option><option>19:00</option><option>20:00</option>
+                    <option>21:00</option><option>22:00</option><option>23:00</option>
+                </select>
+            </div>
+            <div class="full"><label>Гостей</label>
+                <select name="guests">
+                    <option>2</option><option>3</option><option>4</option>
+                    <option>5</option><option>6+</option>
+                </select>
+            </div>
+            <div class="full"><button type="submit" class="btn">Отправить заявку</button></div>
+            <div class="form-ok" id="formOk">Заявка принята (демо-режим). Хостес перезвонит в течение 10 минут.</div>
+            <div class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</div>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="wrap">
+        <div class="foot-grid">
+            <div>
+                <div class="foot-logo">AFTER<i>/</i>DARK</div>
+                <p>Вечернее бистро и бар<br>в центре Уфы</p>
+            </div>
+            <div>
+                <h4>Адрес и часы</h4>
+                <p>Уфа, ул. Ленина, 42</p>
+                <p>Пн–Чт 18:00–01:00</p>
+                <p>Пт–Сб 18:00–02:00</p>
+                <p>Вс 18:00–00:00</p>
+            </div>
+            <div>
+                <h4>Связь</h4>
+                <a href="tel:+73472164242">+7 (347) 216-42-42</a>
+                <a href="https://t.me/TitanITCompany" target="_blank">Telegram</a>
+                <a href="https://vk.com/titanitcompany" target="_blank">ВКонтакте</a>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <span>AFTER DARK © 2026 · демо-проект</span>
+            <span>18+ · Чрезмерное употребление алкоголя вредит вашему здоровью</span>
+        </div>
+        <div class="demo-badge">Это демо-сайт, сделанный студией <a href="https://titan-code.ru" target="_blank">Titan Code</a>, чтобы показать уровень. Хотите такой же под ваш бизнес — напишите нам.</div>
+    </div>
+</footer>
+
+<script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10), { passive: true });
+
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.style.overflow = '';
+    }));
+
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .mask').forEach(el => io.observe(el));
+
+    document.getElementById('bookForm').addEventListener('submit', e => {
+        e.preventDefault();
+        document.getElementById('formOk').style.display = 'block';
+        e.target.reset();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="../../assets/favicon2.ico" sizes="any">
+    <link rel="icon" href="../../assets/favicon2.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../assets/favicon2.png">
+    <title>ФОРМА — мебель на заказ в Уфе от производителя</title>
+    <meta name="description" content="Кухни, шкафы и гардеробные по вашим размерам. Собственное производство, 3D-проект до договора, гарантия 24 месяца.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/600.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/600-italic.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.8/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.8/500.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.8/600.css">
+    <style>
+        :root {
+            --bg: #f7f2ea;
+            --card: #fffdf9;
+            --ink: #241c14;
+            --muted: #7d7264;
+            --accent: #a9683a;
+            --accent-dark: #8a5228;
+            --line: rgba(36,28,20,0.12);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body { background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.65; position: relative; }
+        body::after {
+            content: ''; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        em { font-style: italic; }
+        a { color: inherit; text-decoration: none; }
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+        .label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
+        .muted { color: var(--muted); }
+        .orn { text-align: center; color: var(--accent); font-size: 16px; letter-spacing: 0.6em; padding: 8px 0; opacity: 0.7; }
+        .glow { position: absolute; border-radius: 50%; filter: blur(90px); background: rgba(214,164,110,0.22); pointer-events: none; z-index: 0; }
+        .ph { position: relative; background-color: #d9cdbd; background-size: cover; background-position: center; overflow: hidden; }
+        .ph::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: linear-gradient(165deg, rgba(233,196,152,0.22), rgba(94,62,32,0.18));
+        }
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(247,242,234,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+        header.scrolled { border-color: var(--line); }
+        .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+        .logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .15s; }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-phone { font-weight: 600; font-size: 14px; }
+        .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .burger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px 0; transition: .25s; }
+        .mobile-menu { display: none; position: fixed; inset: 0; z-index: 49; background: var(--bg); padding: 100px 32px; transform: translateX(100%); transition: transform .3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu a { display: block; font-family: 'Playfair Display', serif; font-size: 26px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+        .hero { padding: 150px 0 70px; position: relative; overflow: hidden; }
+        .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.5rem); line-height: 1.14; font-weight: 700; margin-bottom: 22px; }
+        .hero h1 em { color: var(--accent); }
+        .hero p { color: var(--muted); max-width: 46ch; margin-bottom: 34px; }
+        .btn { display: inline-block; background: var(--accent); color: #fff; padding: 15px 30px; font-weight: 600; font-size: 15px; border: none; cursor: pointer; border-radius: 3px; transition: background .2s, transform .2s; }
+        .btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
+        .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); margin-left: 12px; }
+        .btn-ghost:hover { background: rgba(36,28,20,0.05); }
+        .hero-photo-wrap { position: relative; }
+        .hero-photo { height: 500px; border-radius: 6px; box-shadow: 0 40px 70px -35px rgba(70,45,20,0.45); }
+        .hero-card {
+            position: absolute; left: -26px; bottom: 34px; z-index: 2;
+            background: var(--card); padding: 14px 20px; border-radius: 4px;
+            box-shadow: 0 18px 36px -16px rgba(70,45,20,0.35);
+            font-size: 13px; max-width: 240px; transform: rotate(-2deg);
+        }
+        .hero-card .stars { color: var(--accent); letter-spacing: 2px; margin-bottom: 4px; }
+        .hero-facts { display: flex; gap: 48px; margin-top: 64px; flex-wrap: wrap; position: relative; z-index: 1; }
+        .fact b { display: block; font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; }
+        .fact span { font-size: 13px; color: var(--muted); }
+        section { padding: 90px 0; position: relative; }
+        .sec-head { margin-bottom: 48px; }
+        .sec-head h2 { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 700; }
+        .sec-head h2 em { color: var(--accent); }
+        .catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .product { background: var(--card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; transition: transform .3s, box-shadow .3s; }
+        .product:hover { transform: translateY(-6px); box-shadow: 0 26px 50px -26px rgba(70,45,20,0.35); }
+        .product-photo { aspect-ratio: 4/3; transition: transform .6s ease; }
+        .product:hover .product-photo { transform: scale(1.05); }
+        .product-photo .num { position: absolute; top: 12px; left: 14px; z-index: 2; font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: #f7f2ea; opacity: 0.85; }
+        .product-photo .chip { position: absolute; left: 14px; bottom: 14px; z-index: 2; background: var(--accent); color: #fff; font-size: 12.5px; font-weight: 600; padding: 5px 10px; border-radius: 2px; }
+        .product-body { padding: 20px 22px 24px; }
+        .product-body h3 { font-size: 20px; margin-bottom: 6px; }
+        .product-body .desc { font-size: 14px; margin-bottom: 8px; }
+        .why { background: #efe7db; }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 56px; }
+        .why-item { display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+        .why-item b { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--accent); flex-shrink: 0; }
+        .why-item h3 { font-size: 17px; margin-bottom: 6px; font-family: 'Manrope', sans-serif; font-weight: 600; }
+        .why-item p { font-size: 14px; color: var(--muted); }
+        .workshop-grid { display: grid; grid-template-columns: 1fr 0.8fr; gap: 64px; align-items: center; }
+        .workshop-text h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 20px; }
+        .workshop-text h2 em { color: var(--accent); }
+        .workshop-text p { color: var(--muted); margin-bottom: 16px; }
+        .workshop-text p b { color: var(--ink); }
+
+        /* ==== ПРАВКА: подпись полароида в потоке, не абсолютно ==== */
+        .polaroid { background: var(--card); padding: 14px 14px 18px; box-shadow: 0 22px 44px -20px rgba(70,45,20,0.4); position: relative; transform: rotate(2deg); transition: transform .3s; display: flex; flex-direction: column; }
+        .polaroid:hover { transform: rotate(0deg) scale(1.02); }
+        .polaroid .ph { aspect-ratio: 4/5; }
+        .polaroid figcaption { margin-top: 14px; min-height: 44px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; line-height: 1.45; color: #5c5248; }
+
+        .steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; counter-reset: step; }
+        .step { border-top: 2px solid var(--line); padding-top: 18px; }
+        .step::before { counter-increment: step; content: "0" counter(step); font-family: 'Playfair Display', serif; font-size: 26px; color: var(--accent); display: block; margin-bottom: 10px; }
+        .step h3 { font-size: 15px; font-family: 'Manrope', sans-serif; font-weight: 600; margin-bottom: 6px; }
+        .step p { font-size: 13px; color: var(--muted); }
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; padding: 10px 0 30px; }
+        .gallery .polaroid:nth-child(1) { transform: rotate(-2.5deg); }
+        .gallery .polaroid:nth-child(2) { transform: rotate(1.5deg) translateY(22px); }
+        .gallery .polaroid:nth-child(3) { transform: rotate(-1deg); }
+        .gallery .polaroid:hover { transform: rotate(0deg) translateY(0) scale(1.03); z-index: 2; }
+        .cta { background: var(--ink); color: #f5efe6; position: relative; overflow: hidden; }
+        .cta .label { color: #d8a878; }
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+        .cta h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 16px; }
+        .cta h2 em { color: #d8a878; }
+        .cta p { color: rgba(245,239,230,0.65); }
+        .form { display: flex; flex-direction: column; gap: 18px; }
+        .form input, .form select { background: transparent; border: none; border-bottom: 1px solid rgba(245,239,230,0.3); padding: 12px 2px; color: #f5efe6; font-family: inherit; font-size: 15px; outline: none; border-radius: 0; }
+        .form select option { color: var(--ink); }
+        .form input::placeholder { color: rgba(245,239,230,0.4); }
+        .form input:focus, .form select:focus { border-color: #d8a878; }
+        .form-note { font-size: 12px; color: rgba(245,239,230,0.45); }
+        .form-ok { display: none; padding: 16px; border: 1px solid #d8a878; color: #d8a878; font-size: 14px; border-radius: 3px; }
+        .contacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .contacts h3 { font-size: 16px; font-family: 'Manrope', sans-serif; font-weight: 600; margin-bottom: 8px; }
+        .contacts p { font-size: 14px; color: var(--muted); }
+        footer { border-top: 1px solid var(--line); padding: 28px 0; }
+        .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+        .demo-badge { margin-top: 14px; padding: 12px 16px; border: 1px dashed var(--line); border-radius: 4px; font-size: 13px; color: var(--muted); }
+        .demo-badge a { color: var(--accent); font-weight: 600; }
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.is-visible { opacity: 1; transform: none; }
+        @media (max-width: 900px) {
+            .nav-links, .nav-phone { display: none; }
+            .burger { display: block; }
+            .mobile-menu { display: block; }
+            .hero { padding-top: 120px; }
+            .hero-grid, .cta-grid, .workshop-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-photo { height: 340px; }
+            .hero-card { left: 12px; bottom: -18px; }
+            .catalog { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; gap: 0; }
+            .steps { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+            .gallery { grid-template-columns: 1fr; gap: 28px; max-width: 420px; margin: 0 auto; }
+            .gallery .polaroid:nth-child(2) { transform: rotate(1.5deg); }
+            .contacts { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            .catalog, .steps { grid-template-columns: 1fr; }
+            .btn-ghost { margin-left: 0; margin-top: 12px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="wrap nav">
+        <a href="#" class="logo">ФОРМА<span>.</span></a>
+        <nav class="nav-links">
+            <a href="#catalog">Каталог</a>
+            <a href="#why">Почему мы</a>
+            <a href="#workshop">Шоурум</a>
+            <a href="#gallery">Портфолио</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <a href="tel:+73472164242" class="nav-phone">+7 (347) 216-42-42</a>
+        <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#catalog">Каталог</a>
+    <a href="#why">Почему мы</a>
+    <a href="#workshop">Шоурум</a>
+    <a href="#gallery">Портфолио</a>
+    <a href="#contacts">Контакты</a>
+    <a href="tel:+73472164242">+7 (347) 216-42-42</a>
+</div>
+
+<section class="hero">
+    <div class="glow" style="width:480px;height:480px;top:-120px;right:-140px;"></div>
+    <div class="wrap">
+        <div class="hero-grid">
+            <div>
+                <div class="label">Собственное производство · Уфа · с 2015 года</div>
+                <h1>Мебель, к которой хочется <em>прикоснуться</em></h1>
+                <p>Кухни, шкафы и гардеробные по вашим размерам из дерева, которое вы сами выбрали. Замер бесплатно, 3D-проект до договора, гарантия 24 месяца.</p>
+                <a href="#form" class="btn">Рассчитать стоимость</a>
+                <a href="#catalog" class="btn btn-ghost">Смотреть каталог</a>
+            </div>
+            <div class="hero-photo-wrap reveal">
+                <div class="hero-photo ph" style="background-image:url('../../assets/demo/furniture/hero.webp')"></div>
+                <div class="hero-card">
+                    <div class="stars">★★★★★</div>
+                    «Сделали кухню как для себя» — Мария, Затон, отзыв на Яндекс Картах
+                </div>
+            </div>
+        </div>
+        <div class="hero-facts reveal">
+            <div class="fact"><b>12 лет</b><span>делаем мебель в Башкирии</span></div>
+            <div class="fact"><b>840+</b><span>проектов сдано под ключ</span></div>
+            <div class="fact"><b>24 мес</b><span>гарантия на изделия и фурнитуру</span></div>
+            <div class="fact"><b>14–30 дней</b><span>срок производства по договору</span></div>
+        </div>
+    </div>
+</section>
+
+<div class="orn">❋</div>
+
+<section id="catalog">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div class="label">Каталог</div>
+            <h2>Что мы делаем <em>для дома</em></h2>
+        </div>
+        <div class="catalog">
+            <!-- 01 Кухня: белая кухня с оранжевыми акцентами — совпадает -->
+            <div class="product reveal">
+                <div class="product-photo ph" style="background-image:url('../../assets/demo/furniture/catalog-kitchen.webp')">
+                    <span class="num">01</span><span class="chip">от 85 000 ₽</span>
+                </div>
+                <div class="product-body"><h3>Кухни</h3><p class="desc muted">Массив, МДФ в эмали, шпон. Столешницы под ваш бюджет и привычки.</p></div>
+            </div>
+            
+            <!-- 02 Гостиные: на фото гостиная с диваном и рогами на стене — переименовал из "Шкафы-купе" -->
+            <div class="product reveal">
+                <div class="product-photo ph" style="background-image:url('../../assets/demo/furniture/catalog-living.webp')">
+                    <span class="num">02</span><span class="chip">от 70 000 ₽</span>
+                </div>
+                <div class="product-body"><h3>Гостиные</h3><p class="desc muted">ТВ-зоны, стеллажи до потолка, мягкие подоконники для кота.</p></div>
+            </div>
+            
+            <!-- 03 Шкафы: на фото деревянный платяной шкаф — переименовал из "Гардеробные" -->
+            <div class="product reveal">
+                <div class="product-photo ph" style="background-image:url('../../assets/demo/furniture/catalog-wardrobe.webp')">
+                    <span class="num">03</span><span class="chip">от 45 000 ₽</span>
+                </div>
+                <div class="product-body"><h3>Шкафы</h3><p class="desc muted">Встроенные и корпусные — под нишу, под угол, под всю стену.</p></div>
+            </div>
+            
+            <!-- 04 Детские: светлая комната со столиком и растениями — совпадает -->
+            <div class="product reveal">
+                <div class="product-photo ph" style="background-image:url('../../assets/demo/furniture/catalog-kids.webp')">
+                    <span class="num">04</span><span class="chip">от 55 000 ₽</span>
+                </div>
+                <div class="product-body"><h3>Детские</h3><p class="desc muted">Безопасные покрытия, кровати-чердаки, рабочие зоны у окна.</p></div>
+            </div>
+            
+            <!-- 05 Мягкая мебель: на фото гостиная с жёлтым креслом и торшером — переименовал из "Гостиные" -->
+            <div class="product reveal">
+                <div class="product-photo ph" style="background-image:url('../../assets/demo/furniture/catalog-soft.webp')">
+                    <span class="num">05</span><span class="chip">от 35 000 ₽</span>
+                </div>
+                <div class="product-body"><h3>Мягкая мебель</h3><p class="desc muted">Кресла, диваны и пуфы под ваш интерьер. Каркас из массива, наполнение на выбор.</p></div>
+            </div>
+            
+            <!-- 06 Офисная мебель: длинный офисный коридор — совпадает -->
+            <div class="product reveal">
+                <div class="product-photo ph" style="background-image:url('../../assets/demo/furniture/catalog-office.webp')">
+                    <span class="num">06</span><span class="chip">от 40 000 ₽</span>
+                </div>
+                <div class="product-body"><h3>Офисная мебель</h3><p class="desc muted">Стойки ресепшн, столы и переговорные под характер компании.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="why" class="why">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div class="label">Почему мы</div>
+            <h2>Четыре причины заказать <em>у производителя</em></h2>
+        </div>
+        <div class="why-grid">
+            <div class="why-item reveal"><b>01</b><div><h3>Без посредников</h3><p>Свой цех в Уфе: не переплачиваете 30–40% салону-посреднику и точно знаете, кто отвечает за результат.</p></div></div>
+            <div class="why-item reveal"><b>02</b><div><h3>3D-проект до договора</h3><p>Вы видите свою кухню до того, как распилят первую плиту. Правки до производства — бесплатно.</p></div></div>
+            <div class="why-item reveal"><b>03</b><div><h3>Фурнитура Blum и Hettich</h3><p>Ящики и петли, которые переживут переезд и десять лет хлопков. Эконом-альтернативы — по желанию.</p></div></div>
+            <div class="why-item reveal"><b>04</b><div><h3>Монтаж и уборка</h3><p>Привозим, собираем, вывозим мусор. Вы принимаете работу, а не стружку по всей квартире.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="workshop">
+    <div class="glow" style="width:420px;height:420px;bottom:-160px;left:-160px;"></div>
+    <div class="wrap workshop-grid">
+        <div class="workshop-text reveal">
+            <div class="label">Наш шоурум</div>
+            <h2>Приезжайте <em>потрогать</em> материалы</h2>
+            <p>Мы не салон в торговом центре с образцами под стеклом. У нас шоурум на Менделеева: образцы фасадов, каталоги фурнитуры, кофе и мастер, который расскажет про каждый проект в лицо.</p>
+            <p><b>Запишитесь на визит</b> — покажем образцы ЛДСП, шпона и эмали, дадим потрогать кромку и фурнитуру. После шоурума вопросы «а почему так дорого» обычно отпадают сами.</p>
+        </div>
+        <!-- На фото часы на стене и растение — это интерьер, не цех. Переименовал в "Шоурум" и изменил подпись -->
+        <figure class="polaroid reveal">
+            <div class="ph" style="background-image:url('../../assets/demo/furniture/showroom.webp')"></div>
+            <figcaption>Деталь интерьера нашего шоурума на Менделеева</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section id="steps">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div class="label">Процесс</div>
+            <h2>Как это работает</h2>
+        </div>
+        <div class="steps reveal">
+            <div class="step"><h3>Заявка</h3><p>Звонок или форма на сайте, 5 минут.</p></div>
+            <div class="step"><h3>Замер</h3><p>Приезжаем в удобное время, бесплатно.</p></div>
+            <div class="step"><h3>3D и смета</h3><p>Проект и точная цена за 2–3 дня.</p></div>
+            <div class="step"><h3>Договор</h3><p>Фиксируем цену, сроки, материалы.</p></div>
+            <div class="step"><h3>Производство</h3><p>14–30 дней, присылаем фото этапов.</p></div>
+            <div class="step"><h3>Монтаж</h3><p>Сборка за день, уборка, гарантия.</p></div>
+        </div>
+    </div>
+</section>
+
+<div class="orn">❋</div>
+
+<section id="gallery">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div class="label">Портфолио</div>
+            <h2>Недавние работы — <em>как есть</em></h2>
+        </div>
+        <div class="gallery">
+            <!-- На фото дом снаружи с деревом — переименовал из "Кухня-гостиная" -->
+            <figure class="polaroid reveal">
+                <div class="ph" style="background-image:url('../../assets/demo/furniture/gallery-house.webp')"></div>
+                <figcaption>Загородный дом с панорамным остеклением, пос. Зубово</figcaption>
+            </figure>
+            <!-- На фото гостиная с диваном и деревянным столиком — переименовал из "Гардеробная" -->
+            <figure class="polaroid reveal">
+                <div class="ph" style="background-image:url('../../assets/demo/furniture/gallery-living.webp')"></div>
+                <figcaption>Гостиная в тёплых тонах, ЖК «Менделеев»</figcaption>
+            </figure>
+            <!-- На фото чёрное кресло, комод, растение — "Уголок для чтения" подходит -->
+            <figure class="polaroid reveal">
+                <div class="ph" style="background-image:url('../../assets/demo/furniture/gallery-reading.webp')"></div>
+                <figcaption>Уголок для чтения, Сипайлово</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section class="cta" id="form">
+    <div class="glow" style="width:420px;height:420px;top:-140px;right:-140px;background:rgba(216,168,120,0.14);"></div>
+    <div class="wrap cta-grid">
+        <div class="reveal">
+            <div class="label">Заявка</div>
+            <h2>Рассчитаем стоимость <em>за 15 минут</em></h2>
+            <p>Оставьте телефон — перезвоним в рабочее время, зададим 5–6 вопросов и назовём вилку цены. Без выезда и обязательств.</p>
+        </div>
+        <form class="form reveal" id="leadForm">
+            <input type="text" name="name" placeholder="Как вас зовут" required>
+            <input type="tel" name="phone" placeholder="Телефон" required>
+            <select name="type">
+                <option>Кухня</option>
+                <option>Шкаф</option>
+                <option>Гостиная</option>
+                <option>Детская</option>
+                <option>Мягкая мебель</option>
+                <option>Офисная мебель</option>
+                <option>Другое</option>
+            </select>
+            <button type="submit" class="btn">Отправить заявку</button>
+            <div class="form-ok" id="formOk">Заявка принята (демо-режим). Перезвоним в течение 15 минут в рабочее время.</div>
+            <div class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</div>
+        </form>
+    </div>
+</section>
+
+<section id="contacts">
+    <div class="wrap contacts">
+        <div class="reveal"><h3>Шоурум</h3><p>Уфа, ул. Менделеева, 137<br>ежедневно 10:00–20:00, кофе сварим</p></div>
+        <div class="reveal"><h3>Производство</h3><p>Уфа, ул. Индустриальная, 42<br>экскурсия по записи</p></div>
+        <div class="reveal"><h3>Связь</h3><p>+7 (347) 216-42-42<br>hello@forma-mebel.ru</p></div>
+    </div>
+</section>
+
+<footer>
+    <div class="wrap">
+        <div class="foot">
+            <span>ФОРМА © 2026 · мебель на заказ в Уфе</span>
+            <span>Цены на сайте — ориентир, точная смета после замера</span>
+        </div>
+        <div class="demo-badge">Это демо-сайт, сделанный студией <a href="https://titan-code.ru" target="_blank">Titan Code</a>, чтобы показать уровень. Хотите такой же под ваш бизнес — напишите нам.</div>
+    </div>
+</footer>
+
+<script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10), { passive: true });
+
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.style.overflow = '';
+    }));
+
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.getElementById('leadForm').addEventListener('submit', e => {
+        e.preventDefault();
+        document.getElementById('formOk').style.display = 'block';
+        e.target.reset();
+    });
+</script>
+</body>
+</html>
