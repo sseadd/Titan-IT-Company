@@ -114,8 +114,7 @@
         /* кухня */
         .dishes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .dish { border: 1px solid var(--line); background: var(--bg2); }
-        .dish .ph { aspect-ratio: 4/5; transition: transform .6s ease; }
-        .dish:hover .ph { transform: scale(1.04); }
+        .dish .ph { aspect-ratio: 4/5; }
         .dish-body { padding: 22px 22px 26px; border-top: 2px solid var(--wine); }
         .dish-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
         .dish h3 { font-size: 20px; font-weight: 500; }
@@ -138,14 +137,22 @@
         .bar { background: var(--bg2); }
         .drinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         .drink { border: 1px solid var(--line); background: var(--bg); }
-        .drink .ph { aspect-ratio: 3/4; transition: transform .6s ease; }
-        .drink:hover .ph { transform: scale(1.04); }
+        .drink .ph { aspect-ratio: 3/4; }
         .drink-body { padding: 22px 22px 26px; border-top: 2px solid var(--wine); }
         .drink-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
         .drink h3 { font-size: 19px; font-weight: 500; }
         .drink .abv { display: block; font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 0.24em; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
         .drink .price { font-family: 'Oswald', sans-serif; font-size: 18px; color: var(--wine-bright); }
         .drink p { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+        /* HOVER КАРТОЧЕК: реагирует весь блок целиком.
+           Селектор с родителем (.dishes .dish:hover) сильнее, чем .reveal.is-visible,
+           который иначе своим transform:none глушил бы движение.
+           В transition явно включён opacity — чтобы не сломать fade-появление карточек. */
+        .dishes .dish, .drinks .drink { transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease; }
+        .dishes .dish:hover, .drinks .drink:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(179,48,62,0.5); box-shadow: 0 26px 50px -22px rgba(0,0,0,0.65); }
+        .dishes .dish.d1, .drinks .drink.d1 { transition-delay: .1s, .1s, 0s, 0s; }
+        .dishes .dish.d2, .drinks .drink.d2 { transition-delay: .2s, .2s, 0s, 0s; }
 
         /* таймлайн ночи */
         .night-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--line); }
