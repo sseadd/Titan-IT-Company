@@ -8,12 +8,15 @@
 
 Структура: `assets/demo/<демо>/<файл>.webp`. В таблицах ниже указано, где используется каждое изображение и откуда оно взято.
 
+Фавиконки демо (`favicon.png` в каждой папке) нарисованы специально для проекта, источника у них нет.
+
 | Демо | Папка |
 |---|---|
 | AFTER DARK (вечернее бистро и бар) | `assets/demo/bistro/` |
 | ФОРМА (мебель на заказ) | `assets/demo/furniture/` |
 | ПРОСТОР (управляющая компания) | `assets/demo/uk/` |
 | BETON WAVE (строительство скейт-парков) | `assets/demo/skate/` |
+| ТАУ-ТРЕК (туры по Башкирии) | `assets/demo/tours/` |
 
 ### AFTER DARK — вечернее бистро и бар
 
@@ -93,6 +96,26 @@
 | `life-video-shoot.webp` | Жизнь парков: съёмка видео | https://avatars.mds.yandex.net/get-altay/9691438/2a0000018cd51559ba88ec954b6cd281639f/orig | Источник уточняется |
 | `life-opening.webp` | Жизнь парков: открытие парка | https://165rus.ru/images/2026/06/2026_06_17_34366.jpg | © правообладатель сайта-источника |
 | `life-wooden-park.webp` | Жизнь парков: деревянный парк | https://fk-ramps.ru/wp-content/uploads/2017/03/derevyannyj-skejt-park-v-rybinske-10.jpg | © правообладатель сайта-источника |
+
+### ТАУ-ТРЕК — туры по Башкирии
+
+Папка: `assets/demo/tours/`
+
+| Файл | Где используется | Источник | Права |
+|---|---|---|---|
+| `hero-bg.webp` | Первый экран: фон | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/19bb31eff-35b7-44fd-bdc4-f67a52048ae01236.png | Источник уточняется |
+| `cta-bg.webp` | Блок заявки: фон | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/49bb31eff-35b7-44fd-bdc4-f67a52048ae03687.png | Источник уточняется |
+| `dir-horse.webp` | Направления: верхом | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/39bb31eff-35b7-44fd-bdc4-f67a52048ae04473.png | Источник уточняется |
+| `dir-rafting.webp` | Направления: сплавы | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/59bb31eff-35b7-44fd-bdc4-f67a52048ae02700.png | Источник уточняется |
+| `dir-ethno.webp` | Направления: этно-туры | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/29bb31eff-35b7-44fd-bdc4-f67a52048ae06300.png | Источник уточняется |
+| `dir-hiking.webp` | Направления: походы | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/59bb31eff-35b7-44fd-bdc4-f67a52048ae08987.png | Источник уточняется |
+| `dir-school.webp` | Направления и блок «Школам»: школьные туры | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/09bb31eff-35b7-44fd-bdc4-f67a52048ae03410.png | Источник уточняется |
+| `dir-corp.webp` | Направления и блок «Школам и командам»: корпоративы | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/49bb31eff-35b7-44fd-bdc4-f67a52048ae06696.png | Источник уточняется |
+| `tour-horse.webp` | Ближайшие выезды: конный тур | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/29bb31eff-35b7-44fd-bdc4-f67a52048ae08910.png | Источник уточняется |
+| `tour-rafting.webp` | Ближайшие выезды: сплав | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/19bb31eff-35b7-44fd-bdc4-f67a52048ae06581.png | Источник уточняется |
+| `tour-hiking.webp` | Ближайшие выезды: поход | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/79bb31eff-35b7-44fd-bdc4-f67a52048ae01338.png | Источник уточняется |
+| `tour-ethno.webp` | Ближайшие выезды: этно-тур | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/09bb31eff-35b7-44fd-bdc4-f67a52048ae02947.png | Источник уточняется |
+| `about-camp.webp` | Блок «О нас»: костёр в лагере | https://image.qwenlm.ai/public_source/02d608cd-51c3-43e1-8276-8d0ac09a75e1/39bb31eff-35b7-44fd-bdc4-f67a52048ae06446.png | Источник уточняется |
 
 ---
 

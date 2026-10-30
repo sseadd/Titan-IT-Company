@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/demo/tours/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/demo/tours/favicon.png">
+<title>ТАУ-ТРЕК — туры выходного дня по Башкирии | Горы, реки и кони</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #0b7ea8;
+    --sky-deep: #0a5c7d;
+    --night: #0c2430;
+    --night-2: #10303f;
+    --green: #1f8a4c;
+    --green-soft: #eaf4ec;
+    --gold: #e0a526;
+    --cream: #f6f3ec;
+    --paper: #fdfbf6;
+    --ink: #14262e;
+    --mut: #5d7078;
+    --line: #dbe3e0;
+    --disp: 'Unbounded', sans-serif;
+    --body: 'Manrope', sans-serif;
+    --orn-gold: url("data:image/svg+xml,%3Csvg width='88' height='24' viewBox='0 0 88 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23e0a526' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M44 4c0 8-6 10-12 10-8 0-12-6-8-10 3-3 8-1 7 3-1 3-5 3-6 1'/%3E%3Cpath d='M44 4c0 8 6 10 12 10 8 0 12-6 8-10-3-3-8-1-7 3 1 3 5 3 6 1'/%3E%3Cpath d='M44 4v16'/%3E%3Cpath d='M0 12h14M74 12h14'/%3E%3C/g%3E%3C/svg%3E");
+    --orn-green: url("data:image/svg+xml,%3Csvg width='88' height='24' viewBox='0 0 88 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231f8a4c' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M44 4c0 8-6 10-12 10-8 0-12-6-8-10 3-3 8-1 7 3-1 3-5 3-6 1'/%3E%3Cpath d='M44 4c0 8 6 10 12 10 8 0 12-6 8-10-3-3-8-1-7 3 1 3 5 3 6 1'/%3E%3Cpath d='M44 4v16'/%3E%3Cpath d='M0 12h14M74 12h14'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--gold); color: var(--night); }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+
+  .label { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; font-weight: 700; color: var(--sky); }
+  .label.g { color: var(--gold); }
+  h1, h2, h3 { font-family: var(--disp); font-weight: 800; letter-spacing: -.5px; }
+  h2.sec { font-size: clamp(28px, 3.8vw, 48px); line-height: 1.1; margin-top: 12px; }
+  h2.sec em { font-style: normal; color: var(--green); }
+  .dark h2.sec em { color: var(--gold); }
+
+  .btn {
+    display: inline-block; padding: 16px 30px; border-radius: 999px;
+    background: var(--gold); color: var(--night); border: none;
+    font-family: var(--body); font-size: 13px; font-weight: 800;
+    letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+    transition: transform .25s, box-shadow .25s, background .25s;
+    box-shadow: 0 10px 24px -10px rgba(224,165,38,.6);
+  }
+  .btn:hover { transform: translateY(-3px); background: #f0b53a; }
+  .btn.ghost { background: transparent; color: var(--cream); border: 2px solid rgba(246,243,236,.6); box-shadow: none; }
+  .btn.ghost:hover { border-color: var(--gold); color: var(--gold); background: transparent; }
+  .btn.green { background: var(--green); color: #fff; box-shadow: 0 10px 24px -10px rgba(31,138,76,.55); }
+  .btn.green:hover { background: #26a35b; }
+
+  .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.3,1); transition-delay: var(--dl,0s); }
+  .rv.in { opacity: 1; transform: none; }
+
+  .orn-strip { height: 24px; background-repeat: repeat-x; background-position: center; background-size: 88px 24px; }
+  .orn-strip.gold { background-image: var(--orn-gold); }
+  .orn-strip.green { background-image: var(--orn-green); }
+
+  /* ===== ВЕРХ ===== */
+  .topline { background: var(--night); color: #9fc0cc; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+  .topline .wrap { display: flex; justify-content: space-between; gap: 16px; padding: 8px 40px; flex-wrap: wrap; }
+  .topline b { color: var(--cream); }
+
+  header { position: sticky; top: 0; z-index: 60; background: rgba(246,243,236,.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .head-in { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; max-width: 1240px; margin: 0 auto; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo svg { width: 38px; height: 38px; color: var(--green); }
+  .logo b { font-family: var(--disp); font-size: 19px; font-weight: 800; line-height: 1; letter-spacing: -.3px; }
+  .logo span { display: block; font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--mut); margin-top: 4px; font-weight: 600; }
+  nav ul { display: flex; gap: 26px; list-style: none; }
+  nav a { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mut); padding: 6px 0; position: relative; transition: color .25s; }
+  nav a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 2px; background: var(--gold); transition: right .3s; }
+  nav a:hover { color: var(--ink); }
+  nav a:hover::after { right: 0; }
+  .head-cta { padding: 11px 22px; font-size: 12px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative; color: var(--cream); min-height: 92vh;
+    display: flex; align-items: center;
+    background:
+      linear-gradient(100deg, rgba(12,36,48,.92) 20%, rgba(12,36,48,.45) 60%, rgba(12,36,48,.25)),
+      url('../../assets/demo/tours/hero-bg.webp') center/cover;
+  }
+  .hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 24px; background-image: var(--orn-gold); background-repeat: repeat-x; background-size: 88px 24px; opacity: .8; }
+  .hero-in { padding: 90px 0 110px; position: relative; z-index: 2; }
+  .hero .label { color: var(--gold); }
+  .hero h1 { font-size: clamp(38px, 6vw, 84px); line-height: 1.04; margin: 18px 0 22px; max-width: 820px; }
+  .hero h1 .accent { color: var(--gold); }
+  .hero p { max-width: 520px; color: #cfe0e6; font-size: 17px; margin-bottom: 34px; }
+  .hero p b { color: var(--cream); }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-stats { display: flex; gap: 46px; margin-top: 56px; flex-wrap: wrap; }
+  .hero-stats b { display: block; font-family: var(--disp); font-size: 30px; color: var(--gold); line-height: 1; }
+  .hero-stats span { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #9fc0cc; }
+  .sticker {
+    position: absolute; right: 6%; top: 16%;
+    background: var(--gold); color: var(--night);
+    font-family: var(--disp); font-size: 13px; font-weight: 600;
+    padding: 14px 20px; transform: rotate(6deg);
+    box-shadow: 0 14px 30px -12px rgba(0,0,0,.5);
+    z-index: 3;
+  }
+  .sticker small { display: block; font-family: var(--body); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; margin-top: 4px; font-weight: 700; }
+
+  /* ===== TICKER ===== */
+  .ticker { background: var(--green); color: #eaf4ec; overflow: hidden; padding: 14px 0; }
+  .ticker-track { display: flex; white-space: nowrap; animation: tick 38s linear infinite; font-family: var(--disp); font-size: 15px; font-weight: 600; letter-spacing: .06em; }
+  .ticker-track span { padding: 0 22px; }
+  .ticker-track span::after { content: ''; margin-left: 44px; color: var(--gold); }
+  @keyframes tick { to { transform: translateX(-50%); } }
+
+  section { padding: 96px 0; }
+  .dark { background: var(--night); color: var(--cream); }
+  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
+  .sec-head p { color: var(--mut); max-width: 400px; font-size: 14px; }
+  .dark .sec-head p { color: #9fc0cc; }
+
+  /* ===== НАПРАВЛЕНИЯ ===== */
+  .dirs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .dir {
+    position: relative; overflow: hidden; aspect-ratio: 4/4.6;
+    display: flex; align-items: flex-end; color: var(--cream);
+  }
+  .dir img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s cubic-bezier(.2,.7,.3,1); }
+  .dir::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(12,36,48,.9)); }
+  .dir:hover img { transform: scale(1.07); }
+  .dir-in { position: relative; z-index: 2; padding: 24px; width: 100%; }
+  .dir-in h3 { font-size: 21px; margin-bottom: 6px; }
+  .dir-in p { font-size: 13px; color: #cfe0e6; }
+  .dir-no {
+    position: absolute; top: 16px; left: 16px; z-index: 2;
+    background: var(--gold); color: var(--night);
+    font-family: var(--disp); font-size: 12px; font-weight: 800;
+    width: 34px; height: 34px; display: grid; place-items: center;
+    clip-path: polygon(50% 0, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  }
+
+  /* ===== ТУРЫ ===== */
+  .tours { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+  .tour {
+    background: var(--night-2); border: 1px solid rgba(246,243,236,.12);
+    display: grid; grid-template-columns: 44% 1fr; overflow: hidden;
+    transition: transform .3s, border-color .3s;
+  }
+  .tour:hover { transform: translateY(-5px); border-color: var(--gold); }
+  .tour-img { position: relative; min-height: 260px; }
+  .tour-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tour-tag { position: absolute; top: 12px; left: 12px; background: var(--gold); color: var(--night); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; padding: 5px 10px; }
+  .tour-in { padding: 24px; display: flex; flex-direction: column; }
+  .tour-in h3 { font-size: 19px; line-height: 1.25; margin-bottom: 10px; }
+  .tour-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #9fc0cc; margin-bottom: 12px; }
+  .tour-meta b { color: var(--gold); font-weight: 700; }
+  .tour-in p { font-size: 13px; color: #b9cdd4; margin-bottom: 18px; }
+  .tour-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(246,243,236,.2); padding-top: 14px; }
+  .tour-foot .price { font-family: var(--disp); font-size: 19px; color: var(--gold); }
+  .tour-foot .price small { display: block; font-family: var(--body); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #9fc0cc; }
+  .tour-foot button { background: none; border: 2px solid var(--gold); color: var(--gold); border-radius: 999px; padding: 9px 18px; font-family: var(--body); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: all .25s; }
+  .tour-foot button:hover { background: var(--gold); color: var(--night); }
+
+  /* ===== ШАГИ ===== */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; counter-reset: s; }
+  .step { background: var(--paper); border: 1px solid var(--line); padding: 28px 24px; position: relative; transition: transform .3s, box-shadow .3s; }
+  .step:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -22px rgba(20,38,46,.3); }
+  .step .n { font-family: var(--disp); font-size: 40px; font-weight: 800; color: var(--green-soft); -webkit-text-stroke: 1.5px var(--green); line-height: 1; margin-bottom: 16px; }
+  .step h3 { font-size: 17px; margin-bottom: 8px; }
+  .step p { font-size: 13px; color: var(--mut); }
+
+  /* ===== ШКОЛЫ / КОРПОРАТЫ ===== */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .duo-card { position: relative; overflow: hidden; color: var(--cream); padding: 40px; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .duo-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s cubic-bezier(.2,.7,.3,1); }
+  .duo-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,36,48,.15) 30%, rgba(12,36,48,.92)); }
+  .duo-card:hover img { transform: scale(1.06); }
+  .duo-in { position: relative; z-index: 2; }
+  .duo-in h3 { font-size: 26px; margin-bottom: 12px; }
+  .duo-in ul { list-style: none; margin: 14px 0 22px; }
+  .duo-in li { padding: 7px 0 7px 28px; position: relative; font-size: 14px; color: #cfe0e6; }
+  .duo-in li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 12px; }
+
+  /* ===== О НАС ===== */
+  .about-in { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .about-in p { color: var(--mut); margin: 18px 0; max-width: 480px; }
+  .about-in p b { color: var(--ink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .chips span { font-size: 12px; font-weight: 700; padding: 7px 14px; border: 1.5px solid var(--green); color: var(--green); border-radius: 999px; transition: all .25s; cursor: default; }
+  .chips span:hover { background: var(--green); color: #fff; }
+  .about-photo { position: relative; }
+  .about-photo img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .about-photo::before { content: ''; position: absolute; top: -14px; left: -14px; right: 14px; bottom: 14px; border: 2px solid var(--gold); z-index: 0; }
+  .about-photo img { position: relative; z-index: 1; }
+
+  /* ===== CTA ===== */
+  .cta {
+    position: relative; color: var(--cream); padding: 100px 0;
+    background: linear-gradient(rgba(12,36,48,.86), rgba(12,36,48,.9)), url('../../assets/demo/tours/cta-bg.webp') center/cover;
+  }
+  .cta-in { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .cta h2 { font-size: clamp(28px, 3.6vw, 46px); line-height: 1.12; }
+  .cta h2 em { font-style: normal; color: var(--gold); }
+  .cta p { color: #cfe0e6; margin: 18px 0 26px; max-width: 440px; }
+  .cta-phone { font-family: var(--disp); font-size: clamp(20px, 2.4vw, 30px); color: var(--gold); font-weight: 600; }
+  .form { background: var(--paper); color: var(--ink); padding: 34px; border-top: 6px solid var(--gold); }
+  .form h3 { font-size: 20px; margin-bottom: 20px; }
+  .form-row { margin-bottom: 16px; }
+  .form-row label { display: block; font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--mut); margin-bottom: 6px; }
+  .form-row input, .form-row select {
+    width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 6px;
+    background: #fff; font-family: var(--body); font-size: 14px; color: var(--ink); outline: none; transition: border-color .2s;
+  }
+  .form-row input:focus, .form-row select:focus { border-color: var(--green); }
+  .form .btn { width: 100%; }
+
+  /* ===== ФУТЕР ===== */
+  footer { background: var(--night); color: #9fc0cc; padding: 64px 0 30px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 44px; padding-bottom: 44px; border-bottom: 1px solid rgba(246,243,236,.14); }
+  .foot-logo { display: flex; align-items: center; gap: 12px; color: var(--cream); }
+  .foot-logo svg { width: 36px; height: 36px; color: var(--gold); }
+  .foot-logo b { font-family: var(--disp); font-size: 20px; }
+  .foot-grid p { font-size: 13px; margin-top: 14px; max-width: 260px; }
+  .foot-grid h5 { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .foot-grid ul { list-style: none; }
+  .foot-grid li { margin-bottom: 8px; font-size: 13px; }
+  .foot-grid a:hover { color: var(--gold); }
+  .foot-bottom { display: flex; justify-content: space-between; padding-top: 22px; font-size: 12px; color: #6d8892; flex-wrap: wrap; gap: 10px; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 30px; transform: translate(-50%, 20px);
+    background: var(--green); color: #fff; padding: 14px 28px; border-radius: 999px;
+    font-size: 13px; font-weight: 700; letter-spacing: .04em;
+    opacity: 0; pointer-events: none; transition: all .45s ease; z-index: 99;
+    box-shadow: 0 16px 40px -12px rgba(0,0,0,.4);
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 1000px) {
+    .wrap, .head-in, .topline .wrap { padding-left: 22px; padding-right: 22px; }
+    nav ul { display: none; }
+    .dirs { grid-template-columns: repeat(2, 1fr); }
+    .tours, .duo, .cta-in, .about-in { grid-template-columns: 1fr; }
+    .tour { grid-template-columns: 1fr; }
+    .tour-img { min-height: 220px; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 66px 0; }
+    .sticker { display: none; }
+    /* Быстрее конвейер на узких экранах */
+    .ticker-track { animation-duration: 20s; }
+  }
+  @media (max-width: 560px) {
+    .dirs, .steps, .foot-grid { grid-template-columns: 1fr; }
+    /* Статистика в 2 строки на мобильных */
+    .hero-stats {
+      gap: 24px;
+    }
+    .hero-stats > div {
+      flex: 0 0 calc(50% - 12px);
+    }
+    .hero-stats b {
+      font-size: 24px;
+    }
+    .hero-stats span {
+      font-size: 10px;
+    }
+  }
+  .demo-badge { margin-top: 20px; padding: 14px 18px; border: 1px dashed rgba(246,243,236,.25); border-radius: 6px; font-size: 13px; color: #9fb4bc; }
+  .demo-badge a { color: var(--gold); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="peak" viewBox="0 0 48 48">
+    <g fill="currentColor">
+      <path d="M2 40 18 13l7 11 5-7 16 23Z"/>
+      <circle cx="36" cy="10" r="4"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="topline">
+  <div class="wrap">
+    <div>Уфа · выезды <b>каждые выходные</b> · демо-версия</div>
+    <div>бронь: <b>+7 900 000-00-00</b></div>
+  </div>
+</div>
+
+<header>
+  <div class="head-in">
+    <a href="" class="logo">
+      <svg><use href="#peak"/></svg>
+      <span><b>ТАУ-ТРЕК</b><span>туры выходного дня</span></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#dirs">Направления</a></li>
+        <li><a href="#tours">Туры</a></li>
+        <li><a href="#school">Школам</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <a href="#cta" class="btn head-cta">Забронировать</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="sticker rv" style="--dl:.5s">сезон 2026<small>набор открыт</small></div>
+  <div class="wrap hero-in">
+    <div class="label g rv">Мы — ТАУ-ТРЕК</div>
+    <h1 class="rv" style="--dl:.08s">Горы, реки<br>и <span class="accent">кони</span></h1>
+    <p class="rv" style="--dl:.16s">
+      Собираем маршруты по Башкирии на один–три дня: верхом по тропам, на катамаранах
+      по порогам, в юрту за кумысом и на хребты за закатом. Дорога, снаряжение и ночлег — на нас,
+      а вы возвращаетесь <b>с яркими фотографиями</b>.
+    </p>
+    <div class="hero-actions rv" style="--dl:.24s">
+      <a href="#tours" class="btn">Выбрать тур</a>
+      <a href="#dirs" class="btn ghost">Куда поедем</a>
+    </div>
+    <div class="hero-stats rv" style="--dl:.32s">
+      <div><b>12</b><span>маршрутов в каталоге</span></div>
+      <div><b>6</b><span>районов республики</span></div>
+      <div><b>30+</b><span>выездов за сезон</span></div>
+      <div><b>100%</b><span>групп со страховкой</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Река Белая</span><span>Нугуш</span><span>Шульган-Таш</span><span>Янган-Тау</span><span>Зюраткуль</span><span>Торатау</span><span>Иремель</span><span>Зилим</span>
+    <span>Река Белая</span><span>Нугуш</span><span>Шульган-Таш</span><span>Янган-Тау</span><span>Зюраткуль</span><span>Торатау</span><span>Иремель</span><span>Зилим</span>
+  </div>
+</div>
+
+<!-- НАПРАВЛЕНИЯ -->
+<section id="dirs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label rv">01 · направления</div>
+        <h2 class="sec rv" style="--dl:.08s">Шесть способов<br>провести <em>выходные</em></h2>
+      </div>
+      <p class="rv" style="--dl:.16s">Мы собрали шесть форматов — от спокойной юрты до порогов. В каждом есть маршрут, который подойдёт и новичку.</p>
+    </div>
+
+    <div class="dirs">
+      <div class="dir rv">
+        <span class="dir-no">01</span>
+        <img src="../../assets/demo/tours/dir-horse.webp" alt="Конный тур по хребту" loading="lazy">
+        <div class="dir-in"><h3>Верхом</h3><p>Лесные тропы, привалы у реки и ночёвка в горном лагере</p></div>
+      </div>
+      <div class="dir rv" style="--dl:.08s">
+        <span class="dir-no">02</span>
+        <img src="../../assets/demo/tours/dir-rafting.webp" alt="Сплав на катамаранах" loading="lazy">
+        <div class="dir-in"><h3>Сплавы</h3><p>Катамараны и каяки: пороги, скалы и баня на берегу</p></div>
+      </div>
+      <div class="dir rv" style="--dl:.16s">
+        <span class="dir-no">03</span>
+        <img src="../../assets/demo/tours/dir-ethno.webp" alt="Башкирская юрта" loading="lazy">
+        <div class="dir-in"><h3>Этно-туры</h3><p>Юрта, звуки курая, кумыс и стрельба из лука</p></div>
+      </div>
+      <div class="dir rv" style="--dl:.24s">
+        <span class="dir-no">04</span>
+        <img src="../../assets/demo/tours/dir-hiking.webp" alt="Поход по хребту" loading="lazy">
+        <div class="dir-in"><h3>Походы</h3><p>Хребты, перевалы и ночёвки под звёздным небом</p></div>
+      </div>
+      <div class="dir rv" style="--dl:.32s">
+        <span class="dir-no">05</span>
+        <img src="../../assets/demo/tours/dir-school.webp" alt="Школьная группа у костра" loading="lazy">
+        <div class="dir-in"><h3>Школьные туры</h3><p>Программы по возрастам: безопасно, интересно, с краеведением</p></div>
+      </div>
+      <div class="dir rv" style="--dl:.4s">
+        <span class="dir-no">06</span>
+        <img src="../../assets/demo/tours/dir-corp.webp" alt="Корпоративный выезд на сапах" loading="lazy">
+        <div class="dir-in"><h3>Корпоративы</h3><p>Тимбилдинг на воде и в горах, программа под вашу команду</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ТУРЫ -->
+<section class="dark" id="tours">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label g rv">02 · расписание</div>
+        <h2 class="sec rv" style="--dl:.08s">Ближайшие <em>выезды</em></h2>
+      </div>
+      <p class="rv" style="--dl:.16s">Цены и даты в демо условные: на рабочем сайте расписание обновляется из админ-панели.</p>
+    </div>
+
+    <div class="tours">
+      <div class="tour rv">
+        <div class="tour-img">
+          <span class="tour-tag">Выбор гостей</span>
+          <img src="../../assets/demo/tours/tour-horse.webp" alt="Конная колонна на тропе" loading="lazy">
+        </div>
+        <div class="tour-in">
+          <h3>Конный тур «Горные тропы»</h3>
+          <div class="tour-meta"><span><b>2 дня</b> / 1 ночь</span><span>для новичков</span><span>пт — сб</span></div>
+          <p>Около 12 км верхом по лесным тропам, привал на реке, ужин у костра и ночёвка в палатках у подножия хребта.</p>
+          <div class="tour-foot">
+            <span class="price">от 13 500 ₽<small>с человека</small></span>
+            <button data-add="Конный тур «Горные тропы»">Бронь</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour rv" style="--dl:.1s">
+        <div class="tour-img">
+          <span class="tour-tag">С порогами</span>
+          <img src="../../assets/demo/tours/tour-rafting.webp" alt="Сплав между скалами" loading="lazy">
+        </div>
+        <div class="tour-in">
+          <h3>Сплав «Белая вода»</h3>
+          <div class="tour-meta"><span><b>2 дня</b> / 1 ночь</span><span>для новичков</span><span>по выходным</span></div>
+          <p>Катамараны, спокойные плёсы и пара весёлых порогов, скалы над водой, баня на берегу и уха из котла. Снаряжение и инструктаж включены.</p>
+          <div class="tour-foot">
+            <span class="price">от 7 200 ₽<small>с человека</small></span>
+            <button data-add="Сплав «Белая вода»">Бронь</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour rv" style="--dl:.2s">
+        <div class="tour-img">
+          <img src="../../assets/demo/tours/tour-hiking.webp" alt="Группа на хребте" loading="lazy">
+        </div>
+        <div class="tour-in">
+          <h3>Поход «Гребни и облака»</h3>
+          <div class="tour-meta"><span><b>2 дня</b> / 1 ночь</span><span>средняя сложность</span><span>сб — вс</span></div>
+          <p>Каменные россыпи, панорамы хребтов до горизонта, чай на вершине на закате и ночное небо без городской засветки.</p>
+          <div class="tour-foot">
+            <span class="price">от 5 400 ₽<small>с человека</small></span>
+            <button data-add="Поход «Гребни и облака»">Бронь</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour rv" style="--dl:.3s">
+        <div class="tour-img">
+          <span class="tour-tag">1 день</span>
+          <img src="../../assets/demo/tours/tour-ethno.webp" alt="Убранство башкирской юрты" loading="lazy">
+        </div>
+        <div class="tour-in">
+          <h3>Этно-тур «День в юрте»</h3>
+          <div class="tour-meta"><span><b>1 день</b></span><span>для всей семьи</span><span>по записи</span></div>
+          <p>Знакомство с юртой и бытом кочевников, музыка курая, кумыс и баурсаки, стрельба из лука и мастер-класс по орнаменту.</p>
+          <div class="tour-foot">
+            <span class="price">от 3 500 ₽<small>с человека</small></span>
+            <button data-add="Этно-тур «День в юрте»">Бронь</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ШАГИ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label rv">03 · как это работает</div>
+        <h2 class="sec rv" style="--dl:.08s">От заявки до <em>костра</em></h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>Заявка</h3><p>Оставляете заявку на сайте или пишете в мессенджер — отвечаем в течение дня и помогаем выбрать маршрут.</p></div>
+      <div class="step rv" style="--dl:.1s"><div class="n">02</div><h3>Сборы</h3><p>Присылаем список вещей, организуем трансфер из Уфы, снаряжение и спасжилеты выдаём на месте.</p></div>
+      <div class="step rv" style="--dl:.2s"><div class="n">03</div><h3>Маршрут</h3><p>Опытный инструктор ведёт группу, следит за погодой и за тем, чтобы никто не отстал.</p></div>
+      <div class="step rv" style="--dl:.3s"><div class="n">04</div><h3>Память</h3><p>Костёр, песни, общий фотоальбом — и разговоры о том, куда поехать в следующий раз.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ШКОЛЫ / КОРПОРАТЫ -->
+<section class="dark" id="school">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label g rv">04 · группам</div>
+        <h2 class="sec rv" style="--dl:.08s">Школам и <em>командам</em></h2>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="duo-card rv">
+        <img src="../../assets/demo/tours/dir-school.webp" alt="Школьники у костра" loading="lazy">
+        <div class="duo-in">
+          <h3>Школьные туры</h3>
+          <ul>
+            <li>Программы под возраст: начальная, средняя и старшая школа</li>
+            <li>Инструкторы и сопровождающие на всю группу</li>
+            <li>Автобус из Уфы, питание и страховка в стоимости</li>
+            <li>Краеведческий блок: история, природа и традиции Башкирии</li>
+          </ul>
+          <a href="#cta" class="btn">Запросить программу</a>
+        </div>
+      </div>
+      <div class="duo-card rv" style="--dl:.12s">
+        <img src="../../assets/demo/tours/dir-corp.webp" alt="Корпоративная команда на сапах" loading="lazy">
+        <div class="duo-in">
+          <h3>Корпоративные выезды</h3>
+          <ul>
+            <li>Тимбилдинг на воде: сапы, катамараны, командные заплывы</li>
+            <li>Горные квесты и ориентирование для команд и отделов</li>
+            <li>Обед на поляне, баня и вечерний костёр</li>
+            <li>Смета и программа — за 1–2 рабочих дня</li>
+          </ul>
+          <a href="#cta" class="btn green">Обсудить выезд</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- О НАС -->
+<section id="about">
+  <div class="wrap about-in">
+    <div>
+      <div class="label rv">05 · о нас</div>
+      <h2 class="sec rv" style="--dl:.08s">Небольшая команда,<br>которая любит <em>свой край</em></h2>
+      <p class="rv" style="--dl:.16s">
+        Мы — <b>ТАУ-ТРЕК</b>, небольшая команда гидов и инструкторов. Каждый маршрут
+        проходим сами до того, как поставить его в расписание, поэтому показываем
+        только проверенные тропы.
+      </p>
+      <p class="rv" style="--dl:.24s">
+        Наша цель простая: понятные цены, комфортный ночлег и маршруты,
+        после которых хочется вернуться в горы снова.
+      </p>
+      <div class="chips rv" style="--dl:.32s">
+        <span>Белая</span><span>Нугуш</span><span>Шульган-Таш</span><span>Янган-Тау</span>
+        <span>Зюраткуль</span><span>Торатау</span><span>Иремель</span><span>Зилим</span>
+      </div>
+    </div>
+    <div class="about-photo rv" style="--dl:.2s">
+      <img src="../../assets/demo/tours/about-camp.webp" alt="Костёр в лагере" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta" id="cta">
+  <div class="wrap cta-in">
+    <div>
+      <div class="label g rv">06 · бронь</div>
+      <h2 class="rv" style="--dl:.08s">Не можете выбрать тур?<br><em>Напишите нам — поможем!</em></h2>
+      <p class="rv" style="--dl:.16s">Расскажите, сколько вас и чего хочется — воды, гор, коней или юрты с кумысом. Подберём маршрут под дату и бюджет.</p>
+      <div class="cta-phone rv" style="--dl:.24s">+7 347 216-42-42</div>
+    </div>
+    <form class="form rv" style="--dl:.2s" onsubmit="event.preventDefault(); document.getElementById('toast').classList.add('show'); setTimeout(()=>document.getElementById('toast').classList.remove('show'),2600); this.reset();">
+      <h3>Заявка на тур</h3>
+      <div class="form-row"><label>имя</label><input type="text" required placeholder="как к вам обращаться"></div>
+      <div class="form-row"><label>телефон</label><input type="tel" required placeholder="+7 ___ ___-__-__"></div>
+      <div class="form-row"><label>направление</label>
+        <select>
+          <option>Конный тур «Горные тропы»</option>
+          <option>Сплав «Белая вода»</option>
+          <option>Поход «Гребни и облака»</option>
+          <option>Этно-тур «День в юрте»</option>
+          <option>Школьный тур</option>
+          <option>Корпоративный выезд</option>
+          <option>Пока не знаю — подскажите</option>
+        </select>
+      </div>
+      <button type="submit" class="btn green">Отправить заявку →</button>
+    </form>
+  </div>
+</div>
+
+<footer id="contacts">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><svg><use href="#peak"/></svg><b>ТАУ-ТРЕК</b></div>
+        <p>Туры выходного дня по Башкирии: верхом, на воде, в горах и в юрте. Для друзей, школ и команд.</p>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <ul>
+          <li><a href="tel:+73472164242">+7 347 216-42-42</a></li>
+          <li><a href="mailto:hello@tau-track.example">hello@tau-track.example</a></li>
+          <li>Уфа, ул. Ленина, 18</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Мы в соцсетях</h5>
+        <ul>
+          <li><a href="#">ВКонтакте</a></li>
+          <li><a href="#">Max</a></li>
+          <li><a href="#">Telegram-канал выездов</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Направления</h5>
+        <ul>
+          <li><a href="#dirs">Конные туры</a></li>
+          <li><a href="#dirs">Сплавы</a></li>
+          <li><a href="#dirs">Этно-туры</a></li>
+          <li><a href="#tours">Расписание</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 ТАУ-ТРЕК · демо-проект</div>
+    </div>
+    <div class="demo-badge">Это демо-сайт, сделанный студией <a href="https://titan-code.ru" target="_blank">Titan Code</a>, чтобы показать уровень. Хотите такой же под ваш бизнес — напишите нам.</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Заявка отправлена (демо). В рабочей версии ответим в течение дня.</div>
+
+<script>
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  const toast = document.getElementById('toast');
+  let tId;
+  document.querySelectorAll('[data-add]').forEach(b => {
+    b.addEventListener('click', () => {
+      toast.textContent = `${b.dataset.add} — место держим! Допишите заявку ниже.`;
+      toast.classList.add('show');
+      clearTimeout(tId);
+      tId = setTimeout(() => toast.classList.remove('show'), 2600);
+      document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
