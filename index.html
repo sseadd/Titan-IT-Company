@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Titan | Разработка сайтов, приложений и CRM для вашего бизнеса</title>
-    <meta name="description" content="Создаём сайты, приложения и CRM-системы и автоматизацию для бизнеса.">
+    <title>Titan | Разработка сайтов, веб-приложений и CRM для вашего бизнеса</title>
+    <meta name="description" content="Создаём сайты, веб-приложения, Telegram- и Max-ботов и CRM-системы для бизнеса в Уфе.">
     <meta name="yandex-verification" content="65d6a4f540f19f9b" />
     <link rel="icon" type="image/x-icon" href="favicon2.ico">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon2.png">
@@ -15,8 +15,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/600.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.8/500.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.8/600.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/800.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -33,7 +37,7 @@
             }
         }
     </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
 
     <style>
         * { -webkit-tap-highlight-color: transparent; }
@@ -44,27 +48,15 @@
             background: linear-gradient(120deg, #60a5fa 0%, #3b82f6 60%, #2563eb 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .card {
-            background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
-            border: 1px solid rgba(255,255,255,0.07);
-            box-shadow: 0 12px 30px -12px rgba(0,0,0,0.5);
-        }
+        .card { background: #181c24; border: 1px solid rgba(255,255,255,0.08); }
         .card-hover { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            border-color: rgba(59,130,246,0.4);
-            box-shadow: 0 24px 45px -18px rgba(37,99,235,0.35);
-        }
+        .card-hover:hover { border-color: rgba(59,130,246,0.55); background:#1b202a; }
         .glass {
             background: rgba(19, 22, 28, 0.75); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
             border: 1px solid rgba(255,255,255,0.07);
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            box-shadow: 0 10px 25px -8px rgba(37,99,235,0.5);
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover { box-shadow: 0 14px 32px -6px rgba(37,99,235,0.65); transform: translateY(-2px); }
+        .btn-primary { background:#2f6df2; transition: background .2s ease; }
+        .btn-primary:hover { background:#4a82f7; }
         .btn-outline { border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; }
         .btn-outline:hover { border-color: rgba(59,130,246,0.5); background: rgba(59,130,246,0.08); transform: translateY(-2px); }
 
@@ -115,31 +107,90 @@
             will-change: opacity, transform;
         }
         .reveal-up.is-visible { opacity: 1; transform: translateY(0); }
+
+        .logo-i{display:inline-block;width:26px;height:20px;background:url(data:image/png;base64,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) center/contain no-repeat}
+        .hl{background:rgba(47,109,242,.3);border-radius:14px;padding:0 .3em;color:#fff}
+        .tl-d{display:block;width:16px;height:16px;border-radius:50%;margin:0 auto 12px;background:#12161d;border:3px solid #3b82f6}
+        .world{min-height:210px;position:relative;display:flex;flex-direction:column;gap:8px;padding:24px 22px 22px;border-radius:16px;overflow:hidden;background:#181c24;border:1px solid rgba(255,255,255,.08);transition:transform .25s ease,border-color .25s ease}
+        .world:hover{transform:translateY(-5px);border-color:rgba(59,130,246,.55)}
+        .world .stripe{position:absolute;inset:0 0 auto 0;height:5px;background:var(--stripe)}
+        .world .tag{align-self:flex-start;margin-top:4px;font-size:12px;color:#94a3b8;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 11px}
+        .world h4{font-size:24px;line-height:1.1;margin-top:6px}
+        .world .niche{font-size:14px;color:#94a3b8}
+        .world .go{margin-top:auto;padding-top:18px;font-size:14px;font-weight:600;color:var(--c)}
+        .w-forma{--c:#d1906a}.w-forma h4{font-family:'Playfair Display',serif;font-weight:700;color:var(--c)}
+        .w-dark{--c:#d4505e}.w-dark h4{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--c)}
+        .w-prostor{--c:#10b981}.w-prostor h4{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.01em;color:var(--c)}
+        .w-beton{--c:#ff6b00}.w-beton h4{font-family:'Unbounded',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:-.02em;font-size:21px;color:var(--c)}
+        .w-tau{--c:#e0a526}.w-tau h4{font-family:'Unbounded',sans-serif;font-weight:600;font-size:21px;color:var(--c)}
+        .world-cta:hover{transform:none;border-color:rgba(59,130,246,.9)}
+        .world-cta{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:26px 24px;border-radius:16px;border:1px dashed rgba(59,130,246,.55)}
+        .mq{border-block:1px solid rgba(255,255,255,.08);overflow:hidden;padding:20px 0}
+        .mq-t{display:flex;width:max-content;animation:mq 42s linear infinite}
+        .mq:hover .mq-t{animation-play-state:paused}
+        .mq-t span{padding:0 34px;white-space:nowrap;font-size:clamp(22px,3vw,34px);line-height:1}
+        @keyframes mq{to{transform:translateX(-50%)}}
+        @media (prefers-reduced-motion:reduce){.mq-t{animation:none}}
+        .fcirc{width:40px;height:40px;border-radius:9999px;background:rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s ease,transform .2s ease}
+        .fcirc:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+        .fcirc svg,.fcirc img{width:20px;height:20px;fill:currentColor}
+        .pstep{opacity:0;transform:translateY(40px);transition:opacity .45s ease,transform .45s ease;will-change:transform,opacity}
+        .pstep.on{opacity:1;transform:none}
+        .world .desc{font-size:14px;color:#8b97a8;margin-top:4px}
+        .world .go{margin-top:auto;padding-top:0;height:48px;display:flex;align-items:center}
+        .world-cta{padding:24px 22px 22px;justify-content:flex-start}
+        .world-cta .btn-primary{margin-top:auto;height:48px;display:flex;align-items:center;justify-content:center}
+        .fcirc{background:rgba(255,255,255,.05);color:#64748b}.fcirc:hover{background:rgba(255,255,255,.1);color:#fff}
+        .fcirc img{opacity:.55;transition:opacity .2s ease}.fcirc:hover img{opacity:1}
+        .rw{white-space:nowrap}#rotA .rw{justify-self:start}
+        .messenger-btn:hover,.messenger-tg:hover,.messenger-max:hover,.messenger-vk:hover{box-shadow:none!important;transform:translateY(-2px);filter:brightness(1.15)}
+        .messenger-btn{transition:transform .2s ease,filter .2s ease}
+        .ln{transform-box:fill-box;transform-origin:left center}.sig{stroke-dasharray:300}
+        #fanbox{position:relative;width:100%;height:calc(450px*var(--fs,1))}
+        #fanstage{position:absolute;left:50%;top:0;width:470px;height:450px;transform:translateX(-50%) scale(var(--fs,1));transform-origin:top center}
+        html,body{max-width:100%;overflow-x:clip}
+        #process .space-y-12>*,#process .space-y-8>*{margin-top:0!important}
+        @media(min-width:768px){#process .space-y-12{display:flex;flex-direction:column;gap:34px}}
+        @media(max-width:767px){
+          #process .space-y-8{display:flex;flex-direction:column;gap:22px;position:relative}
+          #process .space-y-8::before{content:'';position:absolute;left:19.5px;top:20px;bottom:20px;width:1px;background:rgba(255,255,255,.14)}
+          #process .space-y-8>div>div:first-child{position:relative;z-index:1}
+          #feed{flex-direction:column;overflow:visible;-webkit-mask-image:none!important;mask-image:none!important}
+          #feed .card{width:100%!important}
+        }
+        @media(min-width:768px){#morewrap{display:none!important}}
+        #shots-track img{cursor:zoom-in}
+        #lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.95);display:none}
+        #lb.on{display:block}
+        #lb .lbs{position:absolute;inset:0;overflow:auto;padding:64px 12px 28px;-webkit-overflow-scrolling:touch}
+        #lb img{display:block;margin:0 auto;width:min(96vw,calc((100vh - 96px)*2.05),1500px);height:auto;border-radius:12px;max-width:none;cursor:zoom-in;touch-action:pan-x pan-y pinch-zoom}
+        #lb img.z{width:max(230vw,1600px);cursor:zoom-out}
+        #lb .hint{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:13px;color:#94a3b8;pointer-events:none}
+        @media(max-width:767px){#lb img{width:calc(100vw - 24px)}}
+        #lb button{position:absolute;top:12px;right:12px;z-index:2;width:44px;height:44px;border-radius:9999px;background:rgba(255,255,255,.14);color:#fff;font-size:20px;line-height:1}
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body class="antialiased relative">
 
-    <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
-    <div class="orb w-96 h-96 bg-brand-blue top-0 left-0"></div>
-    <div class="orb w-96 h-96 bg-brand-bluedeep bottom-0 right-0" style="animation-delay: 2s;"></div>
-    <div class="noise fixed inset-0 pointer-events-none z-50"></div>
 
     <!-- Навигация -->
     <nav class="fixed top-0 w-full z-40 glass border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
-                        <i data-lucide="code-2" class="w-5 h-5 text-white"></i>
-                    </div>
+                    <span class="logo-i"></span>
                     <span class="text-xl font-bold tracking-tight font-display">Titan</span>
                 </div>
                 <div class="hidden lg:flex items-center gap-8">
                     <a href="#problems" class="text-sm text-slate-400 hover:text-white transition-colors">Что решаем</a>
+                    <a href="#demo" class="text-sm text-slate-400 hover:text-white transition-colors">Примеры</a>
                     <a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">Услуги</a>
                     <a href="#cases" class="text-sm text-slate-400 hover:text-white transition-colors">Наши работы</a>
                     <a href="#team" class="text-sm text-slate-400 hover:text-white transition-colors">Команда</a>
                     <a href="#process" class="text-sm text-slate-400 hover:text-white transition-colors">Как работаем</a>
+                    <a href="#articles" class="text-sm text-slate-400 hover:text-white transition-colors">Статьи</a>
                 </div>
                 <a href="#contact" class="hidden lg:inline-flex btn-primary px-5 py-2.5 rounded-lg text-white text-sm font-semibold">Обсудить проект</a>
                 <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2 z-50">
@@ -155,6 +206,7 @@
     <div id="mobile-menu" class="lg:hidden fixed top-20 left-0 right-0 bottom-0 z-30" style="background: rgba(19,22,28,0.85); backdrop-filter: blur(20px); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
         <div class="flex flex-col items-center justify-center h-full gap-4 px-6 max-w-sm mx-auto">
             <a href="#problems" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Что решаем</a>
+            <a href="#demo" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Примеры</a>
             <a href="#services" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Услуги</a>
             <a href="#cases" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Наши работы</a>
             <a href="#team" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Команда</a>
@@ -163,23 +215,27 @@
     </div>
 
     <!-- Hero -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
+    <section class="relative pt-24 pb-12 lg:pt-36 lg:pb-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full card mb-8 reveal-up">
-                <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
-                <span class="text-sm text-slate-300">Разработка сайтов, приложений и CRM для вашего бизнеса</span>
+            <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-3 lg:gap-12 items-center text-center lg:text-left">
+                <div>
+                    <h1 class="text-[clamp(28px,4.4vw,58px)] font-bold tracking-tight text-white mb-6" style="line-height:1.2">
+                        <span class="block overflow-hidden"><span class="h1-l block">Сделаем <span class="inline-grid align-bottom" id="rotA"><span class="rw" style="grid-area:1/1">сайт</span><span class="rw" style="grid-area:1/1">лендинг</span><span class="rw" style="grid-area:1/1">веб-приложение</span><span class="rw" style="grid-area:1/1">CRM-систему</span><span class="rw" style="grid-area:1/1">автоматизацию</span><span class="rw" style="grid-area:1/1">платформу</span><span class="rw" style="grid-area:1/1">Telegram-бота</span><span class="rw" style="grid-area:1/1">Max-бота</span><span class="rw" style="grid-area:1/1">личный кабинет</span><span class="rw" style="grid-area:1/1">интернет-магазин</span><span class="rw" style="grid-area:1/1">калькулятор цены</span><span class="rw" style="grid-area:1/1">сайт-визитку</span></span></span></span>
+                        <span class="block overflow-hidden"><span class="h1-l block">для <span class="inline-grid align-bottom" id="rotB"><span class="rw hl" style="grid-area:1/1;justify-self:start">вашего бизнеса</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">салона красоты</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start" data-demo="bistro">кафе</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start" data-demo="uk">стройкомпании</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start" data-demo="tours">турфирмы</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start" data-demo="furniture">студии мебели</span><span class="rw hl" style="grid-area:1/1;justify-self:start">вашего бизнеса</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">автосервиса</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">клиники</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">фитнес-клуба</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">школы</span><span class="rw hl" style="grid-area:1/1;justify-self:start">вашего бизнеса</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">юриста</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">магазина</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">барбершопа</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">фотографа</span><span class="rw text-brand-blue" style="grid-area:1/1;justify-self:start">детского центра</span></span></span></span>
+                    </h1>
+                    <p class="hero-sub text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 mb-9">От лендингов до сложных платформ с личными кабинетами. Работаем по договору, фиксируем смету и остаёмся на связи после запуска.</p>
+                    <div class="hero-btns flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg">Обсудить проект</a>
+                        <a href="#cases" class="btn-outline px-8 py-4 rounded-xl card text-white font-semibold text-lg">Смотреть кейсы</a>
+                    </div>
+                </div>
+                <div class="relative" id="fanbox"><div id="fanstage"><a id="fan-furniture" href="demo/" class="fan absolute block rounded-xl overflow-hidden border border-white/10 bg-[#181c24] shadow-xl" style="width:250px;left:0px;top:34px"><span style="display:block;height:6px;background:linear-gradient(90deg,#f7f2ea,#a9683a,#241c14)"></span><div class="p-4"><div style="font-family:'Playfair Display',serif;font-weight:700;color:#d1906a;font-size:20px;line-height:1.2">ФОРМА</div><div class="text-xs text-slate-500 mb-3">мебель на заказ</div><div class="h-2 rounded bg-white/10 mb-2"></div><div class="h-2 rounded bg-white/10 mb-2 w-4/5"></div><div class="h-2 rounded bg-white/10 w-3/5"></div></div></a><a id="fan-bistro" href="demo/" class="fan absolute block rounded-xl overflow-hidden border border-white/10 bg-[#181c24] shadow-xl" style="width:250px;left:205px;top:0px"><span style="display:block;height:6px;background:linear-gradient(90deg,#0b0c0e,#8e2430,#aab6c2)"></span><div class="p-4"><div style="font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.08em;color:#d4505e;font-size:20px;line-height:1.2">AFTER DARK</div><div class="text-xs text-slate-500 mb-3">бистро и бар</div><div class="h-2 rounded bg-white/10 mb-2"></div><div class="h-2 rounded bg-white/10 mb-2 w-4/5"></div><div class="h-2 rounded bg-white/10 w-3/5"></div></div></a><a id="fan-uk" href="demo/" class="fan absolute block rounded-xl overflow-hidden border border-white/10 bg-[#181c24] shadow-xl" style="width:250px;left:25px;top:176px"><span style="display:block;height:6px;background:linear-gradient(90deg,#f8f9fa,#059669,#111827)"></span><div class="p-4"><div style="font-family:'Inter',sans-serif;font-weight:800;color:#10b981;font-size:20px;line-height:1.2">ПРОСТОР</div><div class="text-xs text-slate-500 mb-3">управляющая компания</div><div class="h-2 rounded bg-white/10 mb-2"></div><div class="h-2 rounded bg-white/10 mb-2 w-4/5"></div><div class="h-2 rounded bg-white/10 w-3/5"></div></div></a><a id="fan-skate" href="demo/" class="fan absolute block rounded-xl overflow-hidden border border-white/10 bg-[#181c24] shadow-xl" style="width:250px;left:220px;top:160px"><span style="display:block;height:6px;background:linear-gradient(90deg,#0f0f0f,#ff6b00,#f0ece4)"></span><div class="p-4"><div style="font-family:'Unbounded',sans-serif;font-weight:600;font-size:17px;color:#ff6b00;font-size:20px;line-height:1.2">BETON WAVE</div><div class="text-xs text-slate-500 mb-3">строительство скейт-парков</div><div class="h-2 rounded bg-white/10 mb-2"></div><div class="h-2 rounded bg-white/10 mb-2 w-4/5"></div><div class="h-2 rounded bg-white/10 w-3/5"></div></div></a><a id="fan-tours" href="demo/" class="fan absolute block rounded-xl overflow-hidden border border-white/10 bg-[#181c24] shadow-xl" style="width:250px;left:105px;top:306px"><span style="display:block;height:6px;background:linear-gradient(90deg,#0c2430,#0b7ea8,#e0a526)"></span><div class="p-4"><div style="font-family:'Unbounded',sans-serif;font-weight:600;font-size:17px;color:#e0a526;font-size:20px;line-height:1.2">ТАУ-ТРЕК</div><div class="text-xs text-slate-500 mb-3">туры по Башкирии</div><div class="h-2 rounded bg-white/10 mb-2"></div><div class="h-2 rounded bg-white/10 mb-2 w-4/5"></div><div class="h-2 rounded bg-white/10 w-3/5"></div></div></a></div></div>
             </div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 reveal-up">
-                Сайты и CRM, которые<br>
-                <span class="gradient-text">приносят клиентов, а не просто висят в сети</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 reveal-up">
-                От лендингов до сложных платформ с личными кабинетами. Работаем по договору,
-                фиксируем смету и остаёмся на связи после запуска.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-up">
-                <a href="#contact" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold text-lg">Обсудить проект</a>
-                <a href="#cases" class="btn-outline px-8 py-4 rounded-xl card text-white font-semibold text-lg">Смотреть кейсы</a>
+            <div id="tl" class="relative max-w-5xl mx-auto mt-14 grid grid-cols-3 gap-4 text-center">
+                <div class="absolute top-2 h-px bg-white/10" style="left:16.67%;right:16.67%"><div id="tlfill" class="h-full bg-brand-blue" style="transform:scaleX(0);transform-origin:left"></div></div>
+                <div class="relative"><span class="tl-d"></span><div class="tl-t"><b class="block">День 0</b><span class="text-sm text-slate-400">Вы рассказываете о бизнесе</span></div></div>
+                <div class="relative"><span class="tl-d"></span><div class="tl-t"><b class="block">День 3</b><span class="text-sm text-slate-400">Черновик сайта перед вами</span></div></div>
+                <div class="relative"><span class="tl-d"></span><div class="tl-t"><b class="block">От 10 дней</b><span class="text-sm text-slate-400">Сайт запущен</span></div></div>
             </div>
             <div class="mt-16 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 reveal-up max-w-sm sm:max-w-none mx-auto">
                 <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl w-[88%] sm:w-auto mx-auto sm:mx-0">
@@ -187,12 +243,34 @@
                     <span class="text-slate-200 text-base font-semibold">Работаем по договору</span>
                 </div>
                 <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl w-[88%] sm:w-auto mx-auto sm:mx-0">
-                    <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="eye" class="w-5 h-5 text-brand-blue"></i></div>
-                    <span class="text-slate-200 text-base font-semibold">Прогресс каждую неделю</span>
+                    <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="file-text" class="w-5 h-5 text-brand-blue"></i></div>
+                    <span class="text-slate-200 text-base font-semibold">Отчёты каждый день</span>
                 </div>
                 <div class="card flex items-center gap-3 px-6 py-4 rounded-2xl w-[88%] sm:w-auto mx-auto sm:mx-0">
                     <div class="w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="life-buoy" class="w-5 h-5 text-brand-blue"></i></div>
                     <span class="text-slate-200 text-base font-semibold">Поддержка после запуска</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo -->
+    <section id="demo" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Примеры наших сайтов: пять ниш, пять стилей</h2>
+                <p class="text-slate-400">Это демо-сайты, которые мы сделали сами, чтобы показать, каким может быть ваш. Откройте любой: это рабочие страницы, а не картинки.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style="grid-auto-rows:1fr">
+                <a class="world w-forma" href="demo/" style="--stripe:linear-gradient(90deg,#f7f2ea,#a9683a,#241c14)"><span class="stripe" style="display:block;position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#f7f2ea,#a9683a,#241c14)"></span><span class="tag">тёплый и спокойный</span><h4>ФОРМА</h4><div class="niche">мебель на заказ</div><p class="desc">Каталог, шоурум и галерея готовых работ.</p><span class="go">Смотреть демо ↗</span></a>
+                <a class="world w-dark" href="demo/" style="--stripe:linear-gradient(90deg,#0b0c0e,#8e2430,#aab6c2)"><span class="stripe" style="display:block;position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#0b0c0e,#8e2430,#aab6c2)"></span><span class="tag">тёмный, вечерний</span><h4>AFTER DARK</h4><div class="niche">бистро и бар</div><p class="desc">Меню кухни и бара, атмосфера места.</p><span class="go">Смотреть демо ↗</span></a>
+                <a class="world w-prostor" href="demo/" style="--stripe:linear-gradient(90deg,#f8f9fa,#059669,#111827)"><span class="stripe" style="display:block;position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#f8f9fa,#059669,#111827)"></span><span class="tag">светлый и деловой</span><h4>ПРОСТОР</h4><div class="niche">управляющая компания</div><p class="desc">Обслуживаемые дома и работы за месяц.</p><span class="go">Смотреть демо ↗</span></a>
+                <a class="world w-beton" href="demo/" style="--stripe:linear-gradient(90deg,#0f0f0f,#ff6b00,#f0ece4)"><span class="stripe" style="display:block;position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#0f0f0f,#ff6b00,#f0ece4)"></span><span class="tag">грубый, бетонный</span><h4>BETON WAVE</h4><div class="niche">строительство скейт-парков</div><p class="desc">Каталог фигур, технологии и портфолио.</p><span class="go">Смотреть демо ↗</span></a>
+                <a class="world w-tau" href="demo/" style="--stripe:linear-gradient(90deg,#0c2430,#0b7ea8,#e0a526)"><span class="stripe" style="display:block;position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#0c2430,#0b7ea8,#e0a526)"></span><span class="tag">яркий, походный</span><h4>ТАУ-ТРЕК</h4><div class="niche">туры по Башкирии</div><p class="desc">Направления, ближайшие выезды и заявка.</p><span class="go">Смотреть демо ↗</span></a>
+                <div class="world-cta world">
+                    <h4 class="text-xl font-bold" style="font-family:inherit;color:#fff">Вашей ниши здесь нет?</h4>
+                    <p class="text-slate-400 text-sm">Пришлите название бизнеса и пару слов о нём. Через 3 дня покажем, как мог бы выглядеть ваш сайт.</p>
+                    <a href="#contact" class="btn-primary mt-2 px-5 py-3 rounded-xl text-white font-semibold text-center text-sm">Прислать название</a>
                 </div>
             </div>
         </div>
@@ -204,7 +282,6 @@
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Какие проблемы решаем?</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">Не просто пишем код. Решаем реальные бизнес-задачи.</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-bluedeep mx-auto mt-6 rounded-full"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="card card-hover p-8 rounded-2xl reveal-up">
@@ -237,7 +314,6 @@
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Услуги и цены</h2>
                 <p class="text-slate-400">Стоимость зависит от сложности задачи — вот ориентир, от чего мы отталкиваемся.</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-bluedeep mx-auto mt-6 rounded-full"></div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="card card-hover p-8 rounded-2xl flex flex-col reveal-up">
@@ -255,7 +331,7 @@
                 <div class="card card-hover p-8 rounded-2xl flex flex-col reveal-up" style="transition-delay:120ms;">
                     <i data-lucide="layers" class="w-8 h-8 mb-4 text-brand-blue"></i>
                     <h4 class="text-lg font-bold mb-2">Платформы с кабинетами</h4>
-                    <p class="text-slate-400 text-sm mb-6 flex-grow">Личные кабинеты, карты, заявки — полноценные платформы под ключ.</p>
+                    <p class="text-slate-400 text-sm mb-6 flex-grow">Веб-приложения: личные кабинеты, карты, заявки, оплата. Под ключ.</p>
                     <div class="text-xl font-bold text-white">от 150 000 ₽</div>
                 </div>
                 <div class="card card-hover p-8 rounded-2xl flex flex-col reveal-up" style="transition-delay:180ms;">
@@ -266,7 +342,7 @@
                 </div>
                 <div class="card card-hover p-8 rounded-2xl flex flex-col reveal-up" style="transition-delay:240ms;">
                     <i data-lucide="message-square" class="w-8 h-8 mb-4 text-brand-blue"></i>
-                    <h4 class="text-lg font-bold mb-2">Telegram-боты</h4>
+                    <h4 class="text-lg font-bold mb-2">Telegram- и Max-боты</h4>
                     <p class="text-slate-400 text-sm mb-6 flex-grow">Автоматизация заявок, записи и общения с клиентами.</p>
                     <div class="text-xl font-bold text-white">от 25 000 ₽</div>
                 </div>
@@ -293,7 +369,7 @@
 
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blue/15 text-brand-blue text-xs font-bold uppercase tracking-wider w-fit">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Реальный проект · работает сейчас
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Разработка завершена · готовится запуск
                     </div>
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider w-fit sm:ml-auto">
                         <i data-lucide="award" class="w-3.5 h-3.5"></i> Участник грантовой программы РБ
@@ -304,8 +380,7 @@
                     <div class="lg:w-1/2">
                         <h3 class="text-2xl md:text-3xl font-bold mb-4">IT-Logistic — агрегатор спецтехники</h3>
                         <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
-                            Написали с нуля агрегатор спецтехники и стройматериалов для Башкортостана —
-                            с тремя ролями пользователей: заказчик, исполнитель, администратор, у каждой своя логика.
+                            Написали с нуля агрегатор спецтехники и стройматериалов для Башкортостана — с тремя ролями пользователей: заказчик, исполнитель, администратор, у каждой своя логика.
                         </p>
                         <ul class="space-y-3 mb-8">
                             <li class="flex items-start gap-3 text-slate-300 text-sm">
@@ -327,37 +402,21 @@
                     </div>
 
                     <div class="lg:w-1/2 w-full">
-                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-blue/10 group">
-                            <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-transparent to-transparent z-10"></div>
-                            <div class="bg-surface-raised aspect-video flex flex-col">
-                                <div class="h-8 bg-black/20 flex items-center px-4 gap-2 border-b border-white/5">
-                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                                    <div class="ml-4 px-3 py-1 bg-black/20 rounded text-xs text-slate-400 flex-1 text-center font-mono">it-logistic-online.ru</div>
-                                </div>
-                                <div class="flex-1 relative flex items-center justify-center p-8">
-                                    <div class="text-center">
-                                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-blue/20 flex items-center justify-center animate-float">
-                                            <i data-lucide="truck" class="w-8 h-8 text-brand-blue"></i>
-                                        </div>
-                                        <div class="h-4 w-48 bg-white/10 rounded mx-auto mb-3"></div>
-                                        <div class="h-3 w-32 bg-white/5 rounded mx-auto"></div>
-                                    </div>
-                                    <div class="absolute top-1/4 left-1/4 w-3 h-3 bg-brand-blue rounded-full animate-ping"></div>
-                                    <div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-cyan-400 rounded-full animate-ping" style="animation-delay: 1s;"></div>
-                                </div>
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-raised" id="shots"><button id="zoom" type="button" class="absolute bottom-3 right-3 z-10 flex items-center gap-2 px-3 py-2 rounded-full bg-black/65 text-white text-xs font-semibold backdrop-blur"><i data-lucide="maximize-2" class="w-4 h-4"></i>Открыть</button>
+                            <div class="h-8 bg-black/20 flex items-center px-4 gap-2 border-b border-white/5">
+                                <div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div>
+                                <div class="ml-4 px-3 py-1 bg-black/20 rounded text-xs text-slate-400 flex-1 text-center">it-logistic-online.ru</div>
+                            </div>
+                            <div class="flex overflow-x-auto snap-x snap-mandatory" id="shots-track" style="scrollbar-width:none">
+                                <img class="w-full flex-shrink-0 snap-center" src="assets/itlogistic-screen.webp" alt="Главная IT-Logistic: четыре раздела и заявка в четыре шага">
+                                <img class="w-full flex-shrink-0 snap-center" src="assets/itlogistic-screen2.webp" alt="Шаг «Параметры»: конструктор заявки скрывает неподходящие варианты">
                             </div>
                         </div>
+                        <div class="flex items-center justify-between mt-3 gap-4">
+                            <p id="shots-cap" class="text-sm text-slate-400">Главная: четыре раздела и заявка в четыре шага</p>
+                            <div class="flex gap-2" id="shots-dots"><button class="w-2.5 h-2.5 rounded-full bg-brand-blue" aria-label="Скриншот 1"></button><button class="w-2.5 h-2.5 rounded-full bg-white/20" aria-label="Скриншот 2"></button></div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="max-w-md mx-auto">
-                <div class="case-soon rounded-2xl p-8 flex flex-col items-center text-center reveal-up">
-                    <i data-lucide="clock" class="w-7 h-7 text-slate-500 mb-3"></i>
-                    <h4 class="font-semibold mb-1 text-slate-300">Telegram-бот — в процессе</h4>
-                    <p class="text-xs text-slate-500">Описание кейса добавим, когда согласуем детали с клиентом.</p>
                 </div>
             </div>
         </div>
@@ -368,7 +427,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Почему выбирают нас</h2>
-                <p class="text-slate-400">Работаем «в белую». Без воды и скрытых условий.</p>
+                <p class="text-slate-400">Работаем «в белую». Договор, смета заранее и наш ИНН на виду. Ничего не прячем мелким шрифтом.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
                 <div class="flex gap-4 reveal-up">
@@ -377,7 +436,7 @@
                 </div>
                 <div class="flex gap-4 reveal-up" style="transition-delay:60ms;">
                     <div class="w-12 h-12 rounded-full bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="eye" class="w-6 h-6 text-brand-blue"></i></div>
-                    <div><h3 class="text-lg font-bold mb-1">Показываем прогресс</h3><p class="text-slate-400 text-sm">Каждую неделю демо того, что сделано. Вы всегда в курсе.</p></div>
+                    <div><h3 class="text-lg font-bold mb-1">Показываем прогресс</h3><p class="text-slate-400 text-sm">Живая ссылка на сайт с первых дней: смотрите и правьте каждый день.</p></div>
                 </div>
                 <div class="flex gap-4 reveal-up" style="transition-delay:120ms;">
                     <div class="w-12 h-12 rounded-full bg-brand-blue/15 flex items-center justify-center flex-shrink-0"><i data-lucide="handshake" class="w-6 h-6 text-brand-blue"></i></div>
@@ -388,10 +447,7 @@
                     <div><h3 class="text-lg font-bold mb-1">Помогаем с ТЗ</h3><p class="text-slate-400 text-sm">Есть только идея? Поможем сформулировать задачу правильно.</p></div>
                 </div>
             </div>
-            <div class="card rounded-2xl p-8 md:p-10 text-center reveal-up">
-                <i data-lucide="heart-handshake" class="w-8 h-8 text-brand-blue mx-auto mb-4"></i>
-                <p class="text-slate-300 max-w-xl mx-auto">Первый официальный отзыв клиента скоро появится здесь — как только проект IT-Logistic пройдёт полный цикл запуска.</p>
-            </div>
+        
         </div>
     </section>
 
@@ -399,30 +455,30 @@
     <section id="team" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Кто делает ваш проект?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Кто делает ваш проект</h2>
                 <p class="text-slate-400">Небольшая команда, которая сама пишет и ведёт каждый проект.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
-                <div class="text-center reveal-up">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="flex flex-col items-center text-center reveal-up">
                     <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
                         <i data-lucide="briefcase" class="w-9 h-9 text-white"></i>
                     </div>
-                    <h4 class="font-bold mb-1">Дмитрий</h4>
-                    <p class="text-slate-400 text-sm">Project Manager. Документы, сроки, связь с клиентом.</p>
+                    <h4 class="font-bold mb-1">Дим</h4>
+                    <p class="flex-grow text-slate-400 text-sm">Project Manager. Документы, сроки, связь с клиентом.</p><div class="flex flex-wrap justify-center gap-2 mt-auto pt-5 w-full max-w-[200px] mx-auto"><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Сроки</span><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Договор</span><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Отчёты</span></div>
                 </div>
-                <div class="text-center reveal-up" style="transition-delay:60ms;">
+                <div class="flex flex-col items-center text-center reveal-up" style="transition-delay:60ms;">
                     <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
                         <i data-lucide="pen-tool" class="w-9 h-9 text-white"></i>
                     </div>
                     <h4 class="font-bold mb-1">Степан</h4>
-                    <p class="text-slate-400 text-sm">Дизайн и разработка. Собирает интерфейс от макета до кода.</p>
+                    <p class="flex-grow text-slate-400 text-sm">Дизайн и разработка. Собирает интерфейс от макета до кода.</p><div class="flex flex-wrap justify-center gap-2 mt-auto pt-5 w-full max-w-[200px] mx-auto"><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Дизайн</span><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Фронтенд</span><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Бэкенд</span></div>
                 </div>
-                <div class="text-center reveal-up" style="transition-delay:120ms;">
+                <div class="flex flex-col items-center text-center reveal-up" style="transition-delay:120ms;">
                     <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
                         <i data-lucide="code" class="w-9 h-9 text-white"></i>
                     </div>
                     <h4 class="font-bold mb-1">Данис</h4>
-                    <p class="text-slate-400 text-sm">Разработчик. Подключается на крупные и сложные проекты.</p>
+                    <p class="flex-grow text-slate-400 text-sm">Разработчик. Подключается на крупные и сложные проекты.</p><div class="flex flex-wrap justify-center gap-2 mt-auto pt-5 w-full max-w-[200px] mx-auto"><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Бэкенд</span><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Базы данных</span><span class="text-xs px-3 py-1 rounded-full border border-white/10 text-slate-400">Интеграции</span></div>
                 </div>
             </div>
         </div>
@@ -434,54 +490,74 @@
             <div class="text-center mb-16 reveal-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Как работаем</h2>
                 <p class="text-slate-400">Прозрачный процесс от идеи до запуска.</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-brand-blue to-brand-bluedeep mx-auto mt-6 rounded-full"></div>
             </div>
 
             <!-- Мобильная версия -->
             <div class="md:hidden space-y-8">
-                <div class="flex gap-4 reveal-up">
+                <div class="flex gap-4">
                     <div class="w-10 h-10 rounded-full bg-brand-blue border-4 border-surface-base flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
                     <div><h4 class="text-lg font-bold mb-2">Обсуждаем задачу</h4><p class="text-slate-400 text-sm">Изучаем ваш бизнес, цели и требования.</p></div>
                 </div>
-                <div class="flex gap-4 reveal-up">
-                    <div class="w-10 h-10 rounded-full bg-cyan-500 border-4 border-surface-base flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-full bg-brand-blue border-4 border-surface-base flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
                     <div><h4 class="text-lg font-bold mb-2">Смета и договор</h4><p class="text-slate-400 text-sm">Фиксируем стоимость, сроки и этапы.</p></div>
                 </div>
-                <div class="flex gap-4 reveal-up">
-                    <div class="w-10 h-10 rounded-full bg-indigo-500 border-4 border-surface-base flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
-                    <div><h4 class="text-lg font-bold mb-2">Разработка</h4><p class="text-slate-400 text-sm">Показываем результат каждую неделю.</p></div>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-full bg-brand-blue border-4 border-surface-base flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
+                    <div><h4 class="text-lg font-bold mb-2">Разработка</h4><p class="text-slate-400 text-sm">Живая ссылка на сайт: смотрите результат каждый день.</p></div>
                 </div>
-                <div class="flex gap-4 reveal-up">
-                    <div class="w-10 h-10 rounded-full bg-sky-500 border-4 border-surface-base flex items-center justify-center flex-shrink-0 font-bold text-sm">4</div>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-full bg-brand-blue border-4 border-surface-base flex items-center justify-center flex-shrink-0 font-bold text-sm">4</div>
                     <div><h4 class="text-lg font-bold mb-2">Запуск и поддержка</h4><p class="text-slate-400 text-sm">Переносим на хостинг, обучаем, остаёмся на связи.</p></div>
                 </div>
             </div>
 
             <!-- Десктопная версия -->
             <div class="hidden md:block relative">
-                <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-blue via-cyan-500 to-transparent -translate-x-1/2"></div>
+                <div class="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2"></div>
                 <div class="space-y-12">
-                    <div class="relative flex flex-row items-center gap-8 reveal-up">
+                    <div class="relative flex flex-row items-center gap-8">
                         <div class="w-1/2 text-right pr-12"><h4 class="text-xl font-bold mb-2">1. Обсуждаем задачу</h4><p class="text-slate-400 text-sm">Изучаем ваш бизнес, цели и требования.</p></div>
                         <div class="w-8 h-8 rounded-full bg-brand-blue border-4 border-surface-base z-10 flex items-center justify-center flex-shrink-0"><span class="text-xs font-bold">1</span></div>
                         <div class="w-1/2 pl-12"></div>
                     </div>
-                    <div class="relative flex flex-row items-center gap-8 reveal-up" style="transition-delay:80ms;">
+                    <div class="relative flex flex-row items-center gap-8" style="transition-delay:80ms;">
                         <div class="w-1/2 pr-12"></div>
-                        <div class="w-8 h-8 rounded-full bg-cyan-500 border-4 border-surface-base z-10 flex items-center justify-center flex-shrink-0"><span class="text-xs font-bold">2</span></div>
+                        <div class="w-8 h-8 rounded-full bg-brand-blue border-4 border-surface-base z-10 flex items-center justify-center flex-shrink-0"><span class="text-xs font-bold">2</span></div>
                         <div class="w-1/2 pl-12"><h4 class="text-xl font-bold mb-2">2. Смета и договор</h4><p class="text-slate-400 text-sm">Фиксируем стоимость, сроки и этапы.</p></div>
                     </div>
-                    <div class="relative flex flex-row items-center gap-8 reveal-up" style="transition-delay:160ms;">
-                        <div class="w-1/2 text-right pr-12"><h4 class="text-xl font-bold mb-2">3. Разработка</h4><p class="text-slate-400 text-sm">Показываем результат каждую неделю.</p></div>
-                        <div class="w-8 h-8 rounded-full bg-indigo-500 border-4 border-surface-base z-10 flex items-center justify-center flex-shrink-0"><span class="text-xs font-bold">3</span></div>
+                    <div class="relative flex flex-row items-center gap-8" style="transition-delay:160ms;">
+                        <div class="w-1/2 text-right pr-12"><h4 class="text-xl font-bold mb-2">3. Разработка</h4><p class="text-slate-400 text-sm">Живая ссылка на сайт: смотрите результат каждый день.</p></div>
+                        <div class="w-8 h-8 rounded-full bg-brand-blue border-4 border-surface-base z-10 flex items-center justify-center flex-shrink-0"><span class="text-xs font-bold">3</span></div>
                         <div class="w-1/2 pl-12"></div>
                     </div>
-                    <div class="relative flex flex-row items-center gap-8 reveal-up" style="transition-delay:240ms;">
+                    <div class="relative flex flex-row items-center gap-8" style="transition-delay:240ms;">
                         <div class="w-1/2 pr-12"></div>
-                        <div class="w-8 h-8 rounded-full bg-sky-500 border-4 border-surface-base z-10 flex items-center justify-center flex-shrink-0"><span class="text-xs font-bold">4</span></div>
+                        <div class="w-8 h-8 rounded-full bg-brand-blue border-4 border-surface-base z-10 flex items-center justify-center flex-shrink-0"><span class="text-xs font-bold">4</span></div>
                         <div class="w-1/2 pl-12"><h4 class="text-xl font-bold mb-2">4. Запуск и поддержка</h4><p class="text-slate-400 text-sm">Переносим на хостинг, обучаем, остаёмся на связи.</p></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles -->
+    <section id="articles" class="py-24 relative bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 reveal-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Статьи: объясняем простыми словами</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Что выбрать, из чего складывается цена, как мы работаем. Читайте до первого разговора с нами: то же самое мы рассказываем клиентам лично.</p>
+            </div>
+            <div id="feed" class="flex gap-6 overflow-x-auto pb-4 cursor-grab" style="scrollbar-width:none"></div>
+            <div id="morewrap" class="text-center mt-6 hidden"><button id="more" type="button" class="btn-outline px-8 py-3 rounded-xl card text-white font-semibold">Смотреть дальше</button></div>
+            <div class="mt-14 max-w-3xl mx-auto text-center">
+                <h3 class="text-xl font-bold mb-2">Читайте нас в каналах</h3>
+                <p class="text-slate-400 text-sm mb-6">Там мы показываем, как идёт работа над проектами, делимся отзывами клиентов и новостями студии.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3"><a href="https://t.me/TitanITCompany" target="_blank" rel="noopener" class="messenger-btn messenger-tg" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg><span>Telegram</span></a><a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" rel="noopener" class="messenger-btn messenger-max" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"><span>Max</span></a><a href="https://vk.com/titanitcompany" target="_blank" rel="noopener" class="messenger-btn messenger-vk" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
+                        </svg><span>VK</span></a></div>
             </div>
         </div>
     </section>
@@ -497,22 +573,16 @@
                 <p class="text-slate-400 mb-8 max-w-xl mx-auto">
                     Выберите удобный способ связи — расскажем, что и как можно сделать, назовём стоимость и сроки.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto">
-                    <a href="https://t.me/TitanITCompany" target="_blank" class="messenger-btn messenger-tg px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-xl mx-auto">
+                    <a href="tg://resolve?domain=DimRaufovich" class="messenger-btn messenger-tg px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                         </svg>
                         <span>Telegram</span>
                     </a>
-                    <a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
-                        <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5">
+                    <a href="https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                        <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG">
                         <span>Max</span>
-                    </a>
-                    <a href="https://vk.com/titanitcompany" target="_blank" class="messenger-btn messenger-vk px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
-                        </svg>
-                        <span>ВКонтакте</span>
                     </a>
                 </div>
                 <div class="flex items-center gap-4 max-w-2xl mx-auto mb-6">
@@ -526,23 +596,32 @@
                         +7 (996) 291-75-49
                     </a>
                 </div>
+                
             </div>
         </div>
     </section>
 
-    <footer class="py-10 border-t border-white/5">
+    <footer class="py-12 border-t border-white/10 bg-[#0b0e13]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
-                        <i data-lucide="code-2" class="w-4 h-4 text-white"></i>
-                    </div>
-                    <span class="text-sm font-semibold text-slate-300">Titan © 2026</span>
+            <div class="grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
+                <div>
+                    <div class="flex items-center gap-3 mb-5"><span class="logo-i"></span><span class="font-bold text-lg text-slate-400">Titan</span><a href="https://github.com/sseadd" target="_blank" rel="noopener" aria-label="GitHub" class="text-slate-500 hover:text-white transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div>
+                    <div class="flex items-center gap-3 flex-wrap"><a href="tel:+79962917549" class="font-semibold text-slate-400 hover:text-white transition-colors mr-1">+7 (996) 291-75-49</a><a href="tg://resolve?domain=DimRaufovich" target="_blank" rel="noopener" aria-label="Написать в Telegram" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg></a><a href="https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE" target="_blank" rel="noopener" aria-label="Написать в Max" class="fcirc"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"></a></div>
                 </div>
-                <div class="flex items-center gap-2 text-xs text-slate-500 text-center md:text-right">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-slate-600 flex-shrink-0"></i>
-                    <p>Работаем официально по договору (самозанятый). ИНН: 024004144726</p>
+                <div class="md:text-right">
+                    <p class="text-sm text-slate-600 mb-3">Каналы:</p>
+                    <div class="flex gap-3 md:justify-end"><a href="https://t.me/TitanITCompany" target="_blank" rel="noopener" aria-label="Telegram-канал" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg></a><a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" rel="noopener" aria-label="Max-канал" class="fcirc"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"></a><a href="https://vk.com/titanitcompany" target="_blank" rel="noopener" aria-label="VK" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
+                        </svg></a></div>
                 </div>
+            </div>
+            <div class="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between gap-3 text-xs text-slate-600">
+                <p>© 2026 Titan</p>
+                <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-slate-600 flex-shrink-0"></i><p>Работаем официально по договору (самозанятый). ИНН: 024004144726</p></div>
             </div>
         </div>
     </footer>
@@ -587,6 +666,111 @@
                 }
             });
         });
+
+        const ART=[
+ {d:"2026-07-27",t:"ИИ",h:"ИИ в разработке: как мы используем нейросети",p:"Заменит ли ИИ программистов? Показываем изнанку: что нейросети делают в нашей работе и почему это выгодно вам как клиенту.",u:"https://vk.ru/@titanitcompany-ii-v-razrabotke"},
+ {d:"2026-08-03",t:"Что выбрать",h:"Сайт, приложение или бот: что выбрать в 2026",p:"Когда нужен сайт, когда приложение, а когда хватит бота или CRM. Разбираем на реальных примерах, без сложных терминов.",u:"https://vk.ru/@titanitcompany-chto-vybrat-dlya-biznesa"},
+ {d:"2026-08-20",t:"Цена",h:"Дёшево сейчас, дорого потом",p:"Во что превращается дешёвая разработка за пять тысяч рублей, какие скрытые расходы вы заплатите потом и из чего складывается цена нормального сайта.",u:"https://vk.ru/@titanitcompany-deshevo-seichas-dorogo-potom"},
+ {d:"2026-09-01",t:"Как мы работаем",h:"Конструкторы? Figma? Почему мы работаем иначе",p:"Почему мы не делаем сайты на конструкторах, не начинаем с макета, а сразу собираем живой сайт, который открывается с телефона.",u:"https://vk.ru/@titanitcompany-konstruktory-figma-pochemu-my-rabotaem-inache"},
+ {d:"2026-09-10",t:"Сроки",h:"Что нужно от вас для запуска за 10 дней",p:"Срок для двоих: что нужно от вас на старте, в процессе и на финише, плюс десять вопросов.",u:"https://vk.ru/@titanitcompany-ulozhitsya-v-10-dnei"}];
+        const feed=document.getElementById('feed'),fmt=new Intl.DateTimeFormat('ru',{day:'numeric',month:'long',year:'numeric'});
+        ART.sort((a,b)=>b.d.localeCompare(a.d)).forEach(a=>{
+            const el=document.createElement('a');el.href=a.u;el.target='_blank';el.rel='noopener';
+            el.draggable=false;el.className='select-none card card-hover rounded-2xl p-7 flex flex-col gap-3 flex-shrink-0 w-[300px] sm:w-[340px]';el.style.scrollSnapAlign='start';
+            const s=document.createElement('span');s.className='text-xs text-slate-600';s.textContent=a.t+', '+fmt.format(new Date(a.d));
+            const h=document.createElement('h3');h.className='text-lg font-bold leading-snug';h.textContent=a.h;
+            const p=document.createElement('p');p.className='text-sm text-slate-400';p.textContent=a.p;
+            el.append(s,h,p);feed.appendChild(el);
+        });
+        const mask=(l,r)=>{const g=`linear-gradient(90deg,transparent 0,#000 ${l}px,#000 calc(100% - ${r}px),transparent 100%)`;feed.style.webkitMaskImage=g;feed.style.maskImage=g;};
+        const fog=()=>mask(feed.scrollLeft>8?90:0, feed.scrollLeft+feed.clientWidth<feed.scrollWidth-8?90:0);
+        feed.addEventListener('scroll',fog,{passive:true});window.addEventListener('resize',fog);fog();
+
+        const track=document.getElementById('shots-track'),dots=[...document.querySelectorAll('#shots-dots button')],cap=document.getElementById('shots-cap'),
+              caps=['Главная: четыре раздела и заявка в четыре шага','Конструктор подбирает технику и скрывает неподходящие варианты'];
+        let cur=0,paused=false;
+        const go=i=>{cur=i;track.scrollTo({left:i*track.clientWidth,behavior:'smooth'});dots.forEach((d,k)=>{d.classList.toggle('bg-brand-blue',k===i);d.classList.toggle('bg-white/20',k!==i)});cap.textContent=caps[i];};
+        dots.forEach((d,k)=>d.addEventListener('click',()=>go(k)));
+        track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);if(i!==cur){cur=i;dots.forEach((d,k)=>{d.classList.toggle('bg-brand-blue',k===i);d.classList.toggle('bg-white/20',k!==i)});cap.textContent=caps[i];}},{passive:true});
+        ['mouseenter','touchstart','focusin'].forEach(e=>track.parentElement.addEventListener(e,()=>paused=true,{passive:true}));
+        ['mouseleave','focusout'].forEach(e=>track.parentElement.addEventListener(e,()=>paused=false));
+        let last=Date.now();const touch=()=>{last=Date.now()};
+        ['pointerdown','wheel','touchstart','keydown'].forEach(ev=>track.parentElement.addEventListener(ev,touch,{passive:true}));
+        dots.forEach(d=>d.addEventListener('click',touch));
+        if(!matchMedia('(prefers-reduced-motion: reduce)').matches) {let vis=false;
+          new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!vis){vis=true;track.scrollLeft=0;cur=0;dots.forEach((d,k)=>{d.classList.toggle('bg-brand-blue',k===0);d.classList.toggle('bg-white/20',k!==0)});cap.textContent=caps[0];last=Date.now();}else if(!e.isIntersecting){vis=false;}}),{threshold:.2}).observe(track.parentElement);
+          setInterval(()=>{if(vis&&!paused&&Date.now()-last>=5000){go((cur+1)%2);last=Date.now();}},400);}
+
+        window.MAXSVG='<svg class="w-5 h-5" viewBox="0 0 24 24"><defs><linearGradient id="mx" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><rect width="24" height="24" rx="7" fill="url(#mx)"/><path d="M6.5 17V8.2c0-.5.6-.8 1-.4L12 11.6l4.5-3.8c.4-.4 1-.1 1 .4V17" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        (()=>{let down=false,sx=0,sl=0,dragged=false,pid=null;
+          feed.addEventListener('dragstart',e=>e.preventDefault());
+          feed.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button)return;down=true;dragged=false;sx=e.clientX;sl=feed.scrollLeft;pid=e.pointerId;});
+          feed.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(!dragged&&Math.abs(dx)>5){dragged=true;try{feed.setPointerCapture(pid)}catch(_){}}if(dragged)feed.scrollLeft=sl-dx;});
+          const end=()=>{down=false};feed.addEventListener('pointerup',end);feed.addEventListener('pointercancel',end);
+          feed.addEventListener('click',e=>{if(dragged){dragged=false;e.preventDefault();return;}
+            const a=e.target.closest('a');if(!a)return;e.preventDefault();
+            const r=a.getBoundingClientRect(),f=feed.getBoundingClientRect();
+            if(r.left<f.left+6||r.right>f.right-6){feed.scrollBy({left:r.left<f.left+6?r.left-f.left-24:r.right-f.right+24,behavior:'smooth'});return;}
+            window.open(a.href,'_blank','noopener');},true);})();
+        if(window.gsap){
+          gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});
+          const rm=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(pointer:fine)').matches;
+          const R={A:{w:gsap.utils.toArray('#rotA .rw'),i:0},B:{w:gsap.utils.toArray('#rotB .rw'),i:0}};
+          Object.values(R).forEach(o=>{gsap.set(o.w,{yPercent:110,autoAlpha:0});gsap.set(o.w[0],{yPercent:0,autoAlpha:1});});
+          const setW=(k,i,anim)=>{const c=document.getElementById(k==='A'?'rotA':'rotB'),w=R[k].w[i].getBoundingClientRect().width;anim?gsap.to(c,{width:w,duration:.5,ease:'power3.out'}):gsap.set(c,{width:w});};
+          const initW=()=>{setW('A',R.A.i);setW('B',R.B.i);};initW();
+          if(document.fonts&&document.fonts.ready)document.fonts.ready.then(initW);addEventListener('resize',initW);
+          const fans=gsap.utils.toArray('.fan'),rots=[-6,5,3,-4,6];
+          gsap.set(fans,{rotation:i=>rots[i]});
+          gsap.set('.tl-d',{scale:rm?1:0});gsap.set('#tlfill',{scaleX:rm?1:0});
+          if(!rm){
+            gsap.set('.tl-t',{autoAlpha:0});
+            gsap.timeline({defaults:{ease:'power3.out',duration:.85}})
+              .from('.h1-l',{yPercent:110,stagger:.12}).from('.hero-sub',{y:22,autoAlpha:0},'-=.5').from('.hero-btns',{y:18,autoAlpha:0},'-=.5')
+              .from(fans,{y:70,autoAlpha:0,duration:.9,stagger:.1},0.3);
+            fans.forEach((f,i)=>gsap.to(f,{y:'+=10',duration:3+i*.45,yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.3}));
+            fans.forEach(f=>{f.addEventListener('mouseenter',()=>gsap.to(f,{scale:1.06,duration:.3,overwrite:'auto'}));f.addEventListener('mouseleave',()=>gsap.to(f,{scale:1,duration:.3,overwrite:'auto'}));});
+            if(fine){const xt=fans.map((f,i)=>gsap.quickTo(f,'x',{duration:.7,ease:'power3.out'}));
+              document.querySelector('section').addEventListener('pointermove',e=>{const n=e.clientX/innerWidth-.5;xt.forEach((q,i)=>q(n*(14+i*9)));},{passive:true});}
+            gsap.timeline({scrollTrigger:{trigger:'#tl',start:'top 92%',once:true}})
+              .to('#tlfill',{scaleX:1,duration:1.8,ease:'power2.inOut'}).to('.tl-d',{scale:1,duration:.5,ease:'back.out(2)',stagger:.9},0.05).to('.tl-t',{autoAlpha:1,duration:.6,stagger:.9},0.05);
+            let turn=0;const swap=k=>{const o=R[k],cur=o.w[o.i];o.i=(o.i+1)%o.w.length;const nx=o.w[o.i];setW(k,o.i,true);
+              gsap.timeline().to(cur,{yPercent:-110,autoAlpha:0,duration:.45,ease:'power3.in'}).fromTo(nx,{yPercent:110,autoAlpha:0},{yPercent:0,autoAlpha:1,duration:.55,ease:'power3.out'},'<.12');
+              if(nx.dataset.demo)gsap.fromTo('#fan-'+nx.dataset.demo,{scale:1},{scale:1.08,duration:.3,yoyo:true,repeat:1,ease:'power2.out',delay:.4});};
+            const tick=()=>{swap(turn++%2?'B':'A');gsap.delayedCall(1.7,tick);};gsap.delayedCall(3,tick);
+            gsap.set('.world',{autoAlpha:0,y:36});
+            ScrollTrigger.batch('.world',{start:'top 90%',once:true,onEnter:els=>gsap.to(els,{y:0,autoAlpha:1,duration:.7,stagger:.09,ease:'power3.out',clearProps:'all'})});
+            const mm=gsap.matchMedia();
+            let pinST=null;
+            const pin=sel=>{const st=gsap.utils.toArray(sel),n=st.length;st.forEach(el=>el.classList.add('pstep'));
+              const sec=document.getElementById('process'),box=st[0].parentElement,wrap=box.parentElement,stepsOnly=wrap.querySelector('h2')?box:wrap;let k=0;
+              const make=()=>{if(pinST)pinST.kill();
+                Object.assign(box.style,{transform:'',marginBottom:''});
+                const need=box.offsetHeight,head=sec.offsetHeight-stepsOnly.offsetHeight;
+                const whole=head+need<=innerHeight-78,el=whole?sec:stepsOnly,avail=whole?innerHeight-78-head:innerHeight-88;
+                const sc=Math.min(1,avail/need);
+                if(sc<1)Object.assign(box.style,{transformOrigin:'top center',transform:'scale('+sc+')',marginBottom:(need*(sc-1))+'px'});
+                pinST=ScrollTrigger.create({trigger:el,pin:el,start:'top '+Math.max(72,Math.round(72+(innerHeight-72-el.offsetHeight)/2)),end:'+='+(n*45)+'%',anticipatePin:1,
+                  snap:{snapTo:st.map((_,i)=>(i+1)/n),duration:{min:.2,max:.45},ease:'power1.inOut'},
+                  onUpdate:self=>{const c=Math.ceil(self.progress*n-.001);if(c!==k){k=c;st.forEach((x,i)=>x.classList.toggle('on',i<c));}}});};
+              make();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{make();ScrollTrigger.refresh();});
+              let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{make();ScrollTrigger.refresh();},300);});
+              return ()=>{if(pinST)pinST.kill();};};
+            mm.add('(min-width:768px)',()=>pin('#process .space-y-12 > div'));
+            mm.add('(max-width:767px)',()=>pin('#process .md\\:hidden > div'));
+          }
+          if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>ScrollTrigger.refresh());
+        }
+        const fb=document.getElementById('fanbox'),fsz=()=>fb.style.setProperty('--fs',Math.min(1,fb.clientWidth/470));fsz();addEventListener('resize',fsz);
+        {const lb=document.createElement('div');lb.id='lb';lb.innerHTML='<button type="button" aria-label="Закрыть">&times;</button><div class="lbs"><img alt=""></div><span class="hint">Нажмите на изображение, чтобы приблизить</span>';document.body.appendChild(lb);
+          const lbi=lb.querySelector('img'),open=()=>{lbi.classList.remove('z');lbi.src=track.children[cur].src;lbi.alt=track.children[cur].alt;lb.classList.add('on');document.body.style.overflow='hidden';paused=true;},
+                close=()=>{lb.classList.remove('on');document.body.style.overflow='';paused=false;last=Date.now();};
+          lbi.addEventListener('click',()=>lbi.classList.toggle('z'));track.addEventListener('click',open);document.getElementById('zoom').addEventListener('click',open);
+          lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='BUTTON'||e.target.classList.contains('lbs'))close();});
+          addEventListener('keydown',e=>{if(e.key==='Escape')close();});}
+        {const mq=matchMedia('(max-width:767px)'),cards=[...feed.children],wrap=document.getElementById('morewrap');let shown=5;
+          const apply=()=>{cards.forEach((c,i)=>{c.style.display=(mq.matches&&i>=shown)?'none':'';});wrap.classList.toggle('hidden',!(mq.matches&&shown<cards.length));};
+          document.getElementById('more').addEventListener('click',()=>{shown+=5;apply();});mq.addEventListener('change',apply);apply();}
     </script>
 </body>
 </html>
