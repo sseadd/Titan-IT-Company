@@ -166,6 +166,15 @@
             .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
         }
     </style>
+<style>.ts-back{position:fixed;left:14px;top:116px;z-index:60;display:inline-flex;align-items:center;padding:8px;border-radius:999px;background:rgba(19,22,28,.9);color:#e2e8f0;border:1px solid rgba(255,255,255,.18);font:600 12.5px/1 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.28);animation:tsfly 3.4s ease-in-out infinite;transition:background .2s,border-color .2s}
+.ts-back svg{width:16px;height:16px;flex:none}
+.ts-back span{display:block;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width .28s ease,opacity .2s ease,margin .28s ease;animation:tshint 5s ease .8s 1 both}
+.ts-back:hover,.ts-back:focus-visible{background:#2f6df2;border-color:#2f6df2;color:#fff;animation-play-state:paused}
+.ts-back:hover span,.ts-back:focus-visible span{max-width:140px!important;opacity:1!important;margin:0 4px 0 7px!important}
+@keyframes tsfly{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes tshint{0%,72%{max-width:140px;opacity:1;margin:0 4px 0 7px}100%{max-width:0;opacity:0;margin:0}}
+@media (prefers-reduced-motion:reduce){.ts-back,.ts-back span{animation:none}}
+@media (max-width:700px){.ts-back{left:10px}}</style>
 </head>
 <body>
 
@@ -179,7 +188,7 @@
             <a href="#gallery">Портфолио</a>
             <a href="#contacts">Контакты</a>
         </nav>
-        <a href="tel:+73472164242" class="nav-phone">+7 (347) 216-42-42</a>
+        <a href="tel:+79962917549" class="nav-phone">+7 (996) 291-75-49</a>
         <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>
 </header>
@@ -190,7 +199,7 @@
     <a href="#workshop">Шоурум</a>
     <a href="#gallery">Портфолио</a>
     <a href="#contacts">Контакты</a>
-    <a href="tel:+73472164242">+7 (347) 216-42-42</a>
+    <a href="tel:+79962917549">+7 (996) 291-75-49</a>
 </div>
 
 <section class="hero">
@@ -389,7 +398,7 @@
     <div class="wrap contacts">
         <div class="reveal"><h3>Шоурум</h3><p>Уфа, ул. Менделеева, 137<br>ежедневно 10:00–20:00, кофе сварим</p></div>
         <div class="reveal"><h3>Производство</h3><p>Уфа, ул. Индустриальная, 42<br>экскурсия по записи</p></div>
-        <div class="reveal"><h3>Связь</h3><p>+7 (347) 216-42-42<br>hello@forma-mebel.ru</p></div>
+        <div class="reveal"><h3>Связь</h3><p>+7 (996) 291-75-49<br>hello@forma-mebel.ru</p></div>
     </div>
 </section>
 
@@ -429,5 +438,7 @@
         e.target.reset();
     });
 </script>
+<a class="ts-back" href="/demo/#furniture" aria-label="В демо-витрину"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>В демо-витрину</span></a>
+<script>if(self!==top){var b=document.querySelector(".ts-back");if(b)b.remove()}</script>
 </body>
 </html>

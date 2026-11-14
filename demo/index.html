@@ -1,27 +1,479 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth" style="scroll-padding-top: 100px;">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
-<title>Демо-витрина | Titan</title>
-<link rel="icon" type="image/png" href="/favicon2.png">
-<link rel="icon" type="image/x-icon" href="/favicon2.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Titan | Демо-витрина</title>
+    <meta name="description" content="Пять рабочих демо-сайтов Titan для разных ниш: мебель, бар, управляющая компания, скейт-парки, туры. Откройте любой и попробуйте.">
+    <meta name="yandex-verification" content="65d6a4f540f19f9b" />
+    <link rel="icon" type="image/x-icon" href="/favicon2.ico">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon2.png">
+    <link rel="apple-touch-icon" href="/favicon2.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/500.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/600.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.8/500.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/oswald@5.0.8/600.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.0.8/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/800.css">
+
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['"Space Grotesk"', 'sans-serif'] },
+                    colors: {
+                        surface: { base: '#13161c', raised: '#1a1e26', border: 'rgba(255,255,255,0.07)' },
+                        brand: { blue: '#3b82f6', bluedeep: '#2563eb', green: '#22c55e' },
+                        tg: '#0088cc', max: '#6B4EFF', vk: '#0077FF',
+                    },
+                    animation: { 'float': 'float 6s ease-in-out infinite' },
+                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } } },
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+
+    <style>
+        * { -webkit-tap-highlight-color: transparent; }
+        body { background-color: #13161c; color: #f1f5f9; overflow-x: hidden; font-size: 16px; }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+        .gradient-text {
+            background: linear-gradient(120deg, #60a5fa 0%, #3b82f6 60%, #2563eb 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .card { background: #181c24; border: 1px solid rgba(255,255,255,0.08); }
+        .card-hover { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+        .card-hover:hover { border-color: rgba(59,130,246,0.55); background:#1b202a; }
+        .glass {
+            background: rgba(19, 22, 28, 0.75); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+        .btn-primary { background:#2f6df2; transition: background .2s ease; }
+        .btn-primary:hover { background:#4a82f7; }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; }
+        .btn-outline:hover { border-color: rgba(59,130,246,0.5); background: rgba(59,130,246,0.08); transform: translateY(-2px); }
+
+        .messenger-btn { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .messenger-btn:hover { transform: translateY(-4px); }
+        .messenger-tg { background: rgba(14,165,233,0.14); border: 1px solid rgba(14,165,233,0.35); }
+        .messenger-tg:hover { background: rgba(14,165,233,0.24); box-shadow: 0 15px 30px -10px rgba(14,165,233,0.45); }
+        .messenger-max { background: #172239 !important; border: 1px solid rgba(255,255,255,0.08) !important; }
+        .messenger-max:hover { background: #17284f !important; box-shadow: none !important; }
+        .messenger-vk { background: rgba(0,64,171,0.16); border: 1px solid rgba(0,64,171,0.4); }
+        .messenger-vk:hover { background: rgba(0,64,171,0.26); box-shadow: 0 15px 30px -10px rgba(0,64,171,0.5); }
+
+        .grid-bg {
+            background-image: linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
+        .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.28; z-index: 0; animation: pulse-slow 5s ease-in-out infinite; }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.38; } }
+        .noise::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+            opacity: 0.035; pointer-events: none; z-index: 0;
+        }
+        .case-soon { border: 1px dashed rgba(255,255,255,0.15); background: rgba(255,255,255,0.015); }
+
+        .burger-line { transition: all 0.3s ease-in-out; }
+        .burger-active .burger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .burger-active .burger-line:nth-child(2) { opacity: 0; }
+        .burger-active .burger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #13161c; }
+        ::-webkit-scrollbar-thumb { background: #262b35; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.4rem; line-height: 1.15; }
+            h2 { font-size: 1.75rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+            will-change: opacity, transform;
+        }
+        .reveal-up.is-visible { opacity: 1; transform: translateY(0); }
+
+        .logo-i{display:inline-block;width:26px;height:20px;background:url(data:image/png;base64,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) center/contain no-repeat}
+        .hl{background:rgba(47,109,242,.3);border-radius:14px;padding:0 .3em;color:#fff}
+        .tl-d{display:block;width:16px;height:16px;border-radius:50%;margin:0 auto 12px;background:#12161d;border:3px solid #3b82f6}
+        .world{min-height:210px;position:relative;display:flex;flex-direction:column;gap:8px;padding:24px 22px 22px;border-radius:16px;overflow:hidden;background:#181c24;border:1px solid rgba(255,255,255,.08);transition:transform .25s ease,border-color .25s ease}
+        .world:hover{transform:translateY(-5px);border-color:rgba(59,130,246,.55)}
+        .world .stripe{position:absolute;inset:0 0 auto 0;height:5px;background:var(--stripe)}
+        .world .tag{align-self:flex-start;margin-top:4px;font-size:12px;color:#94a3b8;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:3px 11px}
+        .world h4{font-size:24px;line-height:1.1;margin-top:6px}
+        .world .niche{font-size:14px;color:#94a3b8}
+        .world .go{margin-top:auto;padding-top:18px;font-size:14px;font-weight:600;color:var(--c)}
+        .w-forma{--c:#d1906a}.w-forma h4{font-family:'Playfair Display',serif;font-weight:700;color:var(--c)}
+        .w-dark{--c:#d4505e}.w-dark h4{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--c)}
+        .w-prostor{--c:#10b981}.w-prostor h4{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.01em;color:var(--c)}
+        .w-beton{--c:#ff6b00}.w-beton h4{font-family:'Unbounded',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:-.02em;font-size:21px;color:var(--c)}
+        .w-tau{--c:#e0a526}.w-tau h4{font-family:'Unbounded',sans-serif;font-weight:600;font-size:21px;color:var(--c)}
+        .world-cta:hover{transform:none;border-color:rgba(59,130,246,.9)}
+        .world-cta{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:26px 24px;border-radius:16px;border:1px dashed rgba(59,130,246,.55)}
+        .mq{border-block:1px solid rgba(255,255,255,.08);overflow:hidden;padding:20px 0}
+        .mq-t{display:flex;width:max-content;animation:mq 42s linear infinite}
+        .mq:hover .mq-t{animation-play-state:paused}
+        .mq-t span{padding:0 34px;white-space:nowrap;font-size:clamp(22px,3vw,34px);line-height:1}
+        @keyframes mq{to{transform:translateX(-50%)}}
+        @media (prefers-reduced-motion:reduce){.mq-t{animation:none}}
+        .fcirc{width:40px;height:40px;border-radius:9999px;background:rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s ease,transform .2s ease}
+        .fcirc:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+        .fcirc svg,.fcirc img{width:20px;height:20px;fill:currentColor}
+        .pstep{opacity:0;transform:translateY(40px);transition:opacity .45s ease,transform .45s ease;will-change:transform,opacity}
+        .pstep.on{opacity:1;transform:none}
+        .world .desc{font-size:14px;color:#8b97a8;margin-top:4px}
+        .world .go{margin-top:auto;padding-top:0;height:48px;display:flex;align-items:center}
+        .world-cta{padding:24px 22px 22px;justify-content:flex-start}
+        .world-cta .btn-primary{margin-top:auto;height:48px;display:flex;align-items:center;justify-content:center}
+        .fcirc{background:rgba(255,255,255,.05);color:#64748b}.fcirc:hover{background:rgba(255,255,255,.1);color:#fff}
+        .fcirc img{filter:sepia(1) saturate(10.5) hue-rotate(176deg) brightness(0.52) contrast(2.3);transition:filter .2s ease}.fcirc:hover img{filter:none}
+        .rw{white-space:nowrap}#rotA .rw{justify-self:start}
+        .messenger-btn:hover,.messenger-tg:hover,.messenger-max:hover,.messenger-vk:hover{box-shadow:none!important;transform:translateY(-2px)}
+        .messenger-btn{transition:transform .2s ease,background-color .25s ease}
+        .ln{transform-box:fill-box;transform-origin:left center}.sig{stroke-dasharray:300}
+        #fanbox{position:relative;width:100%;height:calc(450px*var(--fs,1))}
+        #fanstage{position:absolute;left:50%;top:0;width:470px;height:450px;transform:translateX(-50%) scale(var(--fs,1));transform-origin:top center}
+        html,body{max-width:100%;overflow-x:clip}
+        #process .space-y-12>*,#process .space-y-8>*{margin-top:0!important}
+        @media(min-width:768px){#process .space-y-12{display:flex;flex-direction:column;gap:34px}}
+        @media(max-width:767px){
+          #process .space-y-8{display:flex;flex-direction:column;gap:22px;position:relative}
+          #process .space-y-8::before{content:'';position:absolute;left:19.5px;top:20px;bottom:20px;width:1px;background:rgba(255,255,255,.14)}
+          #process .space-y-8>div>div:first-child{position:relative;z-index:1}
+          #feed{flex-direction:column;overflow:visible;-webkit-mask-image:none!important;mask-image:none!important}
+          #feed .card{width:100%!important}
+        }
+        @media(min-width:768px){#morewrap{display:none!important}}
+        #shots-track img{cursor:zoom-in}
+        #lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.96);display:none}
+        #lb.on{display:block}
+        #lb .lbs{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:zoom-in}
+        #lb .lbst{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;width:min(99vw,calc((100vh - 64px)*2.05),1600px);display:flex;flex-direction:column;gap:8px}
+        #lb .lbst img{display:block;width:100%;height:auto;border-radius:10px;user-select:none;-webkit-user-drag:none}
+        @media(max-width:767px){#lb .lbst{width:calc(100vw - 8px)}}
+        #lb button{position:absolute;top:8px;right:8px;z-index:3;width:44px;height:44px;border-radius:9999px;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1}
+        #lb .hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:13px;color:#94a3b8;pointer-events:none;z-index:2}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="canonical" href="https://titan-code.ru/demo/">
+<meta property="og:title" content="Titan | Демо-витрина">
+<meta property="og:url" content="https://titan-code.ru/demo/">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-*{box-sizing:border-box;margin:0}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#12161d;color:#e8ecf1;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center}
-main{max-width:460px}
-h1{font-size:clamp(28px,6vw,40px);line-height:1.15;margin-bottom:14px}
-p{color:#94a3b8;margin-bottom:28px;line-height:1.6}
-a{display:inline-block;padding:14px 26px;border-radius:12px;background:#2f6df2;color:#fff;font-weight:600;text-decoration:none}
-a:hover{background:#4a82f7}
+.js .dm-in{opacity:0;transform:translateY(28px)}
+.js .dm-hi{opacity:0}
+.dm-hero{position:relative;overflow:hidden}
+.dm-orb{position:absolute;pointer-events:none;border-radius:50%}
+.dm-orb i{display:block;width:100%;height:100%;border-radius:50%}
+.dm-oa{width:640px;height:640px;left:50%;top:-300px;margin-left:-320px}
+.dm-oa i{background:radial-gradient(circle,rgba(47,109,242,.45),rgba(47,109,242,0) 68%)}
+.dm-hero>.max-w-4xl{position:relative}
+.dm-case{display:grid;gap:2.5rem;align-items:center;padding:4.5rem 0;position:relative}
+.dm-case::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:.6}
+@media(min-width:1024px){.dm-case{grid-template-columns:1fr 1fr;gap:4rem}.dm-case:nth-of-type(even) .dm-cover{order:2}.dm-case:nth-of-type(even) .dm-media{order:2}}
+.dm-cover{position:relative;border-radius:1.25rem;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(255,255,255,.08);background:#181c24}
+.dm-cover::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px var(--acc),inset 0 0 48px -10px var(--acc);opacity:0;transition:opacity .35s ease}
+.dm-case:hover .dm-cover::after{opacity:.85}
+.dm-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dm-bar{height:14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);margin-top:1rem}
+.dm-chip{font-size:.75rem;padding:.25rem .75rem;border-radius:999px;border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);color:var(--acc)}
+.dm-num{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#475569;font-size:.95rem}
+.dm-h{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#64748b;margin:1.4rem 0 .45rem}
+.dm-name{font-size:clamp(1.9rem,3.4vw,3rem);line-height:1.05;color:var(--base)}
+.dm-name span,.dm-name i{color:var(--acc);font-style:normal}
+.dm-name.pk{display:flex;align-items:center;gap:.35em}.dm-name svg{width:1em;height:1em;color:#2fa866;flex:none}
+.dm-edit{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:.5rem;font-weight:600;color:#cbd5e1;border:1px solid rgba(255,255,255,.14);transition:background .2s,border-color .2s}
+.dm-edit:hover{background:rgba(255,255,255,.06);border-color:var(--acc)}
+.dm-sep{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent)}
+.tlogo{user-select:none;-webkit-user-select:none;-webkit-user-drag:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.tlogo *{user-select:none;-webkit-user-select:none;pointer-events:none}
 </style>
+<style>.ts-back{position:fixed;left:14px;top:96px;z-index:60;display:inline-flex;align-items:center;padding:8px;border-radius:999px;background:rgba(19,22,28,.9);color:#e2e8f0;border:1px solid rgba(255,255,255,.18);font:600 12.5px/1 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.28);animation:tsfly 3.4s ease-in-out infinite;transition:background .2s,border-color .2s}
+.ts-back svg{width:16px;height:16px;flex:none}
+.ts-back span{display:block;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width .28s ease,opacity .2s ease,margin .28s ease;animation:tshint 5s ease .8s 1 both}
+.ts-back:hover,.ts-back:focus-visible{background:#2f6df2;border-color:#2f6df2;color:#fff;animation-play-state:paused}
+.ts-back:hover span,.ts-back:focus-visible span{max-width:140px!important;opacity:1!important;margin:0 4px 0 7px!important}
+@keyframes tsfly{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes tshint{0%,72%{max-width:140px;opacity:1;margin:0 4px 0 7px}100%{max-width:0;opacity:0;margin:0}}
+@media (prefers-reduced-motion:reduce){.ts-back,.ts-back span{animation:none}}
+@media (max-width:700px){.ts-back{left:10px}}</style>
 </head>
-<body>
-<main>
-<h1>Демо-витрина в разработке</h1>
-<p>Скоро здесь появятся примеры наших сайтов.</p>
-<a href="../">На главную</a>
-</main>
+<body class="antialiased relative">
+    <!-- Навигация -->
+    <nav class="fixed top-0 w-full z-40 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="/" class="tlogo flex items-center gap-2" aria-label="Titan, на главную"><span class="logo-i"></span><span class="text-xl font-bold tracking-tight font-display">Titan</span></a>
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="/#problems" class="text-sm text-slate-400 hover:text-white transition-colors">Что решаем</a>
+                    <a href="/demo/" class="text-sm text-white transition-colors">Примеры</a>
+                    <a href="/#services" class="text-sm text-slate-400 hover:text-white transition-colors">Услуги</a>
+                    <a href="/#cases" class="text-sm text-slate-400 hover:text-white transition-colors">Наши работы</a>
+                    <a href="/#team" class="text-sm text-slate-400 hover:text-white transition-colors">Команда</a>
+                    <a href="/#process" class="text-sm text-slate-400 hover:text-white transition-colors">Как работаем</a>
+                    <a href="/#articles" class="text-sm text-slate-400 hover:text-white transition-colors">Статьи</a>
+                </div>
+                <a href="#contact" class="hidden lg:inline-flex btn-primary px-5 py-2.5 rounded-lg text-white text-sm font-semibold">Обсудить проект</a>
+                <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2 z-50">
+                    <span class="burger-line w-6 h-0.5 bg-white rounded-full"></span>
+                    <span class="burger-line w-6 h-0.5 bg-white rounded-full"></span>
+                    <span class="burger-line w-6 h-0.5 bg-white rounded-full"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Мобильное меню -->
+    <div id="mobile-menu" class="lg:hidden fixed top-20 left-0 right-0 bottom-0 z-30" style="background: rgba(19,22,28,0.85); backdrop-filter: blur(20px); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
+        <div class="flex flex-col items-center justify-center h-full gap-4 px-6 max-w-sm mx-auto">
+            <a href="/#problems" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Что решаем</a>
+            <a href="/#demo" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Примеры</a>
+            <a href="/#services" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Услуги</a>
+            <a href="/#cases" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Наши работы</a>
+            <a href="/#team" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Команда</a>
+            <a href="/#process" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Как работаем</a>
+        </div>
+    </div>
+<a class="ts-back" href="/" aria-label="На главную"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>На главную</span></a>
+<section class="dm-hero pt-36 pb-12">
+<div class="dm-orb dm-oa" aria-hidden="true"><i></i></div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<p class="dm-hi text-sm text-brand-blue font-semibold mb-4">Демо-витрина</p>
+<h1 class="dm-hi text-4xl md:text-6xl font-bold font-display leading-tight mb-6">Пять рабочих сайтов для пяти разных бизнесов</h1>
+<p class="dm-hi text-slate-400 text-lg max-w-2xl mx-auto">Откройте любой из них и посмотрите, как он устроен, от главного экрана до формы заявки. Сайт для вашего бизнеса мы строим под вашу задачу: стиль, структуру и тексты обсуждаем с вами. Если вашей ниши здесь нет, напишите нам, и через три дня вы получите черновик.</p>
+</div></section>
+<section class="pb-8"><div id="dm-list" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<article id="furniture" class="dm-case" style="--acc:#d1906a">
+<div class="dm-media dm-in"><div class="dm-cover"><img class="dm-img" src="/assets/demo/furniture/hero.webp" alt="Главный экран демо-сайта ФОРМА" loading="lazy" width="1200" height="900"></div>
+<div class="dm-bar" role="img" aria-label="Палитра демо по площади цвета" style="background:linear-gradient(90deg,#f7f2ea 26.0%, #d5c4af 65.0%, #241c14 86.7%, #a9683a 97.6%);background:linear-gradient(90deg in oklab,#f7f2ea 26.0%, #d5c4af 65.0%, #241c14 86.7%, #a9683a 97.6%)"></div>
+<p class="text-xs text-slate-500 mt-2">Шрифты: Playfair Display, Manrope</p></div>
+<div class="dm-info dm-in">
+<div class="flex items-center gap-3 mb-4"><span class="dm-num">01</span><span class="dm-chip">тёплый и спокойный</span></div>
+<h2 class="dm-name" style="font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.08em;--base:#f7f2ea">ФОРМА<span>.</span></h2>
+<p class="text-slate-400 mt-1">Мебель на заказ</p>
+<h3 class="dm-h">Задача</h3><p class="text-slate-300">Мастерская делает кухни, шкафы и гостиные на заказ. Покупатель хочет увидеть реальные работы и понять, как проходит заказ, прежде чем отдавать деньги.</p>
+<h3 class="dm-h">Что мы сделали</h3><p class="text-slate-300">Мы расписали процесс по шести шагам, от заявки до монтажа, выложили недавние работы без ретуши и добавили шоурум с адресом. У каждой категории мебели есть цена «от».</p>
+<h3 class="dm-h">Что получает бизнес</h3><ul class="space-y-2 text-slate-300"><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Посетитель видит цену на плитке категории и сразу понимает порядок сумм</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Форма расчёта обещает ответ за 15 минут</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Фурнитура Blum и Hettich названа на странице, поэтому вопрос о качестве снимается</span></li></ul>
+<div class="flex flex-wrap gap-3 mt-8"><a href="/demo/furniture/" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold">Открыть демо <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a><button type="button" class="dm-edit" data-open="furniture" data-title="ФОРМА"><i data-lucide="pencil-line" class="w-4 h-4"></i>Редактировать</button></div>
+</div>
+</article>
+<article id="bistro" class="dm-case" style="--acc:#d4505e">
+<div class="dm-media dm-in"><div class="dm-cover"><img class="dm-img" src="/assets/demo/bistro/hero.webp" alt="Главный экран демо-сайта AFTER DARK" loading="lazy" width="1200" height="900"></div>
+<div class="dm-bar" role="img" aria-label="Палитра демо по площади цвета" style="background:linear-gradient(90deg,#0b0c0e 40.3%, #252729 83.7%, #b3303e 89.2%, #e9ecef 95.7%);background:linear-gradient(90deg in oklab,#0b0c0e 40.3%, #252729 83.7%, #b3303e 89.2%, #e9ecef 95.7%)"></div>
+<p class="text-xs text-slate-500 mt-2">Шрифты: Oswald, Jost</p></div>
+<div class="dm-info dm-in">
+<div class="flex items-center gap-3 mb-4"><span class="dm-num">02</span><span class="dm-chip">тёмный, вечерний</span></div>
+<h2 class="dm-name" style="font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.2em;--base:#e9ecef">AFTER<i>/</i>DARK</h2>
+<p class="text-slate-400 mt-1">Бистро и бар</p>
+<h3 class="dm-h">Задача</h3><p class="text-slate-300">Бар работает по вечерам, и гость выбирает место по настроению. Меню с ценами важно, но решает атмосфера.</p>
+<h3 class="dm-h">Что мы сделали</h3><p class="text-slate-300">Мы описали вечер по часам, от открытия дверей до last call. Рядом лежат меню кухни и бара с ценами от 250 до 840 ₽ и афиша недели. Стол бронируется за минуту.</p>
+<h3 class="dm-h">Что получает бизнес</h3><ul class="space-y-2 text-slate-300"><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Гость заранее видит, что подадут на кухне и за стойкой</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Афиша недели даёт повод прийти в будний день</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Бронь стола делается прямо на сайте</span></li></ul>
+<div class="flex flex-wrap gap-3 mt-8"><a href="/demo/bistro/" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold">Открыть демо <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a><button type="button" class="dm-edit" data-open="bistro" data-title="AFTER DARK"><i data-lucide="pencil-line" class="w-4 h-4"></i>Редактировать</button></div>
+</div>
+</article>
+<article id="uk" class="dm-case" style="--acc:#10b981">
+<div class="dm-media dm-in"><div class="dm-cover"><img class="dm-img" src="/assets/demo/uk/hero-main.webp" alt="Главный экран демо-сайта ПРОСТОР" loading="lazy" width="1200" height="900"></div>
+<div class="dm-bar" role="img" aria-label="Палитра демо по площади цвета" style="background:linear-gradient(90deg,#ffffff 32.3%, #e8ebe9 74.6%, #059669 88.1%, #1a1d23 95.8%);background:linear-gradient(90deg in oklab,#ffffff 32.3%, #e8ebe9 74.6%, #059669 88.1%, #1a1d23 95.8%)"></div>
+<p class="text-xs text-slate-500 mt-2">Шрифты: Inter</p></div>
+<div class="dm-info dm-in">
+<div class="flex items-center gap-3 mb-4"><span class="dm-num">03</span><span class="dm-chip">светлый и деловой</span></div>
+<h2 class="dm-name" style="font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.04em;--base:#ffffff">ПРО<span>СТОР</span></h2>
+<p class="text-slate-400 mt-1">Управляющая компания</p>
+<h3 class="dm-h">Задача</h3><p class="text-slate-300">Компания обслуживает 48 домов. Жильцы хотят знать, что чинят сейчас, что уже сделали и кому звонить при аварии.</p>
+<h3 class="dm-h">Что мы сделали</h3><p class="text-slate-300">Мы собрали ленту обращений со статусами, отчёт о работах за месяц, объявления для жильцов и список домов. Диспетчерская и аварийная служба получили отдельные блоки.</p>
+<h3 class="dm-h">Что получает бизнес</h3><ul class="space-y-2 text-slate-300"><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Жилец видит статус своей заявки и реже звонит в диспетчерскую</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Объявления об отключениях воды и собраниях лежат в одном месте</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Отчёты о работах показывают собственникам, за что они платят</span></li></ul>
+<div class="flex flex-wrap gap-3 mt-8"><a href="/demo/uk/" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold">Открыть демо <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a><button type="button" class="dm-edit" data-open="uk" data-title="ПРОСТОР"><i data-lucide="pencil-line" class="w-4 h-4"></i>Редактировать</button></div>
+</div>
+</article>
+<article id="skate" class="dm-case" style="--acc:#ff6b00">
+<div class="dm-media dm-in"><div class="dm-cover"><img class="dm-img" src="/assets/demo/skate/hero.webp" alt="Главный экран демо-сайта BETON WAVE" loading="lazy" width="1200" height="900"></div>
+<div class="dm-bar" role="img" aria-label="Палитра демо по площади цвета" style="background:linear-gradient(90deg,#0f0f0f 20.7%, #3a3a3a 58.0%, #ff6b00 84.2%, #f0ece4 96.9%);background:linear-gradient(90deg in oklab,#0f0f0f 20.7%, #3a3a3a 58.0%, #ff6b00 84.2%, #f0ece4 96.9%)"></div>
+<p class="text-xs text-slate-500 mt-2">Шрифты: Unbounded, Golos Text</p></div>
+<div class="dm-info dm-in">
+<div class="flex items-center gap-3 mb-4"><span class="dm-num">04</span><span class="dm-chip">грубый, бетонный</span></div>
+<h2 class="dm-name" style="font-family:'Unbounded',sans-serif;font-weight:900;letter-spacing:.05em;--base:#f0ece4">BETON<i>/</i>WAVE</h2>
+<p class="text-slate-400 mt-1">Скейт-парки</p>
+<h3 class="dm-h">Задача</h3><p class="text-slate-300">Компания строит парки для городов и рампы для частных дворов. У этих покупателей разные вопросы, и сайт отвечает обоим.</p>
+<h3 class="dm-h">Что мы сделали</h3><p class="text-slate-300">Мы разделили предложение на «парк как инфраструктуру» и «личную рампу». В каталоге восемь фигур, у каждой есть цена «от». Страница описывает материалы, шесть этапов от эскиза до обкатки и вопросы, которые покупатели задают до сделки и после неё.</p>
+<h3 class="dm-h">Что получает бизнес</h3><ul class="space-y-2 text-slate-300"><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Город видит материалы и этапы работ, частный клиент видит цену и размер</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Блок «Построено и катается» показывает готовые парки</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Ответы на вопросы о сервисе после сдачи лежат на странице</span></li></ul>
+<div class="flex flex-wrap gap-3 mt-8"><a href="/demo/skate/" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold">Открыть демо <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a><button type="button" class="dm-edit" data-open="skate" data-title="BETON WAVE"><i data-lucide="pencil-line" class="w-4 h-4"></i>Редактировать</button></div>
+</div>
+</article>
+<article id="tours" class="dm-case" style="--acc:#e0a526">
+<div class="dm-media dm-in"><div class="dm-cover"><img class="dm-img" src="/assets/demo/tours/hero-bg.webp" alt="Главный экран демо-сайта ТАУ-ТРЕК" loading="lazy" width="1200" height="900"></div>
+<div class="dm-bar" role="img" aria-label="Палитра демо по площади цвета" style="background:linear-gradient(90deg,#f6f3ec 23.8%, #0c2430 66.0%, #1f8a4c 88.3%, #0b7ea8 96.1%);background:linear-gradient(90deg in oklab,#f6f3ec 23.8%, #0c2430 66.0%, #1f8a4c 88.3%, #0b7ea8 96.1%)"></div>
+<p class="text-xs text-slate-500 mt-2">Шрифты: Unbounded, Manrope</p></div>
+<div class="dm-info dm-in">
+<div class="flex items-center gap-3 mb-4"><span class="dm-num">05</span><span class="dm-chip">яркий, походный</span></div>
+<h2 class="dm-name pk" style="font-family:'Unbounded',sans-serif;font-weight:800;letter-spacing:-.01em;--base:#f6f3ec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>ТАУ-ТРЕК</h2>
+<p class="text-slate-400 mt-1">Туры по Башкирии</p>
+<h3 class="dm-h">Задача</h3><p class="text-slate-300">Турклуб проводит выезды выходного дня: верхом, на сплав, в поход, на этно-тур. Человек выбирает по настроению и по датам.</p>
+<h3 class="dm-h">Что мы сделали</h3><p class="text-slate-300">Мы разложили предложение на шесть направлений и выставили ближайшие выезды с ценами от 3 500 до 13 500 ₽. Школы и корпоративные команды получили свои блоки, заявка на тур занимает одну форму.</p>
+<h3 class="dm-h">Что получает бизнес</h3><ul class="space-y-2 text-slate-300"><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Посетитель сразу видит ближайшие даты и цену</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Четыре шага от заявки до костра объясняют, как проходит поездка</span></li><li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 shrink-0 mt-0.5" style="color:var(--acc)"></i><span>Школы и компании находят условия в своём блоке</span></li></ul>
+<div class="flex flex-wrap gap-3 mt-8"><a href="/demo/tours/" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold">Открыть демо <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a><button type="button" class="dm-edit" data-open="tours" data-title="ТАУ-ТРЕК"><i data-lucide="pencil-line" class="w-4 h-4"></i>Редактировать</button></div>
+</div>
+</article>
+</div></section>
+<script>
+(function(){var l=document.getElementById('dm-list'),h=location.hash.slice(1),a=h&&document.getElementById(h);
+if(a&&a.parentNode===l){l.insertBefore(a,l.firstChild);a.removeAttribute('id');
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+var up=function(){scrollTo(0,0)};up();
+addEventListener('load',function(){up();setTimeout(up,60);setTimeout(up,400);setTimeout(function(){a.id=h},600)});}
+[].forEach.call(l.children,function(c,i){c.querySelector('.dm-num').textContent='0'+(i+1)})})();
+</script>
+<div class="max-w-6xl mx-auto px-4"><div class="dm-sep"></div></div>
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="card rounded-3xl p-8 md:p-12 border border-brand-blue/20 reveal-up">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-bluedeep flex items-center justify-center">
+                    <i data-lucide="message-square" class="w-8 h-8 text-white"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Готовы обсудить ваш проект?</h2>
+                <p class="text-slate-400 mb-8 max-w-xl mx-auto">
+                    Выберите удобный способ связи — расскажем, что и как можно сделать, назовём стоимость и сроки.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-xl mx-auto">
+                    <a href="tg://resolve?domain=DimRaufovich" class="messenger-btn messenger-tg px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                        <span>Telegram</span>
+                    </a>
+                    <a href="https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
+                        <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG">
+                        <span>Max</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4 max-w-2xl mx-auto mb-6">
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                    <span class="text-slate-500 text-sm">или позвоните</span>
+                    <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                </div>
+                <div class="flex items-center justify-center gap-3 text-slate-400">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    <a href="tel:+79962917549" class="text-xl md:text-2xl font-semibold tracking-wide hover:text-white transition-colors">
+                        +7 (996) 291-75-49
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/10 bg-[#0b0e13]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
+                <div>
+                    <div class="flex items-center gap-3 mb-5"><a href="/" class="tlogo flex items-center gap-3" aria-label="Titan, на главную"><span class="logo-i"></span><span class="font-bold text-lg text-slate-400">Titan</span></a><a href="https://github.com/sseadd" target="_blank" rel="noopener" aria-label="GitHub" class="text-slate-500 hover:text-white transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div>
+                    <div class="flex items-center gap-3 flex-wrap"><a href="tel:+79962917549" class="font-semibold text-slate-400 hover:text-white transition-colors mr-1">+7 (996) 291-75-49</a><a href="tg://resolve?domain=DimRaufovich" target="_blank" rel="noopener" aria-label="Написать в Telegram" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg></a><a href="https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE" target="_blank" rel="noopener" aria-label="Написать в Max" class="fcirc"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"></a></div>
+                </div>
+                <div class="md:text-right">
+                    <p class="text-sm text-slate-600 mb-3">Каналы:</p>
+                    <div class="flex gap-3 md:justify-end"><a href="https://t.me/TitanITCompany" target="_blank" rel="noopener" aria-label="Telegram-канал" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg></a><a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" rel="noopener" aria-label="Max-канал" class="fcirc"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"></a><a href="https://vk.com/titanitcompany" target="_blank" rel="noopener" aria-label="VK" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
+                        </svg></a></div>
+                </div>
+            </div>
+            <div class="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between gap-3 text-xs text-slate-600">
+                <p>© 2026 Titan</p>
+                <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-slate-600 flex-shrink-0"></i><p>Работаем официально по договору (самозанятый). ИНН: 024004144726</p></div>
+            </div>
+        </div>
+    </footer>
+<script>
+        lucide.createIcons();
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+
+        const burgerBtn = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+        burgerBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.style.transform = isMenuOpen ? 'translateX(0)' : 'translateX(100%)';
+            burgerBtn.classList.toggle('burger-active', isMenuOpen);
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.style.transform = 'translateX(100%)';
+                burgerBtn.classList.remove('burger-active');
+                document.body.style.overflow = '';
+            });
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = target.getBoundingClientRect().top + window.pageYOffset - 100;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+            });
+        });
+        window.MAXSVG='<svg class="w-5 h-5" viewBox="0 0 24 24" fill="#64748b"><path d="M4 20V4h3.2l2.9 4.6L13 4h3.2v16h-2.9v-9.4l-2.5 3.9h-.4l-2.5-3.9V20H4z"/></svg>';
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (window.gsap && window.ScrollTrigger && !reduce) {
+  gsap.registerPlugin(ScrollTrigger);
+  const oa = document.querySelector('.dm-oa');
+  const orb = gsap.to('.dm-oa i', { x: 70, y: 46, scale: 1.2, opacity: 0.75, duration: 4.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  window.dmPause = p => (p ? orb.pause() : orb.resume());
+  if (matchMedia('(pointer: fine)').matches) {
+    const o = { duration: 1.2, ease: 'power3' }, ax = gsap.quickTo(oa, 'x', o), ay = gsap.quickTo(oa, 'y', o);
+    addEventListener('pointermove', e => { if (window.__edOpen) return; ax((e.clientX / innerWidth - 0.5) * 90); ay((e.clientY / innerHeight - 0.5) * 60); });
+  }
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
+  tl.fromTo('.dm-hi', { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.12 });
+  const q = new URLSearchParams(location.search).get('t');
+  if (q !== null) { tl.pause(); tl.seek(parseFloat(q)); }
+  ScrollTrigger.batch('.dm-in', {
+    start: 'top 88%', once: true,
+    onEnter: b => gsap.to(b, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12, overwrite: true })
+  });
+  document.querySelectorAll('.dm-case').forEach(c => {
+    gsap.fromTo(c.querySelector('.dm-bar'), { scaleX: 0, transformOrigin: 'left center' },
+      { scaleX: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 70%', once: true } });
+    const im = c.querySelector('.dm-img');
+    gsap.set(im, { scale: 1.18 });
+    gsap.fromTo(im, { yPercent: -6 }, { yPercent: 6, ease: 'none',
+      scrollTrigger: { trigger: c.querySelector('.dm-cover'), start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  document.fonts.ready.then(() => ScrollTrigger.refresh());
+} else {
+  document.documentElement.classList.remove('js');
+}
+</script>
+<script src="/demo/editor.js" defer></script>
 </body>
 </html>
