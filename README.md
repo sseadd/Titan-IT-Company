@@ -119,4 +119,4 @@
 
 ---
 
-Если вы правообладатель и хотите, чтобы изображение убрали или указали авторство, напишите нам: [Telegram](tg://resolve?domain=DimRaufovich) или [Max](https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE)
+Если вы правообладатель и хотите, чтобы изображение убрали или указали авторство, напишите нам: [Telegram](https://t.me/DimRaufovic) или [Max](https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE)
