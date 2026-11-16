@@ -4,6 +4,8 @@
   const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INL = new Set(['SMALL', 'B', 'I', 'EM', 'STRONG', 'SPAN', 'BR', 'A', 'SUP', 'SUB', 'SVG']);
   const SKIP = 'svg,script,style,select,textarea,input,.demo-badge,[data-live]';
+  // «телефонный» режим: палец или узкое окно. Читается в момент открытия, а не при загрузке (в симуляторах режим переключают на лету)
+  const isCoarse = () => matchMedia('(pointer: coarse)').matches || innerWidth <= 900;
   const wins = new Map(); let docks = null;
   const T = (t, row, f) => ({ t, row, f }), F = (l, s, w, o = {}) => ({ l, s, w, ...o });
   const DAYS = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
@@ -54,14 +56,19 @@
 .ed-site{position:relative;background:#0b0e13;min-width:0}
 .ed-site::before{content:"Загружаем демо…";position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:#64748b}
 .ed-site iframe{position:relative;width:100%;height:100%;border:0;background:#fff;display:block;opacity:0;transition:opacity .3s}.ed-site iframe.rdy{opacity:1}
-.ed-tb{border-left:1px solid rgba(255,255,255,.08);background:#181c24;display:flex;flex-direction:column;min-height:0}
+.ed-tb{border-left:1px solid rgba(255,255,255,.08);background:#181c24;display:flex;flex-direction:column;min-height:0;min-width:0}
 .ed-th{padding:14px 16px 8px;font:700 13px 'Space Grotesk',sans-serif}.ed-th p{font:400 12px Inter,sans-serif;color:#64748b;margin-top:4px}
-.ed-rows{flex:1;overflow:auto;padding:4px 12px 12px}
+.ed-rows{flex:1;min-width:0;overflow:auto;padding:4px 0 12px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.ed-tbl{min-width:var(--min,500px);padding:0 12px}
+.ed-tbl h4{position:sticky;left:12px;width:max-content;max-width:calc(100vw - 48px)}
+.ed-row>:first-child,.ed-hr>:first-child{position:sticky;left:12px;z-index:1;box-shadow:-12px 0 0 #181c24}
+.ed-hr>:first-child{background:#181c24}
 .ed-tbl{margin-bottom:18px}.ed-tbl h4{font:700 13px 'Space Grotesk',sans-serif;margin:8px 0;display:flex;gap:8px;align-items:center}
 .ed-tbl h4 span{font:400 11px Inter,sans-serif;color:#64748b;background:#0f1217;padding:1px 7px;border-radius:99px}
 .ed-hr,.ed-row{display:grid;grid-template-columns:var(--cols);gap:6px}.ed-hr{font:600 11px Inter,sans-serif;color:#64748b;padding:0 2px 4px}.ed-row{margin-bottom:6px}
 .ed-row input{width:100%;min-width:0;padding:8px 10px;border-radius:8px;background:#0f1217;border:1px solid rgba(255,255,255,.08);color:#e2e8f0;font-size:13px;outline:0}
-.ed-row input:focus{border-color:#2f6df2}.ed-row input[readonly]{opacity:.55}
+.ed-row input:focus{border-color:#2f6df2}.ed-row input[readonly]:not([data-lock]){opacity:.55}
+.ed-cell{min-width:0}
 .ed-empty{padding:12px;font-size:13px;color:#94a3b8}
 .ed-ft{padding:8px 14px;font-size:12px;color:#64748b;background:#181c24;border-top:1px solid rgba(255,255,255,.08)}
 .ed-dlg{position:absolute;inset:0;z-index:5;display:none;place-items:center;background:rgba(8,10,14,.65)}.ed-dlg.on{display:grid}
@@ -69,9 +76,14 @@
 .ed-dlgb h4{font:700 16px 'Space Grotesk',sans-serif}.ed-dlgb p{font-size:13px;color:#94a3b8;margin:8px 0 16px}.ed-dlgb div{display:flex;gap:8px;flex-wrap:wrap}
 .ed-docks{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:101;display:flex;gap:8px}
 .ed-chip{display:none;padding:9px 16px;border-radius:999px;background:#181c24;border:1px solid var(--acc);color:#e2e8f0;font-size:13px}
-.ed-hr,.ed-row{min-width:var(--min,500px)}.ed-row input{color-scheme:dark}
+.ed-row input{color-scheme:dark}
 .ed-time{display:flex;gap:6px;min-width:0}.ed-time input{flex:1}.ed-time button{padding:0 10px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:#0f1217;color:#cbd5e1;font-size:12px;white-space:nowrap}.ed-time button:hover{border-color:#2f6df2}
-@media(max-width:900px){.ed-win{inset:0;border-radius:0}.m-split .ed-tb{display:none}.m-split .ed-main{grid-template-columns:1fr}.ed-b span{display:none}.ed-hd{flex-wrap:wrap}}`;
+@media(max-width:900px){.ed-win{inset:0;border-radius:0}.m-split .ed-tb{display:none}.m-split .ed-main{grid-template-columns:1fr}.ed-b span{display:none}
+.ed-hd{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 8px;padding:10px 12px;cursor:default}
+.ed-ttl{grid-column:1/-1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.ed-tabs{margin:0;justify-self:start}.ed-act{justify-self:end}}
+@media(max-width:400px){.ed-tabs button{padding:6px 9px;font-size:12.5px}.ed-b{padding:7px 8px}.ed-act{gap:4px}}
+@media(pointer:coarse),(max-width:900px){.ed-row>:first-child,.ed-hr>:first-child{box-shadow:-12px 0 0 #181c24,7px 0 10px -4px rgba(0,0,0,.6)}.ed-row input{font-size:16px}.ed-rows,.ed-rows *{touch-action:pan-x pan-y}}`;
   document.head.appendChild(css);
 
   const lock = () => {
@@ -138,6 +150,17 @@
       try { const u = await shrink(f); setImg(el, u); S.imgDraft[S.imgs.indexOf(el)] = u; S.dirty = true; label(S); } catch (_) {}
     };
     if (en) { S.pending = en; dropDock(id); }
+    if (isCoarse()) q('.ed-th p').textContent = 'Листайте таблицу пальцем, нажмите на ячейку, чтобы изменить.';
+    // мышь в узком окне (симулятор): тянешь таблицу «рукой», как пальцем; простое нажатие по-прежнему включает правку ячейки
+    { const rw = S.rows; let dn = null;
+      rw.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && !e.button && isCoarse()) dn = { x: e.clientX, y: e.clientY, sl: rw.scrollLeft, st: rw.scrollTop, mv: false }; });
+      rw.addEventListener('pointermove', e => {
+        if (!dn) return; const dx = e.clientX - dn.x, dy = e.clientY - dn.y;
+        if (!dn.mv && Math.hypot(dx, dy) > 6) { dn.mv = true; rw.setPointerCapture(e.pointerId); rw.style.cursor = 'grabbing'; }
+        if (dn.mv) { rw.scrollLeft = dn.sl - dx; rw.scrollTop = dn.st - dy; }
+      });
+      const end = () => { if (dn && dn.mv) { const h = ev => ev.stopPropagation(); rw.addEventListener('click', h, true); setTimeout(() => rw.removeEventListener('click', h, true), 60); } rw.style.cursor = ''; dn = null; };
+      rw.addEventListener('pointerup', end); rw.addEventListener('pointercancel', end); }
     wins.set(id, S); lock(); label(S);
 
     const act = { edit: () => (S.editing || S.dirty) ? save(S) : startEdit(S), reset: () => reset(S), min: () => minimize(S), close: () => closeReq(S) };
@@ -316,15 +339,27 @@
     inp.onchange = () => { const [h, m] = inp.value.split(':').map(Number); if (isNaN(h)) return; const d = new Date(); d.setHours(h, m, 0, 0); let ts = d.getTime(); if (ts > Date.now()) ts -= 864e5; setTs(ts); };
     nb.onclick = () => { const ts = Date.now(); inp.value = hm(ts); setTs(ts); };
     inp.onfocus = () => el && flash(S, el);
-    wrap.append(inp, nb); return wrap;
+    wrap.append(inp, nb);
+    if (isCoarse() && el) {   // телефон: поле времени тоже не должно «красть» свайп; нажатие открывает выбор времени
+      inp.style.pointerEvents = 'none';
+      wrap.addEventListener('click', e => { if (e.target.closest('button')) return; inp.style.pointerEvents = ''; inp.focus(); try { inp.showPicker && inp.showPicker(); } catch (_) {} });
+      inp.addEventListener('blur', () => { inp.style.pointerEvents = 'none'; });
+    }
+    return wrap;
   }
   function buildTables(S) {
-    S.rows.innerHTML = ''; S.refs = [];
+    S.rows.innerHTML = ''; S.refs = []; const touchy = isCoarse();
     const times = [...S.doc.querySelectorAll('.ticket-time')];
+    // все таблицы одной ширины (по самой широкой): общая прокрутка заканчивается там же, где каждая таблица,
+    // и закреплённый столбец не «уезжает» у более узких
+    const present = (TABLES[S.id] || []).filter(t => S.doc.querySelector(t.row));
+    const minW = Math.max(0, ...present.map(t => t.f.length)) * (touchy ? 150 : 125) + 24 + 'px';
     (TABLES[S.id] || []).forEach((t, ti) => {
       const roots = [...S.doc.querySelectorAll(t.row)]; if (!roots.length) return;
       const box = document.createElement('section'); box.className = 'ed-tbl';
-      box.style.setProperty('--cols', t.f.map(f => `minmax(0,${f.w}fr)`).join(' ')); box.style.setProperty('--min', t.f.length * 125 + 'px');
+      // на телефоне закреплённый столбец узкий, остальным остаётся место
+      box.style.setProperty('--cols', t.f.map((f, i) => (i === 0 && touchy) ? 'min(150px,38vw)' : `minmax(0,${f.w}fr)`).join(' '));
+      box.style.setProperty('--min', minW);
       box.innerHTML = `<h4>${esc(t.t)} <span>${roots.length}</span></h4><div class="ed-hr">${t.f.map(f => `<b>${esc(f.l)}</b>`).join('')}</div>`;
       roots.forEach(r => {
         const row = document.createElement('div'); row.className = 'ed-row';
@@ -343,7 +378,17 @@
             inp.oninput = () => { f.full ? setFull(el, inp.value) : setV(el, inp.value); mark(S, S.els.indexOf(host)); };
             inp.onfocus = () => flash(S, el); S.refs.push({ rd, inp });
           }
-          row.appendChild(inp);
+          if (touchy) {
+            // телефон: поле прокручивает свой текст и «крадёт» свайп у таблицы. Пока ячейка не выбрана,
+            // она заперта (pointer-events:none), жест идёт сквозь неё; нажатие на обёртку включает правку
+            const cell = document.createElement('div'); cell.className = 'ed-cell'; inp.style.pointerEvents = 'none'; cell.appendChild(inp);
+            if (host) {
+              inp.readOnly = true; inp.dataset.lock = '1';
+              cell.addEventListener('click', () => { if (inp.readOnly) { inp.style.pointerEvents = ''; inp.readOnly = false; inp.focus(); } });
+              inp.addEventListener('blur', () => { inp.readOnly = true; inp.style.pointerEvents = 'none'; });
+            }
+            row.appendChild(cell);
+          } else row.appendChild(inp);
         });
         box.appendChild(row);
       });
