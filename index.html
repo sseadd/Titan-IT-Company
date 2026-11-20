@@ -170,6 +170,7 @@
         #lb .hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:13px;color:#94a3b8;pointer-events:none;z-index:2}
     .tlogo{user-select:none;-webkit-user-select:none;-webkit-user-drag:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
 .tlogo *{user-select:none;-webkit-user-select:none;pointer-events:none}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -182,7 +183,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="/" class="tlogo flex items-center gap-2" aria-label="Titan, на главную"><span class="logo-i"></span><span class="text-xl font-bold tracking-tight font-display">Titan</span></a>
-                <div class="hidden lg:flex items-center gap-8">
+                <div class="hidden lg:flex items-center gap-5 xl:gap-8">
                     <a href="#problems" class="text-sm text-slate-400 hover:text-white transition-colors">Что решаем</a>
                     <a href="#demo" class="text-sm text-slate-400 hover:text-white transition-colors">Примеры</a>
                     <a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">Услуги</a>
@@ -191,25 +192,29 @@
                     <a href="#process" class="text-sm text-slate-400 hover:text-white transition-colors">Как работаем</a>
                     <a href="#articles" class="text-sm text-slate-400 hover:text-white transition-colors">Статьи</a>
                 </div>
-                <a href="#contact" class="hidden lg:inline-flex btn-primary px-5 py-2.5 rounded-lg text-white text-sm font-semibold">Обсудить проект</a>
-                <button id="burger-btn" class="lg:hidden flex flex-col gap-1.5 p-2 z-50">
+                <div class="flex items-center gap-3">
+<a href="#contact" class="hidden sm:inline-flex whitespace-nowrap btn-primary px-5 py-2.5 rounded-lg text-white text-sm font-semibold">Обсудить проект</a>
+<button id="burger-btn" aria-label="Меню" class="lg:hidden flex flex-col gap-1.5 p-2 z-50">
                     <span class="burger-line w-6 h-0.5 bg-white rounded-full"></span>
                     <span class="burger-line w-6 h-0.5 bg-white rounded-full"></span>
                     <span class="burger-line w-6 h-0.5 bg-white rounded-full"></span>
                 </button>
+</div>
             </div>
         </div>
     </nav>
 
     <!-- Мобильное меню -->
-    <div id="mobile-menu" class="lg:hidden fixed top-20 left-0 right-0 bottom-0 z-30" style="background: rgba(19,22,28,0.85); backdrop-filter: blur(20px); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
-        <div class="flex flex-col items-center justify-center h-full gap-4 px-6 max-w-sm mx-auto">
-            <a href="#problems" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Что решаем</a>
-            <a href="#demo" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Примеры</a>
-            <a href="#services" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Услуги</a>
-            <a href="#cases" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Наши работы</a>
-            <a href="#team" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Команда</a>
-            <a href="#process" class="mobile-link w-full card rounded-xl px-6 py-4 text-center text-lg font-semibold">Как работаем</a>
+    <div id="mobile-menu" class="lg:hidden fixed top-20 left-0 right-0 bottom-0 z-30 overflow-y-auto" style="background: rgba(19,22,28,0.85); backdrop-filter: blur(20px); transform: translateX(100%); transition: transform 0.3s ease-in-out;">
+        <div class="flex flex-col items-center justify-center min-h-full gap-3 sm:gap-4 px-6 py-6 max-w-sm sm:max-w-md mx-auto">
+            <a href="#problems" class="mobile-link w-full card rounded-xl px-6 py-3 sm:py-4 text-center text-lg font-semibold">Что решаем</a>
+            <a href="#demo" class="mobile-link w-full card rounded-xl px-6 py-3 sm:py-4 text-center text-lg font-semibold">Примеры</a>
+            <a href="#services" class="mobile-link w-full card rounded-xl px-6 py-3 sm:py-4 text-center text-lg font-semibold">Услуги</a>
+            <a href="#cases" class="mobile-link w-full card rounded-xl px-6 py-3 sm:py-4 text-center text-lg font-semibold">Наши работы</a>
+            <a href="#team" class="mobile-link w-full card rounded-xl px-6 py-3 sm:py-4 text-center text-lg font-semibold">Команда</a>
+            <a href="#process" class="mobile-link w-full card rounded-xl px-6 py-3 sm:py-4 text-center text-lg font-semibold">Как работаем</a>
+<a href="#articles" class="mobile-link w-full card rounded-xl px-6 py-3 sm:py-4 text-center text-lg font-semibold">Статьи</a>
+<a href="#contact" class="mobile-link w-full btn-primary rounded-xl px-6 py-3 text-center text-lg font-semibold text-white sm:hidden">Обсудить проект</a>
         </div>
     </div>
 

@@ -83,6 +83,7 @@
 .ed-ttl{grid-column:1/-1;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .ed-tabs{margin:0;justify-self:start}.ed-act{justify-self:end}}
 @media(max-width:400px){.ed-tabs button{padding:6px 9px;font-size:12.5px}.ed-b{padding:7px 8px}.ed-act{gap:4px}}
+@media(max-width:900px) and (max-height:520px){.ed-hd{display:flex;flex-wrap:nowrap;gap:8px;padding:6px 10px}.ed-ttl{max-width:36%;font-size:13px}.ed-tabs{margin:0 auto}.ed-b{padding:6px 8px}}
 @media(pointer:coarse),(max-width:900px){.ed-row>:first-child,.ed-hr>:first-child{box-shadow:-12px 0 0 #181c24,7px 0 10px -4px rgba(0,0,0,.6)}.ed-row input{font-size:16px}.ed-rows,.ed-rows *{touch-action:pan-x pan-y}}`;
   document.head.appendChild(css);
 
