@@ -820,15 +820,15 @@ lucide.createIcons();
               gsap.set(o.all,{yPercent:110,autoAlpha:0});gsap.set(o.w[0],{yPercent:0,autoAlpha:1});setW(k,0);});};initW();window.__rotInit=initW;
           if(document.fonts&&document.fonts.ready)document.fonts.ready.then(initW);addEventListener('resize',initW);
           const fans=gsap.utils.toArray('.fan'),rots=[-6,5,3,-4,6];
-          gsap.set(fans,{rotation:i=>rots[i]});
+          const FY=[57,57,35,9,-3];
+          gsap.set(fans,{rotation:i=>rots[i],y:i=>FY[i]});
           gsap.set('.tl-d',{scale:rm?1:0});gsap.set('#tlfill',{scaleX:rm?1:0});
           if(!rm){
             gsap.set('.tl-t',{autoAlpha:0});
             const heroTl=gsap.timeline({paused:true,defaults:{ease:'power3.out',duration:.85}})
               .from('.h1-l',{yPercent:110,stagger:.12}).from('.hero-sub',{y:22,autoAlpha:0},'-=.5').from('.hero-btns',{y:18,autoAlpha:0},'-=.5')
-              .from(fans,{y:70,autoAlpha:0,duration:.9,stagger:.1},0.3);
+              .fromTo(fans,{y:i=>FY[i]+70,autoAlpha:0},{y:i=>FY[i],autoAlpha:1,duration:.9,stagger:.1,onComplete:()=>fans.forEach((f,i)=>gsap.to(f,{y:'+=10',duration:3+i*.45,yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.3}))},0.3);
             if(window.__ldDone)heroTl.play();else document.addEventListener('ld:done',()=>heroTl.play(),{once:true});
-            fans.forEach((f,i)=>gsap.to(f,{y:'+=10',duration:3+i*.45,yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.3}));
             fans.forEach(f=>{f.addEventListener('mouseenter',()=>gsap.to(f,{scale:1.06,duration:.3,overwrite:'auto'}));f.addEventListener('mouseleave',()=>gsap.to(f,{scale:1,duration:.3,overwrite:'auto'}));});
             if(fine){const xt=fans.map((f,i)=>gsap.quickTo(f,'x',{duration:.7,ease:'power3.out'}));
               document.querySelector('section').addEventListener('pointermove',e=>{const n=e.clientX/innerWidth-.5;xt.forEach((q,i)=>q(n*(14+i*9)));},{passive:true});}
