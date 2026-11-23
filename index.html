@@ -805,7 +805,7 @@ lucide.createIcons();
           feed.addEventListener('click',e=>{if(dragged){dragged=false;e.preventDefault();return;}
             const a=e.target.closest('a');if(!a)return;e.preventDefault();
             const r=a.getBoundingClientRect(),f=feed.getBoundingClientRect();
-            if(r.left<f.left+6||r.right>f.right-6){feed.scrollBy({left:r.left<f.left+6?r.left-f.left-24:r.right-f.right+24,behavior:'smooth'});return;}
+            if(r.left<f.left-4||r.right>f.right+4){feed.scrollBy({left:r.left<f.left+6?r.left-f.left-24:r.right-f.right+24,behavior:'smooth'});return;}
             window.open(a.href,'_blank','noopener');},true);})();
         if(window.gsap){
           gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});
