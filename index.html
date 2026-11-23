@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <style>
+        #ld{position:fixed;inset:0;z-index:1000;background:#13161c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;opacity:1;transition:opacity .3s ease}
+        #ld.out{opacity:0;pointer-events:none}
+        #ld .ld-b{display:flex;align-items:center;gap:10px;font:700 30px/1 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.025em;color:#f1f5f9}
+        #ld .logo-i{width:39px;height:30px}
+        #ld .ld-l{width:132px;height:3px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden}
+        #ld .ld-l i{display:block;height:100%;background:#3b82f6;transform-origin:left center;transform:scaleX(var(--p,.08));transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+        .ld-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+        @media (prefers-reduced-motion:reduce){#ld,#ld .ld-l i{transition:none}}
+    </style>
+    <noscript><style>#ld{display:none!important}</style></noscript>
     <title>Titan | Разработка сайтов, веб-приложений и CRM для вашего бизнеса</title>
     <meta name="description" content="Создаём сайты, веб-приложения, Telegram- и Max-ботов и CRM-системы для бизнеса в Уфе.">
     <meta name="yandex-verification" content="65d6a4f540f19f9b" />
@@ -159,7 +170,14 @@
           #feed .card{width:100%!important}
         }
         @media(min-width:768px){#morewrap{display:none!important}}
-        #shots-track img{cursor:zoom-in}
+        [data-track] img{cursor:zoom-in}
+        .case-card{border:1px solid var(--cc-a)}
+        .case-it{--cc:#ea580c;--cc-a:rgba(234,88,12,.3);--cc-b:rgba(234,88,12,.15)}
+        .case-at{--cc:#00A9E0;--cc-a:rgba(0,169,224,.3);--cc-b:rgba(0,169,224,.15)}
+        .case-badge{background:var(--cc-b);color:var(--cc);border:1px solid var(--cc-a)}
+        .case-ico{color:var(--cc)}
+        .sdot{width:10px;height:10px;border-radius:9999px;background:rgba(255,255,255,.2);transition:background .2s ease}
+        .sdot.on{background:var(--cc)}
         #lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.96);display:none}
         #lb.on{display:block}
         #lb .lbs{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:zoom-in}
@@ -176,6 +194,20 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body class="antialiased relative">
+
+    <div id="ld" role="status" aria-live="polite"><span class="ld-sr">Загрузка</span><div class="ld-b"><span class="logo-i"></span><span>Titan</span></div><div class="ld-l"><i></i></div></div>
+    <script>
+    (function(){var d=document,t0=Date.now(),first=true,ready=false,done=false,el=d.getElementById('ld'),bar=el&&el.querySelector('i');
+      try{first=!sessionStorage.getItem('ld');sessionStorage.setItem('ld','1');}catch(e){}
+      var min=first?700:300;
+      window.__ldStage=function(n){if(bar)bar.style.setProperty('--p',[.08,.4,.75,1][n]);};
+      function hide(){if(done||!el)return;done=true;window.__ldDone=true;el.classList.add('out');el.setAttribute('aria-hidden','true');
+        setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},400);
+        d.dispatchEvent(new Event('ld:done'));}
+      window.__ldReady=function(){ready=true;var w=min-(Date.now()-t0);setTimeout(hide,w>0?w:0);};
+      setTimeout(hide,1500);
+    })();
+    </script>
 
 
     <!-- Навигация -->
@@ -369,13 +401,13 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                 <p class="text-slate-400">Реальные проекты — не макеты для красоты.</p>
             </div>
 
-            <div class="card rounded-3xl p-6 md:p-12 border border-brand-blue/20 reveal-up mb-8">
+            <div class="card case-card case-it rounded-3xl p-6 md:p-12 reveal-up mb-8">
 
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blue/15 text-brand-blue text-xs font-bold uppercase tracking-wider w-fit">
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Разработка завершена · готовится запуск
+                    <div class="case-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-normal sm:tracking-wider w-fit">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> <span>Разработка завершена<span class="hidden sm:inline"> · готовится запуск</span></span>
                     </div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider w-fit sm:ml-auto">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-[11px] sm:text-xs font-bold uppercase tracking-normal sm:tracking-wider w-fit sm:ml-auto">
                         <i data-lucide="award" class="w-3.5 h-3.5"></i> Участник грантовой программы РБ
                     </div>
                 </div>
@@ -384,20 +416,20 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                     <div class="lg:w-1/2">
                         <h3 class="text-2xl md:text-3xl font-bold mb-4">IT-Logistic — агрегатор спецтехники</h3>
                         <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
-                            Написали с нуля агрегатор спецтехники и стройматериалов для Башкортостана — с тремя ролями пользователей: заказчик, исполнитель, администратор, у каждой своя логика.
+                            Написали с нуля агрегатор спецтехники и стройматериалов для Башкортостана. Заказчик оформляет заявку, исполнитель получает заказы рядом с собой, администратор ведёт каталог через админ-панель: у каждой из трёх ролей своя логика.
                         </p>
                         <ul class="space-y-3 mb-8">
                             <li class="flex items-start gap-3 text-slate-300 text-sm">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
-                                <span>Пошаговый конструктор заказа техники с проверкой совместимости параметров на лету</span>
+                                <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
+                                <span>Пошаговый конструктор заказа техники: проверяет совместимость параметров на лету и скрывает неподходящие варианты</span>
                             </li>
                             <li class="flex items-start gap-3 text-slate-300 text-sm">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
-                                <span>Автоподбор ближайшего исполнителя по геолокации с возможностью сменить вручную</span>
+                                <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
+                                <span>Автоподбор ближайшего исполнителя по геолокации: заявка сразу привязывается к тому, кто рядом, и исполнителя можно сменить вручную</span>
                             </li>
                             <li class="flex items-start gap-3 text-slate-300 text-sm">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5"></i>
-                                <span>Модуль стройматериалов: конструктор карточек товара, учёт остатков и расчёт суммы заказа</span>
+                                <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
+                                <span>Модуль стройматериалов: администратор сам наполняет каталог в админ-панели, добавляет фото и любые поля в карточку товара; остатки и сумма заказа пересчитываются автоматически</span>
                             </li>
                         </ul>
                         <a href="https://it-logistic-online.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group">
@@ -405,20 +437,77 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                         </a>
                     </div>
 
-                    <div class="lg:w-1/2 w-full">
-                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-raised" id="shots"><button id="zoom" type="button" class="absolute bottom-3 right-3 z-10 flex items-center gap-2 px-3 py-2 rounded-full bg-black/65 text-white text-xs font-semibold backdrop-blur"><i data-lucide="maximize-2" class="w-4 h-4"></i>Открыть</button>
+                    <div class="lg:w-1/2 w-full" data-gallery data-caps='["Главная: четыре раздела и заявка в четыре шага", "Конструктор подбирает технику и скрывает неподходящие варианты"]'>
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-raised"><button type="button" data-zoom class="absolute bottom-3 left-3 z-10 flex items-center gap-2 px-3 py-2 rounded-full bg-black/65 text-white text-xs font-semibold backdrop-blur"><i data-lucide="maximize-2" class="w-4 h-4"></i>Открыть</button>
                             <div class="h-8 bg-black/20 flex items-center px-4 gap-2 border-b border-white/5">
                                 <div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div>
                                 <div class="ml-4 px-3 py-1 bg-black/20 rounded text-xs text-slate-400 flex-1 text-center">it-logistic-online.ru</div>
                             </div>
-                            <div class="flex overflow-x-auto snap-x snap-mandatory" id="shots-track" style="scrollbar-width:none">
+                            <div class="flex overflow-x-auto snap-x snap-mandatory" data-track style="scrollbar-width:none">
                                 <img class="w-full flex-shrink-0 snap-center" src="assets/itlogistic-screen.webp" alt="Главная IT-Logistic: четыре раздела и заявка в четыре шага">
                                 <img class="w-full flex-shrink-0 snap-center" src="assets/itlogistic-screen2.webp" alt="Шаг «Параметры»: конструктор заявки скрывает неподходящие варианты">
                             </div>
                         </div>
                         <div class="flex items-center justify-between mt-3 gap-4">
-                            <p id="shots-cap" class="text-sm text-slate-400">Главная: четыре раздела и заявка в четыре шага</p>
-                            <div class="flex gap-2" id="shots-dots"><button class="w-2.5 h-2.5 rounded-full bg-brand-blue" aria-label="Скриншот 1"></button><button class="w-2.5 h-2.5 rounded-full bg-white/20" aria-label="Скриншот 2"></button></div>
+                            <p data-cap class="text-sm text-slate-400">Главная: четыре раздела и заявка в четыре шага</p>
+                            <div class="flex gap-2" data-dots><button type="button" class="sdot on" aria-label="Скриншот 1"></button><button type="button" class="sdot" aria-label="Скриншот 2"></button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card case-card case-at rounded-3xl p-6 md:p-12 reveal-up mb-8">
+
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                    <div class="case-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-normal sm:tracking-wider w-fit">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> <span>Сайт запущен<span class="hidden sm:inline"> · наполняется контентом</span></span>
+                    </div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-[11px] sm:text-xs font-bold uppercase tracking-normal sm:tracking-wider w-fit sm:ml-auto">
+                        <i data-lucide="languages" class="w-3.5 h-3.5"></i> Два языка · RU/EN
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row-reverse gap-8 md:gap-12 items-start">
+                    <div class="lg:w-1/2">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4">Atomy by Anna Yakovleva — сайт-визитка с каталогом</h3>
+                        <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
+                            Сделали с нуля личный сайт независимого партнёра Atomy. Посетитель узнаёт об Анне, её пути и команде, знакомится с продукцией и сразу переходит к регистрации или пишет Анне напрямую.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
+                                <span>Каталог из 60 товаров в пяти категориях с фильтрами. Посетитель видит цены «до и после регистрации», собирает корзину и переходит к контактам Анны</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
+                                <span>Страница регистрации: три варианта, каждый разобран на настоящем экране Atomy, плюс 32 ответа на частые вопросы с подбором по темам</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                                <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
+                                <span>Раздел мероприятий: страница готова, лента последних событий в разработке</span>
+                            </li>
+                        </ul>
+                        <a href="https://atomy-by-anna-yakovleva.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group">
+                            Посмотреть сайт <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+
+                    <div class="lg:w-1/2 w-full" data-gallery data-caps='["Главная: знакомство и две кнопки, «Присоединиться» и «Узнать больше»", "Каталог: карточки товаров и корзина с итогом", "Регистрация: три варианта и разбор каждого", "Команда: история руководителя центра «Балхай»"]'>
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-raised"><button type="button" data-zoom class="absolute bottom-3 left-3 z-10 flex items-center gap-2 px-3 py-2 rounded-full bg-black/65 text-white text-xs font-semibold backdrop-blur"><i data-lucide="maximize-2" class="w-4 h-4"></i>Открыть</button>
+                            <div class="h-8 bg-black/20 flex items-center px-4 gap-2 border-b border-white/5">
+                                <div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div>
+                                <div class="ml-4 px-3 py-1 bg-black/20 rounded text-xs text-slate-400 flex-1 text-center">atomy-by-anna-yakovleva.ru</div>
+                            </div>
+                            <div class="flex overflow-x-auto snap-x snap-mandatory" data-track style="scrollbar-width:none">
+                                <img class="w-full flex-shrink-0 snap-center" src="assets/atomy-screen-home.webp" alt="Главная сайта Atomy by Anna Yakovleva: заголовок «Atomy — это не только продукция» и кнопки «Присоединиться» и «Узнать больше»">
+                                <img class="w-full flex-shrink-0 snap-center" src="assets/atomy-screen-catalog.webp" alt="Каталог продукции Atomy: карточки товаров и открытая корзина с итоговой суммой">
+                                <img class="w-full flex-shrink-0 snap-center" src="assets/atomy-screen-register.webp" alt="Страница регистрации: три варианта, покупатель, дистрибьютор и Global, с разбором каждого">
+                                <img class="w-full flex-shrink-0 snap-center" src="assets/atomy-screen-team.webp" alt="Страница команды: история руководителя центра «Балхай»">
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 gap-4">
+                            <p data-cap class="text-sm text-slate-400">Главная: знакомство и две кнопки, «Присоединиться» и «Узнать больше»</p>
+                            <div class="flex gap-2" data-dots><button type="button" class="sdot on" aria-label="Скриншот 1"></button><button type="button" class="sdot" aria-label="Скриншот 2"></button><button type="button" class="sdot" aria-label="Скриншот 3"></button><button type="button" class="sdot" aria-label="Скриншот 4"></button></div>
                         </div>
                     </div>
                 </div>
@@ -559,7 +648,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                 <p class="text-slate-400 text-sm mb-6">Там мы показываем, как идёт работа над проектами, делимся отзывами клиентов и новостями студии.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3"><a href="https://t.me/TitanITCompany" target="_blank" rel="noopener" class="messenger-btn messenger-tg" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                        </svg><span>Telegram</span></a><a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" rel="noopener" class="messenger-btn messenger-max" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"><span>Max</span></a><a href="https://vk.com/titanitcompany" target="_blank" rel="noopener" class="messenger-btn messenger-vk" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        </svg><span>Telegram</span></a><a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" rel="noopener" class="messenger-btn messenger-max" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><img src="assets/Max_logo.svg" alt="Max" class="w-5 h-5"><span>Max</span></a><a href="https://vk.com/titanitcompany" target="_blank" rel="noopener" class="messenger-btn messenger-vk" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.8rem 1rem;font-size:.95rem;font-weight:600;border-radius:.75rem"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
                         </svg><span>VK</span></a></div>
             </div>
@@ -585,7 +674,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                         <span>Telegram</span>
                     </a>
                     <a href="https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE" class="messenger-btn messenger-max px-6 py-5 rounded-xl text-white font-semibold flex items-center justify-center gap-3">
-                        <img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG">
+                        <img src="assets/Max_logo.svg" alt="Max" class="w-5 h-5">
                         <span>Max</span>
                     </a>
                 </div>
@@ -612,13 +701,13 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                     <div class="flex items-center gap-3 mb-5"><a href="/" class="tlogo flex items-center gap-3" aria-label="Titan, на главную"><span class="logo-i"></span><span class="font-bold text-lg text-slate-400">Titan</span></a><a href="https://github.com/sseadd" target="_blank" rel="noopener" aria-label="GitHub" class="text-slate-500 hover:text-white transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a></div>
                     <div class="flex items-center gap-3 flex-wrap"><a href="tel:+79962917549" class="font-semibold text-slate-400 hover:text-white transition-colors mr-1">+7 (996) 291-75-49</a><a href="tg://resolve?domain=DimRaufovich" target="_blank" rel="noopener" aria-label="Написать в Telegram" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                        </svg></a><a href="https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE" target="_blank" rel="noopener" aria-label="Написать в Max" class="fcirc"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"></a></div>
+                        </svg></a><a href="https://max.ru/u/f9LHodD0cOL9-5SDZHZs7iZguiyPoNIkQghsjMbzdjvNA16SvUyy9bpRzZE" target="_blank" rel="noopener" aria-label="Написать в Max" class="fcirc"><img src="assets/Max_logo.svg" alt="Max" class="w-5 h-5"></a></div>
                 </div>
                 <div class="md:text-right">
                     <p class="text-sm text-slate-600 mb-3">Каналы:</p>
                     <div class="flex gap-3 md:justify-end"><a href="https://t.me/TitanITCompany" target="_blank" rel="noopener" aria-label="Telegram-канал" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                        </svg></a><a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" rel="noopener" aria-label="Max-канал" class="fcirc"><img src="https://maxicons.ru/icons/Max_logo.svg" alt="Max" class="w-5 h-5" onerror="this.outerHTML=window.MAXSVG"></a><a href="https://vk.com/titanitcompany" target="_blank" rel="noopener" aria-label="VK" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        </svg></a><a href="https://max.ru/join/5jnHNeNLxXTmZIqDTKewUwBfq5c_lYPCDLFUEeN0FZ4" target="_blank" rel="noopener" aria-label="Max-канал" class="fcirc"><img src="assets/Max_logo.svg" alt="Max" class="w-5 h-5"></a><a href="https://vk.com/titanitcompany" target="_blank" rel="noopener" aria-label="VK" class="fcirc"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.762-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.716-.576.716z"/>
                         </svg></a></div>
                 </div>
@@ -691,23 +780,22 @@ lucide.createIcons();
         const fog=()=>mask(feed.scrollLeft>8?90:0, feed.scrollLeft+feed.clientWidth<feed.scrollWidth-8?90:0);
         feed.addEventListener('scroll',fog,{passive:true});window.addEventListener('resize',fog);fog();
 
-        const track=document.getElementById('shots-track'),dots=[...document.querySelectorAll('#shots-dots button')],cap=document.getElementById('shots-cap'),
-              caps=['Главная: четыре раздела и заявка в четыре шага','Конструктор подбирает технику и скрывает неподходящие варианты'];
-        let cur=0,paused=false;
-        const go=i=>{cur=i;track.scrollTo({left:i*track.clientWidth,behavior:'smooth'});dots.forEach((d,k)=>{d.classList.toggle('bg-brand-blue',k===i);d.classList.toggle('bg-white/20',k!==i)});cap.textContent=caps[i];};
-        dots.forEach((d,k)=>d.addEventListener('click',()=>go(k)));
-        track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);if(i!==cur){cur=i;dots.forEach((d,k)=>{d.classList.toggle('bg-brand-blue',k===i);d.classList.toggle('bg-white/20',k!==i)});cap.textContent=caps[i];}},{passive:true});
-        ['mouseenter','touchstart','focusin'].forEach(e=>track.parentElement.addEventListener(e,()=>paused=true,{passive:true}));
-        ['mouseleave','focusout'].forEach(e=>track.parentElement.addEventListener(e,()=>paused=false));
-        let last=Date.now();const touch=()=>{last=Date.now()};
-        ['pointerdown','wheel','touchstart','keydown'].forEach(ev=>track.parentElement.addEventListener(ev,touch,{passive:true}));
-        dots.forEach(d=>d.addEventListener('click',touch));
-        if(!matchMedia('(prefers-reduced-motion: reduce)').matches) {let vis=false;
-          new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!vis){vis=true;track.scrollLeft=0;cur=0;dots.forEach((d,k)=>{d.classList.toggle('bg-brand-blue',k===0);d.classList.toggle('bg-white/20',k!==0)});cap.textContent=caps[0];last=Date.now();}else if(!e.isIntersecting){vis=false;}}),{threshold:.2}).observe(track.parentElement);
-          setInterval(()=>{if(vis&&!paused&&Date.now()-last>=5000){go((cur+1)%2);last=Date.now();}},400);}
+        const galleries=[...document.querySelectorAll('[data-gallery]')].map(root=>{
+          const track=root.querySelector('[data-track]'),frame=track.parentElement,dots=[...root.querySelectorAll('[data-dots] button')],
+                cap=root.querySelector('[data-cap]'),caps=JSON.parse(root.dataset.caps),n=track.children.length;
+          const g={root,track,cur:0,paused:false,last:Date.now(),vis:false};
+          const mark=i=>{dots.forEach((d,k)=>d.classList.toggle('on',k===i));cap.textContent=caps[i];};
+          g.go=i=>{g.cur=i;track.scrollTo({left:i*track.clientWidth,behavior:'smooth'});mark(i);};
+          dots.forEach((d,k)=>d.addEventListener('click',()=>{g.go(k);g.last=Date.now();}));
+          track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);if(i!==g.cur&&i>=0&&i<n){g.cur=i;mark(i);}},{passive:true});
+          ['mouseenter','touchstart','focusin'].forEach(e=>frame.addEventListener(e,()=>g.paused=true,{passive:true}));
+          ['mouseleave','focusout'].forEach(e=>frame.addEventListener(e,()=>g.paused=false));
+          ['pointerdown','wheel','touchstart','keydown'].forEach(ev=>frame.addEventListener(ev,()=>{g.last=Date.now();},{passive:true}));
+          if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+            new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!g.vis){g.vis=true;track.scrollLeft=0;g.cur=0;mark(0);g.last=Date.now();}else if(!e.isIntersecting){g.vis=false;}}),{threshold:.2}).observe(frame);
+            setInterval(()=>{if(g.vis&&!g.paused&&Date.now()-g.last>=5000){g.go((g.cur+1)%n);g.last=Date.now();}},400);}
+          return g;});
 
-        // ИСПРАВЛЕНИЕ: Иконка Max в футере теперь сплошного цвета #64748b, как у TG и VK
-        window.MAXSVG='<svg class="w-5 h-5" viewBox="0 0 24 24" fill="#64748b"><path d="M4 20V4h3.2l2.9 4.6L13 4h3.2v16h-2.9v-9.4l-2.5 3.9h-.4l-2.5-3.9V20H4z"/></svg>';
         
         (()=>{let down=false,sx=0,sl=0,dragged=false,pid=null;
           feed.addEventListener('dragstart',e=>e.preventDefault());
@@ -729,16 +817,17 @@ lucide.createIcons();
           const initW=()=>{const avail=document.querySelector('h1').clientWidth;
             ['A','B'].forEach(k=>{const o=R[k],cont=document.getElementById(k==='A'?'rotA':'rotB'),pre=cont.previousElementSibling.getBoundingClientRect().width;
               const ok=o.all.filter(w=>w.getBoundingClientRect().width+pre<=avail-4);o.w=ok.length?ok:o.all.slice(0,1);o.i=0;
-              gsap.set(o.all,{yPercent:110,autoAlpha:0});gsap.set(o.w[0],{yPercent:0,autoAlpha:1});setW(k,0);});};initW();
+              gsap.set(o.all,{yPercent:110,autoAlpha:0});gsap.set(o.w[0],{yPercent:0,autoAlpha:1});setW(k,0);});};initW();window.__rotInit=initW;
           if(document.fonts&&document.fonts.ready)document.fonts.ready.then(initW);addEventListener('resize',initW);
           const fans=gsap.utils.toArray('.fan'),rots=[-6,5,3,-4,6];
           gsap.set(fans,{rotation:i=>rots[i]});
           gsap.set('.tl-d',{scale:rm?1:0});gsap.set('#tlfill',{scaleX:rm?1:0});
           if(!rm){
             gsap.set('.tl-t',{autoAlpha:0});
-            gsap.timeline({defaults:{ease:'power3.out',duration:.85}})
+            const heroTl=gsap.timeline({paused:true,defaults:{ease:'power3.out',duration:.85}})
               .from('.h1-l',{yPercent:110,stagger:.12}).from('.hero-sub',{y:22,autoAlpha:0},'-=.5').from('.hero-btns',{y:18,autoAlpha:0},'-=.5')
               .from(fans,{y:70,autoAlpha:0,duration:.9,stagger:.1},0.3);
+            if(window.__ldDone)heroTl.play();else document.addEventListener('ld:done',()=>heroTl.play(),{once:true});
             fans.forEach((f,i)=>gsap.to(f,{y:'+=10',duration:3+i*.45,yoyo:true,repeat:-1,ease:'sine.inOut',delay:i*.3}));
             fans.forEach(f=>{f.addEventListener('mouseenter',()=>gsap.to(f,{scale:1.06,duration:.3,overwrite:'auto'}));f.addEventListener('mouseleave',()=>gsap.to(f,{scale:1,duration:.3,overwrite:'auto'}));});
             if(fine){const xt=fans.map((f,i)=>gsap.quickTo(f,'x',{duration:.7,ease:'power3.out'}));
@@ -785,18 +874,22 @@ lucide.createIcons();
           if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>ScrollTrigger.refresh());
         }
         const fb=document.getElementById('fanbox'),fsz=()=>fb.style.setProperty('--fs',Math.min(1,fb.clientWidth/470));fsz();addEventListener('resize',fsz);
+        {const st=n=>{if(window.__ldStage)window.__ldStage(n);};st(1);
+          const fin=()=>{if(window.__rotInit)window.__rotInit();fsz();st(3);if(window.__ldReady)window.__ldReady();};
+          const FL=['700 1em "Space Grotesk"','500 1em "Space Grotesk"','400 1em Inter','500 1em Inter','600 1em Inter','700 1em "Playfair Display"','600 1em Oswald','700 1em Unbounded'];
+          if(document.fonts&&document.fonts.load){Promise.all(FL.map(f=>document.fonts.load(f,'Aa Яя').catch(()=>[]))).then(()=>document.fonts.ready).then(()=>{st(2);requestAnimationFrame(fin);});}else fin();}
         {const lb=document.createElement('div');lb.id='lb';
           lb.innerHTML='<button type="button" aria-label="Закрыть">&times;</button><div class="lbs"><div class="lbst"></div></div><span class="hint">Нажмите, чтобы приблизить</span>';document.body.appendChild(lb);
-          const stage=lb.querySelector('.lbs'),stack=lb.querySelector('.lbst'),xb=lb.querySelector('button'),
-            imgs=[...track.children].map(t=>{const i=document.createElement('img');i.src=t.src;i.alt=t.alt;i.draggable=false;stack.appendChild(i);return i;});
-          let sc=1,L=0,T=0,W=0,H=0,sel=0,vw=0,vh=0,pd=0,moved=false,dn=[0,0];const pts=new Map(),phone=()=>matchMedia('(max-width:767px)').matches;
+          const stage=lb.querySelector('.lbs'),stack=lb.querySelector('.lbst'),xb=lb.querySelector('button');
+          let imgs=[],G=null,sc=1,L=0,T=0,W=0,H=0,sel=0,vw=0,vh=0,pd=0,moved=false,dn=[0,0];const pts=new Map(),phone=()=>matchMedia('(max-width:767px)').matches;
+          const build=g=>{stack.textContent='';imgs=[...g.track.children].map(t=>{const i=document.createElement('img');i.src=t.src;i.alt=t.alt;i.draggable=false;stack.appendChild(i);return i;});};
           const clamp=()=>{const w=W*sc,h=H*sc;L=w<=vw?(vw-w)/2:Math.min(0,Math.max(vw-w,L));T=h<=vh?(vh-h)/2:Math.min(0,Math.max(vh-h,T));};
           const apply=an=>{stack.style.transition=an?'transform .25s ease':'none';stack.style.transform='translate('+L+'px,'+T+'px) scale('+sc+')';stage.style.cursor=sc>1?'grab':'zoom-in';};
-          const measure=()=>{vw=stage.clientWidth;vh=stage.clientHeight;imgs.forEach((im,i)=>{im.style.display=(phone()||i===sel)?'block':'none';});W=stack.offsetWidth;H=stack.offsetHeight;};
+          const measure=()=>{vw=stage.clientWidth;vh=stage.clientHeight;const base=sel-(sel%2);imgs.forEach((im,i)=>{im.style.display=(phone()?(i===base||i===base+1):i===sel)?'block':'none';});W=stack.offsetWidth;H=stack.offsetHeight;};
           const reset=an=>{sc=1;L=(vw-W)/2;T=(vh-H)/2;apply(an);};
           const zoomAt=(px,py,ns,an)=>{ns=Math.max(1,Math.min(6,ns));const k=ns/sc;L=px-(px-L)*k;T=py-(py-T)*k;sc=ns;clamp();apply(an);};
-          const open=()=>{sel=cur;lb.classList.add('on');document.body.style.overflow='hidden';paused=true;measure();reset(false);};
-          const close=()=>{lb.classList.remove('on');document.body.style.overflow='';paused=false;last=Date.now();};
+          const open=g=>{G=g;build(g);sel=g.cur;lb.classList.add('on');document.body.style.overflow='hidden';g.paused=true;measure();reset(false);};
+          const close=()=>{lb.classList.remove('on');document.body.style.overflow='';if(G){G.paused=false;G.last=Date.now();}};
           stage.addEventListener('wheel',e=>{e.preventDefault();zoomAt(e.clientX,e.clientY,sc*(e.deltaY<0?1.2:1/1.2),false);},{passive:false});
           stage.addEventListener('pointerdown',e=>{stage.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size===1){moved=false;dn=[e.clientX,e.clientY];}if(pts.size===2){const v=[...pts.values()];pd=Math.hypot(v[0][0]-v[1][0],v[0][1]-v[1][1]);}});
           stage.addEventListener('pointermove',e=>{const p=pts.get(e.pointerId);if(!p)return;const dx=e.clientX-p[0],dy=e.clientY-p[1];pts.set(e.pointerId,[e.clientX,e.clientY]);
@@ -807,8 +900,9 @@ lucide.createIcons();
             const t=document.elementFromPoint(e.clientX,e.clientY);
             if(t&&t.tagName==='IMG'){if(sc>1)reset(true);else zoomAt(e.clientX,e.clientY,2.6,true);}else close();};
           stage.addEventListener('pointerup',up);stage.addEventListener('pointercancel',e=>{pts.delete(e.pointerId);pd=0;});
-          xb.addEventListener('click',close);track.addEventListener('click',open);document.getElementById('zoom').addEventListener('click',open);
-          addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if((e.key==='ArrowRight'||e.key==='ArrowLeft')&&!phone()){sel=(sel+1)%imgs.length;measure();reset(false);}});
+          xb.addEventListener('click',close);
+          galleries.forEach(g=>{g.track.addEventListener('click',()=>open(g));g.root.querySelector('[data-zoom]').addEventListener('click',()=>open(g));});
+          addEventListener('keydown',e=>{if(!lb.classList.contains('on')||!G)return;if(e.key==='Escape')close();if((e.key==='ArrowRight'||e.key==='ArrowLeft')&&!phone()){const n=imgs.length;sel=(sel+(e.key==='ArrowRight'?1:n-1))%n;measure();reset(false);}});
           addEventListener('resize',()=>{if(lb.classList.contains('on')){measure();reset(false);}});}
         {const mq=matchMedia('(max-width:767px)'),cards=[...feed.children],wrap=document.getElementById('morewrap');let shown=5;
           const apply=()=>{cards.forEach((c,i)=>{c.style.display=(mq.matches&&i>=shown)?'none':'';});wrap.classList.toggle('hidden',!(mq.matches&&shown<cards.length));};
