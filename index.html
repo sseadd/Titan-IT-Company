@@ -176,6 +176,30 @@
         .case-at{--cc:#00A9E0;--cc-a:rgba(0,169,224,.3);--cc-b:rgba(0,169,224,.15)}
         .case-badge{background:var(--cc-b);color:var(--cc);border:1px solid var(--cc-a)}
         .case-ico{color:var(--cc)}
+        .rev{position:relative;margin-top:1.5rem;padding:.15rem 0 0 1.4rem;border-left:3px solid var(--cc)}
+        @media (min-width:1024px){.rev{margin-top:auto}}
+        .rev-mark{width:1.75rem;height:1.75rem;margin-bottom:.4rem;color:var(--cc);opacity:.9}
+        .rev-text{font-size:1rem;line-height:1.65;color:#f1f5f9}
+        .rv{--cc:#00A9E0;position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;padding:1rem;background:rgba(8,10,14,.8)}
+        .rv.on{display:flex}
+        .rv-panel{position:relative;width:min(680px,100%);max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow-y:auto;padding:1.75rem 2.25rem 2rem;border:1px solid rgba(255,255,255,.22);border-radius:1.25rem;background:#181c24;outline:none;overscroll-behavior:contain}
+        .rv-x{position:absolute;top:.6rem;right:.7rem;width:2.5rem;height:2.5rem;border:0;border-radius:9999px;background:rgba(255,255,255,.08);color:#fff;font-size:1.5rem;line-height:1;cursor:pointer;transition:background .2s ease}
+        .rv-x:hover{background:rgba(255,255,255,.16)}
+        .rv-top{display:flex;align-items:center;gap:1rem;margin:0 2.5rem 1.25rem 0}
+        .rv-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cc)}
+        .rv-date{font-size:.8125rem;color:#94a3b8}
+        .rv-body p{font-size:1.0625rem;line-height:1.75;color:#e2e8f0}
+        .rv-body p+p{margin-top:1rem}
+        .rv-who{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.1)}
+        .rv-name{font-weight:700;color:#fff}
+        .rv-role{margin-top:.15rem;font-size:.8125rem;line-height:1.5;color:#94a3b8}
+        .rv-role a{color:var(--cc);text-decoration:none}
+        .rv-role a:hover{text-decoration:underline}
+        @media (max-width:640px){
+          .rv{padding:0;align-items:flex-end}
+          .rv-panel{width:100%;max-height:92vh;max-height:92dvh;padding:1.5rem 1.25rem calc(1.75rem + env(safe-area-inset-bottom));border-radius:1.25rem 1.25rem 0 0;border-bottom:0}
+          .rv-body p{font-size:1rem;line-height:1.7}
+        }
         .sdot{width:10px;height:10px;border-radius:9999px;background:rgba(255,255,255,.2);transition:background .2s ease}
         .sdot.on{background:var(--cc)}
         #lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.96);display:none}
@@ -468,31 +492,32 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                 </div>
 
                 <div class="flex flex-col lg:flex-row-reverse gap-8 md:gap-12 items-start">
-                    <div class="lg:w-1/2">
+                    <div class="lg:w-1/2 lg:self-stretch lg:flex lg:flex-col">
                         <h3 class="text-2xl md:text-3xl font-bold mb-4">Atomy by Anna Yakovleva — сайт-визитка с каталогом</h3>
-                        <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
+                        <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-[17px]">
                             Сделали с нуля личный сайт независимого партнёра Atomy. Посетитель узнаёт об Анне, её пути и команде, знакомится с продукцией и сразу переходит к регистрации или пишет Анне напрямую.
                         </p>
                         <ul class="space-y-3 mb-8">
-                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <li class="flex items-start gap-3 text-slate-300 text-sm md:text-[15px]">
                                 <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
                                 <span>Каталог из 60 товаров в пяти категориях с фильтрами. Посетитель видит цены «до и после регистрации», собирает корзину и переходит к контактам Анны</span>
                             </li>
-                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <li class="flex items-start gap-3 text-slate-300 text-sm md:text-[15px]">
                                 <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
                                 <span>Страница регистрации: три варианта, каждый разобран на настоящем экране Atomy, плюс 32 ответа на частые вопросы с подбором по темам</span>
                             </li>
-                            <li class="flex items-start gap-3 text-slate-300 text-sm">
+                            <li class="flex items-start gap-3 text-slate-300 text-sm md:text-[15px]">
                                 <i data-lucide="check-circle" class="w-5 h-5 case-ico flex-shrink-0 mt-0.5"></i>
                                 <span>Раздел мероприятий: страница готова, лента последних событий в разработке</span>
                             </li>
                         </ul>
-                        <a href="https://atomy-by-anna-yakovleva.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group">
+                        <a href="https://atomy-by-anna-yakovleva.ru" target="_blank" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group lg:mt-auto lg:self-start">
                             Посмотреть сайт <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
 
-                    <div class="lg:w-1/2 w-full" data-gallery data-caps='["Главная: знакомство и две кнопки, «Присоединиться» и «Узнать больше»", "Каталог: карточки товаров и корзина с итогом", "Регистрация: три варианта и разбор каждого", "Команда: история руководителя центра «Балхай»"]'>
+                    <div class="lg:w-1/2 w-full lg:self-stretch lg:flex lg:flex-col">
+                    <div class="w-full lg:mb-6" data-gallery data-caps='["Главная: знакомство и две кнопки", "Каталог: карточки товаров и корзина с итогом", "Регистрация: три варианта и разбор каждого", "Команда: история руководителя центра «Балхай»"]'>
                         <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-raised"><button type="button" data-zoom class="absolute bottom-3 left-3 z-10 flex items-center gap-2 px-3 py-2 rounded-full bg-black/65 text-white text-xs font-semibold backdrop-blur"><i data-lucide="maximize-2" class="w-4 h-4"></i>Открыть</button>
                             <div class="h-8 bg-black/20 flex items-center px-4 gap-2 border-b border-white/5">
                                 <div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div><div class="w-3 h-3 rounded-full bg-white/15"></div>
@@ -506,14 +531,49 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
                             </div>
                         </div>
                         <div class="flex items-center justify-between mt-3 gap-4">
-                            <p data-cap class="text-sm text-slate-400">Главная: знакомство и две кнопки, «Присоединиться» и «Узнать больше»</p>
+                            <p data-cap class="text-sm text-slate-400">Главная: знакомство и две кнопки</p>
                             <div class="flex gap-2" data-dots><button type="button" class="sdot on" aria-label="Скриншот 1"></button><button type="button" class="sdot" aria-label="Скриншот 2"></button><button type="button" class="sdot" aria-label="Скриншот 3"></button><button type="button" class="sdot" aria-label="Скриншот 4"></button></div>
                         </div>
+                    </div>
+
+                    <figure class="rev">
+                        <i data-lucide="quote" class="rev-mark"></i>
+                        <blockquote class="rev-text">
+                            <p>Меня действительно услышали: внимательно отнеслись ко всем моим пожеланиям, задавали правильные вопросы, чтобы понять, каким я вижу свой сайт и что именно мне нужно.</p>
+                        </blockquote>
+                        <div class="flex flex-wrap lg:flex-nowrap items-center lg:items-end justify-between gap-x-4 gap-y-1 mt-3">
+                            <figcaption class="min-w-0 text-sm leading-6 text-slate-400"><span class="font-semibold text-slate-200">Анна Яковлева</span>, независимый партнёр Atomy</figcaption>
+                            <button type="button" class="shrink-0 whitespace-nowrap inline-flex items-center gap-2 text-brand-blue font-semibold hover:text-blue-300 transition-colors group cursor-pointer" data-rev-open aria-haspopup="dialog">
+                                Читать весь отзыв <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </figure>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div id="rv" class="rv" role="dialog" aria-modal="true" aria-labelledby="rv-title">
+        <div class="rv-panel" tabindex="-1">
+            <button type="button" class="rv-x" data-rv-close aria-label="Закрыть">×</button>
+            <div class="rv-top">
+                <span class="rv-tag"><i data-lucide="quote" class="w-4 h-4"></i>Отзыв заказчика</span>
+                <time class="rv-date" datetime="2026-11-23">23.11.2026</time>
+            </div>
+            <div class="rv-body">
+                <p>Мне очень понравился результат! Но особенно хочу отметить сам процесс работы. Меня действительно услышали: внимательно отнеслись ко всем моим пожеланиям, задавали правильные вопросы, чтобы понять, каким я вижу свой сайт и что именно мне нужно.</p>
+                <p>Отдельное спасибо за вовлечённость! Даже когда я немного «уходила в закат» и выпадала из процесса, меня мягко, но настойчиво возвращали к работе. Ничего не теряли из виду и довели всё до результата.</p>
+                <p>Очень приятно работать с людьми, которым действительно важно не просто выполнить задачу, а сделать так, чтобы клиент остался доволен. Спасибо за работу! ❤️</p>
+            </div>
+            <div class="rv-who">
+                <div>
+                    <div id="rv-title" class="rv-name">Анна Яковлева</div>
+                    <div class="rv-role">Заказчик сайта <a href="https://atomy-by-anna-yakovleva.ru" target="_blank" rel="noopener">atomy-by-anna-yakovleva.ru</a><br>Независимый партнёр Atomy</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Why us -->
     <section class="py-24 relative bg-white/[0.02]">
@@ -797,6 +857,91 @@ lucide.createIcons();
           return g;});
 
         
+        (() => {
+          const dlg = document.getElementById('rv');
+          const panel = dlg.querySelector('.rv-panel');
+          const closeBtn = dlg.querySelector('[data-rv-close]');
+          const parts = panel.querySelectorAll('.rv-top, .rv-body p, .rv-who');
+          const phone = matchMedia('(max-width: 640px)');
+          const calm = matchMedia('(prefers-reduced-motion: reduce)');
+          let opener = null;
+          let tween = null;
+
+          // Only opacity and transform are animated, so every frame stays on the compositor.
+          const animate = open => {
+            if (tween) tween.kill();
+            if (!window.gsap) {
+              dlg.classList.toggle('on', open);
+              return;
+            }
+            const sheet = phone.matches;
+            if (open) {
+              dlg.classList.add('on');
+              if (calm.matches) {
+                tween = gsap.fromTo(dlg, { opacity: 0 }, { opacity: 1, duration: 0.15 });
+                return;
+              }
+              tween = gsap.timeline()
+                .fromTo(dlg, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power1.out' })
+                .fromTo(panel,
+                  sheet ? { yPercent: 100 } : { y: 28, scale: 0.965, opacity: 0 },
+                  sheet ? { yPercent: 0, duration: 0.6, ease: 'power4.out' }
+                        : { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: 'power3.out' },
+                  0.03)
+                .fromTo(parts,
+                  { y: 14, opacity: 0 },
+                  { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', stagger: 0.07 },
+                  0.16);
+            } else {
+              const done = () => {
+                dlg.classList.remove('on');
+                gsap.set([dlg, panel, parts], { clearProps: 'all' });
+              };
+              if (calm.matches) {
+                tween = gsap.to(dlg, { opacity: 0, duration: 0.12, onComplete: done });
+                return;
+              }
+              tween = gsap.timeline({ onComplete: done })
+                .to(panel,
+                  sheet ? { yPercent: 100, duration: 0.3, ease: 'power3.in' }
+                        : { y: 16, scale: 0.98, opacity: 0, duration: 0.22, ease: 'power2.in' }, 0)
+                .to(dlg, { opacity: 0, duration: 0.25, ease: 'power1.in' }, 0.04);
+            }
+          };
+
+          const open = btn => {
+            opener = btn;
+            document.body.style.overflow = 'hidden';
+            panel.scrollTop = 0;
+            animate(true);
+            closeBtn.focus({ preventScroll: true });
+          };
+          const close = () => {
+            document.body.style.overflow = '';
+            animate(false);
+            if (opener) opener.focus({ preventScroll: true });
+          };
+          const isOpen = () => dlg.classList.contains('on');
+
+          document.querySelectorAll('[data-rev-open]').forEach(btn => {
+            btn.addEventListener('click', () => open(btn));
+          });
+          dlg.addEventListener('click', e => {
+            if (e.target === dlg || e.target.closest('[data-rv-close]')) close();
+          });
+          document.addEventListener('keydown', e => {
+            if (!isOpen()) return;
+            if (e.key === 'Escape') close();
+            // keep Tab inside the dialog
+            if (e.key === 'Tab') {
+              const items = [...dlg.querySelectorAll('button, a[href]')];
+              const first = items[0], last = items[items.length - 1];
+              if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+              else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+          });
+        })();
+
         (()=>{let down=false,sx=0,sl=0,dragged=false,pid=null;
           feed.addEventListener('dragstart',e=>e.preventDefault());
           feed.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button)return;down=true;dragged=false;sx=e.clientX;sl=feed.scrollLeft;pid=e.pointerId;});
