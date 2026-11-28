@@ -1,0 +1,12 @@
+{
+  "name": "titan-it-company",
+  "private": true,
+  "description": "Сайт Titan: статические страницы, стили Tailwind собираются в assets/tailwind.min.css",
+  "scripts": {
+    "build": "tailwindcss -i src/tailwind.css -o assets/tailwind.min.css --minify",
+    "watch": "tailwindcss -i src/tailwind.css -o assets/tailwind.min.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

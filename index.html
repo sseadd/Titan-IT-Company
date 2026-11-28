@@ -31,23 +31,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.0.8/700.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/800.css">
 
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['"Space Grotesk"', 'sans-serif'] },
-                    colors: {
-                        surface: { base: '#13161c', raised: '#1a1e26', border: 'rgba(255,255,255,0.07)' },
-                        brand: { blue: '#3b82f6', bluedeep: '#2563eb', green: '#22c55e' },
-                        tg: '#0088cc', max: '#6B4EFF', vk: '#0077FF',
-                    },
-                    animation: { 'float': 'float 6s ease-in-out infinite' },
-                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } } },
-                }
-            }
-        }
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
 
     <style>
@@ -216,6 +199,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="assets/tailwind.min.css?v=1">
 </head>
 <body class="antialiased relative">
 

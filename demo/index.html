@@ -20,23 +20,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.0.8/700.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/800.css">
 
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['"Space Grotesk"', 'sans-serif'] },
-                    colors: {
-                        surface: { base: '#13161c', raised: '#1a1e26', border: 'rgba(255,255,255,0.07)' },
-                        brand: { blue: '#3b82f6', bluedeep: '#2563eb', green: '#22c55e' },
-                        tg: '#0088cc', max: '#6B4EFF', vk: '#0077FF',
-                    },
-                    animation: { 'float': 'float 6s ease-in-out infinite' },
-                    keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } } },
-                }
-            }
-        }
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
 
     <style>
@@ -213,6 +196,7 @@
 @keyframes tshint{0%,72%{max-width:140px;opacity:1;margin:0 4px 0 7px}100%{max-width:0;opacity:0;margin:0}}
 @media (prefers-reduced-motion:reduce){.ts-back,.ts-back span{animation:none}}
 @media (max-width:700px){.ts-back{left:10px}}</style>
+    <link rel="stylesheet" href="../assets/tailwind.min.css?v=1">
 </head>
 <body class="antialiased relative">
     <!-- Навигация -->
